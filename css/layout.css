@@ -789,8 +789,8 @@ call-to-action .button {
 
 #contact {
    background: #171717;
-   padding-top: 96px;
-   padding-bottom: 9px;
+   padding-top: 0px;
+   padding-bottom: 0px;
    color: #636363;
 }
 #contact .section-head { margin-bottom: 42px; }
