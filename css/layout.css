@@ -720,9 +720,16 @@ call-to-action .button {
 .flexslider .slides > li { position: relative; }
 
 /* Hide the slides before the JS is loaded. Avoids image jumping */
-.flexslider .slides > li { display: none; -webkit-backface-visibility: hidden; }
+.flexslider .slides > li { 
+   display: none; 
+   -webkit-backface-visibility: hidden; 
+}
 /* Suggested container for slide animation setups. Can replace this with your own */
-.flex-container { zoom: 1; position: relative; }
+
+.flex-container { 
+   zoom: 1; 
+   position: relative;
+}
 
 /* Clearfix for .slides */
 .slides:before,
@@ -829,7 +836,7 @@ call-to-action .button {
 #contact .header-col { padding-top: 6px; }
 
 
-/* contact form */
+/* contact form 
 #contact form { margin-bottom: 30px; }
 #contact label {
    font: 15px/24px 'opensans-bold', sans-serif;
@@ -838,7 +845,7 @@ call-to-action .button {
 	display: inline-block;
 	float: left;
    width: 26%;
-}
+}*/
 #contact input,
 #contact textarea,
 #contact select {
