@@ -215,11 +215,20 @@
 
    /* About Section
    -------------------------------------------------------------------- */
-   #about .profile-pic { display: none; }
+   #about .profile-pic { 
+      text-align: center; 
+      margin:auto; 
+      display:flex;
+      margin-bottom: 50px;
+      
+   }
    #about .download .button {
       width: 100%;
       text-align: center;
       padding: 15px 20px;
+   }
+   #aboutP {
+      text-align: justify;
    }
    #about .main-col { padding-right: 30px; }
 
@@ -274,6 +283,11 @@
       font-size: 20px;
       line-height: 42px;      
    }
+   
+   #testimonials {
+      background: #1F1F1F url(../images/overlay-bg.jpg);
+   }
+   
 
    /* Control Nav */
    .flex-control-nav {
