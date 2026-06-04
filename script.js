@@ -74,7 +74,7 @@ function showSection(id){
   if(id === 'skills'){
     setTimeout(animateSkills, 80);
   }
-}
+} 
 
 function animateSkills(){
   document.querySelectorAll('.skill-bar-fill').forEach(bar => {
