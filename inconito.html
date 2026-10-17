@@ -1,0 +1,675 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Inconito</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Special+Elite&display=swap">
+<style>
+/* Layout: une seule colonne pensée pour le téléphone qu'on se passe. Un dossier classé porte le mot secret, l'encre noire fait le décor, le rouge tampon n'apparaît que pour ce qui compte. */
+:root {
+  --bg: #E8ECF1;
+  --surface: #F6F8FB;
+  --ink: #101828;
+  --muted: #566074;
+  --line: #C7CEDA;
+  --accent: #C9352A;
+  --accent-fg: #FFFFFF;
+  --civil: #0B6F78;
+  --civil-fg: #FFFFFF;
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-type: 'Special Elite', 'Courier New', Courier, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1120; --surface: #151C2F; --ink: #E8ECF4; --muted: #97A1B6; --line: #28314A;
+    --accent: #FF6B58; --accent-fg: #1A0B09; --civil: #52C7D0; --civil-fg: #04181A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1120; --surface: #151C2F; --ink: #E8ECF4; --muted: #97A1B6; --line: #28314A;
+  --accent: #FF6B58; --accent-fg: #1A0B09; --civil: #52C7D0; --civil-fg: #04181A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[tabindex="-1"]:focus { outline: none; }
+
+.wrap {
+  max-width: 34rem;
+  margin-inline: auto;
+  padding-inline: 16px;
+  padding-block: 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.wrap > * { min-width: 0; }
+
+/* Marque */
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 11.5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.brand .cover {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.02em 0.1em 0.06em;
+  margin-left: 0.04em;
+  transform: rotate(-1.5deg);
+}
+.intro { display: flex; flex-direction: column; gap: 12px; }
+.lede { color: var(--muted); margin: 0; max-width: 34ch; }
+
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.mini { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: 1.1rem; }
+.mini b { background: var(--ink); color: var(--bg); padding: 0 0.25em; margin-left: 2px; font-weight: 800; }
+.link {
+  background: none; border: 0; padding: 10px 0; min-height: 44px;
+  color: var(--muted); font-size: 0.9rem; font-weight: 600;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+.link.sure { color: var(--accent); }
+
+/* Sections de réglage */
+.panel { border-top: 2px solid var(--ink); padding-top: 14px; display: flex; flex-direction: column; gap: 14px; }
+.label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.row .t { min-width: 0; flex: 1 1 12rem; }
+.row .t b { display: block; font-weight: 700; }
+.row .t small { display: block; color: var(--muted); font-size: 0.85rem; }
+.stepper { display: flex; align-items: center; gap: 10px; }
+.stepper output {
+  min-width: 2ch; text-align: center; font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums;
+}
+.round {
+  width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink);
+  background: transparent; font-size: 1.4rem; font-weight: 700; line-height: 1;
+  cursor: pointer; display: grid; place-items: center; padding: 0;
+}
+.round:disabled { opacity: 0.3; cursor: not-allowed; }
+.switch {
+  width: 52px; height: 30px; border-radius: 15px; border: 2px solid var(--ink);
+  background: transparent; position: relative; cursor: pointer; padding: 0; flex: none;
+}
+.switch::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--ink); transition: transform 0.2s;
+}
+.switch[aria-checked="true"] { background: var(--ink); }
+.switch[aria-checked="true"]::after { transform: translateX(22px); background: var(--bg); }
+.switch:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.names { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 8px; }
+.names input {
+  width: 100%; min-width: 0; padding: 11px 12px; border: 1.5px solid var(--line);
+  border-radius: 6px; background: var(--surface);
+}
+.names input:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 9px; border-radius: 3px;
+  border: 1.5px solid currentColor; white-space: nowrap;
+}
+.chip b { font-variant-numeric: tabular-nums; font-size: 0.95rem; }
+.chip.civil { color: var(--civil); }
+.chip.under { color: var(--accent); }
+.chip.white { color: var(--ink); }
+
+/* Thèmes de mots */
+.packs { display: flex; flex-wrap: wrap; gap: 8px; }
+.pack {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px;
+  border: 2px solid var(--ink); border-radius: 6px; background: transparent; cursor: pointer;
+  font-weight: 700;
+}
+.pack small { font-size: 0.78rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pack[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.pack[aria-pressed="true"] small { color: var(--bg); opacity: 0.75; }
+
+/* Boutons */
+.btn {
+  width: 100%; min-height: 54px; padding: 14px 18px; border-radius: 6px;
+  border: 2px solid var(--ink); background: var(--ink); color: var(--bg);
+  font-weight: 700; font-size: 1.05rem; letter-spacing: 0.01em; cursor: pointer;
+}
+.btn.danger { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+
+/* Règles */
+details { border-top: 1.5px solid var(--line); padding-top: 4px; }
+summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+details ol { margin: 4px 0 0; padding-left: 1.2rem; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+
+/* Dossier classé */
+.dossier { background: var(--surface); border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; }
+.dossier > header {
+  display: flex; justify-content: space-between; gap: 12px; padding: 8px 14px;
+  background: var(--ink); color: var(--bg); font-family: var(--font-type); font-weight: 400;
+  font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.dossier .body { position: relative; padding: 22px 18px 28px; display: flex; flex-direction: column; gap: 14px; min-height: 16rem; }
+.kicker { font-family: var(--font-type); font-weight: 400; color: var(--muted); margin: 0; font-size: 0.95rem; }
+.who {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(1.9rem, 9vw, 2.6rem);
+  line-height: 1.05; margin: 0; overflow-wrap: anywhere; text-wrap: balance;
+}
+.bars { display: flex; flex-direction: column; gap: 9px; margin-top: 6px; }
+.bars i { display: block; height: 1.1rem; background: var(--ink); width: var(--w); }
+.stamp {
+  align-self: flex-start; font-family: var(--font-type); font-weight: 400; text-transform: uppercase;
+  letter-spacing: 0.14em; font-size: 1.15rem; color: var(--accent); border: 3px solid var(--accent);
+  padding: 4px 12px; border-radius: 3px; transform: rotate(-5deg); background: var(--surface);
+}
+.stamp.over { position: absolute; right: 16px; bottom: 24px; }
+.stamp.big { align-self: center; font-size: clamp(1.6rem, 8vw, 2.2rem); padding: 8px 18px; }
+.stamp.role-civil { color: var(--civil); border-color: var(--civil); }
+.stamp.role-white { color: var(--ink); border-color: var(--ink); }
+.secret {
+  font-family: var(--font-type); font-weight: 400; font-size: clamp(2rem, 10vw, 3rem);
+  line-height: 1.1; margin: 4px 0 0; overflow-wrap: anywhere;
+  animation: unredact 0.7s steps(14, end) both;
+}
+.secret.none { color: var(--muted); }
+.note { margin: 0; color: var(--muted); }
+@keyframes unredact { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+.dots { display: flex; gap: 6px; flex-wrap: wrap; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); display: block; }
+.dot.done { background: var(--ink); }
+.dot.now { background: var(--accent); border-color: var(--accent); }
+.hint { margin: 0; color: var(--muted); text-align: center; }
+
+/* Manche */
+.h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.7rem, 8vw, 2.3rem); line-height: 1.05; margin: 4px 0 8px; text-wrap: balance; overflow-wrap: anywhere; }
+.muted { color: var(--muted); margin: 0; }
+.order { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.order li, .roster li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.num { font-family: var(--font-type); width: 2rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: none; }
+.nm { flex: 1; min-width: 0; font-weight: 700; font-size: 1.1rem; overflow-wrap: anywhere; }
+.tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink); color: var(--bg); padding: 3px 8px; border-radius: 3px; }
+
+/* Vote */
+.picks { display: flex; flex-direction: column; gap: 8px; }
+.pick {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; min-height: 56px;
+  padding: 10px 14px; border: 2px solid var(--line); background: var(--surface);
+  border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 1.1rem;
+}
+.pick .nm { font-size: 1.1rem; }
+.pick[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-fg); }
+.ini { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-size: 0.95rem; flex: none; }
+.pick[aria-pressed="true"] .ini { background: var(--accent-fg); color: var(--accent); }
+
+/* Résultat */
+.reveal { display: flex; flex-direction: column; gap: 18px; align-items: stretch; text-align: center; padding-block: 8px; }
+.guess { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.guess input {
+  width: 100%; min-width: 0; padding: 14px; border: 2px solid var(--ink); background: var(--surface);
+  border-radius: 6px; font-family: var(--font-type); font-size: 1.2rem;
+}
+
+/* Fin */
+.win { border: 2px solid var(--ink); background: var(--ink); color: var(--bg); padding: 20px 16px; }
+.win.civil { background: var(--civil); border-color: var(--civil); color: var(--civil-fg); }
+.win.spy { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.win h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 9vw, 2.6rem); line-height: 1.05; margin: 0 0 6px; text-wrap: balance; }
+.win p { margin: 0; }
+.words { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 10px; }
+.words div { border: 1.5px solid var(--line); background: var(--surface); padding: 10px 12px; border-radius: 4px; min-width: 0; }
+.words small { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.words b { font-family: var(--font-type); font-weight: 400; font-size: 1.3rem; overflow-wrap: anywhere; }
+.roster { list-style: none; margin: 0; padding: 0; }
+.roster li { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; }
+.roster li .w { grid-column: 1 / -1; font-family: var(--font-type); color: var(--muted); font-size: 0.95rem; }
+.roster li.out .nm { opacity: 0.65; }
+
+/* Signature */
+.sign {
+  border-top: 2px solid var(--ink); padding-top: 12px; margin-top: 6px;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px;
+  font-family: var(--font-type); font-size: 0.95rem; color: var(--muted);
+}
+.sign span { letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; }
+.sign b { font-weight: 400; color: var(--ink); font-size: 1.05rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+
+<main class="wrap" id="app"></main>
+
+<script>
+(function () {
+  "use strict";
+
+  var PAIRS = [["Café","Thé"],["Chat","Chien"],["Pomme","Poire"],["Plage","Piscine"],["Pizza","Quiche"],["Stylo","Crayon"],["Vélo","Trottinette"],["Train","Métro"],["Avion","Hélicoptère"],["Lait","Crème"],["Beurre","Margarine"],["Miel","Confiture"],["Football","Rugby"],["Tennis","Badminton"],["Piano","Guitare"],["Violon","Violoncelle"],["Cinéma","Théâtre"],["Livre","Magazine"],["Lune","Soleil"],["Pluie","Neige"],["Mer","Océan"],["Rivière","Fleuve"],["Montagne","Colline"],["Forêt","Jungle"],["Roi","Empereur"],["Sorcière","Fée"],["Vampire","Zombie"],["Dentiste","Médecin"],["Pompier","Policier"],["Boulanger","Pâtissier"],["Frites","Chips"],["Sushi","Makis"],["Hamburger","Sandwich"],["Chocolat","Caramel"],["Glace","Sorbet"],["Gâteau","Tarte"],["Croissant","Pain au chocolat"],["Bière","Vin"],["Champagne","Cidre"],["Mojito","Caïpirinha"],["Lunettes","Lentilles"],["Montre","Réveil"],["Téléphone","Tablette"],["Ordinateur","Télévision"],["Netflix","YouTube"],["Chaise","Tabouret"],["Canapé","Fauteuil"],["Lit","Hamac"],["Tasse","Verre"],["Fourchette","Cuillère"],["Couteau","Ciseaux"],["Savon","Shampoing"],["Parfum","Déodorant"],["Baguette","Pain de mie"],["Fromage","Yaourt"],["Carotte","Radis"],["Tomate","Poivron"],["Citron","Orange"],["Fraise","Framboise"],["Banane","Mangue"],["Loup","Renard"],["Lion","Tigre"],["Dauphin","Requin"],["Aigle","Faucon"],["Abeille","Guêpe"],["Papillon","Libellule"],["Cheval","Âne"],["Vache","Chèvre"],["Mariage","Anniversaire"],["Noël","Pâques"],["Halloween","Carnaval"],["École","Université"],["Hôpital","Clinique"],["Valise","Sac à dos"],["Parapluie","Imperméable"],["Écharpe","Cravate"],["Jean","Jogging"],["Bague","Bracelet"],["Château","Palais"],["Phare","Tour"],["Pont","Tunnel"],["Escalier","Ascenseur"],["Jardin","Parc"],["Camping","Hôtel"],["Tente","Caravane"],["Bateau","Sous-marin"],["Moto","Scooter"],["Voiture","Camion"],["Taxi","Bus"],["Gare","Aéroport"],["Pirate","Viking"],["Chevalier","Samouraï"],["Espion","Détective"],["Dragon","Dinosaure"],["Cirque","Zoo"],["Mousse","Chantilly"],["Bonbon","Chewing-gum"],["Pâtes","Riz"],["Soupe","Salade"]];
+  var BRUXELLES = [["Manneken-Pis","Jeanneke-Pis"],["Atomium","Mini-Europe"],["Gaufre de Bruxelles","Gaufre de Liège"],["Frites","Moules-frites"],["Grand-Place","Place du Sablon"],["Delirium","Moeder Lambic"],["Ixelles","Saint-Gilles"],["Schaerbeek","Etterbeek"],["Gare du Midi","Gare du Nord"],["STIB","De Lijn"],["Métro","Tram"],["Cinquantenaire","Parc de Bruxelles"],["Bois de la Cambre","Forêt de Soignes"],["Tintin","Spirou"],["Marolles","Molenbeek"],["Place Flagey","Place Jourdan"],["Maison Antoine","Frit Flagey"],["Stoemp","Waterzooi"],["Gueuze","Kriek"],["Neuhaus","Godiva"],["Parlement européen","Commission européenne"],["ULB","VUB"],["Delhaize","Colruyt"],["Zaventem","Charleroi"],["Palais de Justice","Palais Royal"],["Basilique de Koekelberg","Cathédrale Saint-Michel"],["Anderlecht","Union Saint-Gilloise"],["Stromae","Angèle"],["Avenue Louise","Rue Neuve"],["Heysel","Laeken"],["Bozar","Cirque Royal"],["Ancienne Belgique","Forest National"],["Pain à la grecque","Craquelin"],["Manifestation","Grève"],["Zinneke Parade","Ommegang"]];
+  var NARUTO = [["Naruto","Sasuke"],["Kakashi","Jiraiya"],["Sharingan","Byakugan"],["Rasengan","Chidori"],["Konoha","Suna"],["Akatsuki","Anbu"],["Hokage","Kazekage"],["Itachi","Madara"],["Orochimaru","Kabuto"],["Sakura","Tsunade"],["Hinata","Ino"],["Gaara","Rock Lee"],["Kurama","Shukaku"],["Ramen","Dango"],["Ninjutsu","Genjutsu"],["Kunai","Shuriken"],["Shikamaru","Neji"],["Pain","Konan"],["Minato","Kushina"],["Obito","Rin"],["Mangekyo","Rinnegan"],["Hashirama","Tobirama"],["Boruto","Sarada"],["Akamaru","Pakkun"],["Kisame","Deidara"],["Zabuza","Haku"],["Gai","Asuma"],["Kurenai","Anko"],["Jinchuriki","Sannin"],["Sasori","Hidan"]];
+  var RAP = [["Booba","Kaaris"],["PNL","Jul"],["Damso","Roméo Elvis"],["Nekfeu","Orelsan"],["SCH","Ninho"],["Freestyle","Clash"],["Rappeur","Chanteur"],["Studio","Concert"],["Punchline","Refrain"],["Beat","Sample"],["Mixtape","Album"],["Featuring","Remix"],["Chaîne en or","Grillz"],["Casquette","Bob"],["Eminem","Drake"],["Kendrick Lamar","J. Cole"],["Jay-Z","Kanye West"],["Snoop Dogg","Dr. Dre"],["2Pac","Notorious B.I.G."],["Lomepal","Vald"],["Hamza","Isha"],["Cypher","Battle"],["DJ","MC"],["Flow","Rime"],["Auto-Tune","Vocoder"],["Trap","Drill"],["Bercy","Stade de France"],["Skyrock","Générations"],["Médine","Kery James"],["IAM","NTM"],["Diam's","Shay"],["Gims","Soprano"],["Tiakola","Gazo"],["Oxmo Puccino","Disiz"],["Travis Scott","Future"]];
+  var ANIME = [["One Piece","Naruto"],["Goku","Vegeta"],["Luffy","Zoro"],["Pokémon","Digimon"],["Dragon Ball","Chevaliers du Zodiaque"],["Light Yagami","L"],["L'Attaque des Titans","Fullmetal Alchemist"],["Eren","Levi"],["Sailor Moon","Card Captor Sakura"],["Totoro","Ponyo"],["Miyazaki","Shinkai"],["Le Voyage de Chihiro","Princesse Mononoké"],["My Hero Academia","One Punch Man"],["Deku","Bakugo"],["Saitama","Genos"],["Demon Slayer","Jujutsu Kaisen"],["Tanjiro","Nezuko"],["Gojo","Sukuna"],["Manga","Animé"],["Shōnen","Shōjo"],["Otaku","Cosplay"],["Senpai","Sensei"],["Opening","Ending"],["Hunter x Hunter","Bleach"],["Gon","Killua"],["Evangelion","Gundam"],["Ghibli","Toei Animation"],["Sacha","Pierre"],["Goldorak","Albator"],["Crunchyroll","ADN"]];
+  var JEUX = [["Mario","Sonic"],["Luigi","Wario"],["Zelda","Pokémon"],["Minecraft","Roblox"],["Fortnite","Apex Legends"],["Call of Duty","Battlefield"],["FIFA","PES"],["GTA","Red Dead Redemption"],["PlayStation","Xbox"],["Switch","Steam Deck"],["Nintendo","Sega"],["Tetris","Pac-Man"],["League of Legends","Dota"],["Valorant","Counter-Strike"],["Among Us","Fall Guys"],["Animal Crossing","Les Sims"],["Dark Souls","Elden Ring"],["Skyrim","The Witcher"],["Bowser","Ganon"],["Kirby","Yoshi"],["Donkey Kong","Crash Bandicoot"],["Lara Croft","Nathan Drake"],["Master Chief","Doomguy"],["Mario Kart","Super Smash Bros"],["Twitch","YouTube"],["Manette","Clavier-souris"],["Speedrun","Let's play"],["Champignon","Fleur de feu"],["Clash Royale","Brawl Stars"],["Overwatch","Team Fortress"],["Hollow Knight","Celeste"],["The Last of Us","Resident Evil"],["Street Fighter","Tekken"],["Game Boy","PSP"]];
+  var THEMES = [
+    { id: "general", label: "Général", pairs: PAIRS },
+    { id: "bruxelles", label: "Bruxelles", pairs: BRUXELLES },
+    { id: "naruto", label: "Naruto", pairs: NARUTO },
+    { id: "rap", label: "Rap", pairs: RAP },
+    { id: "anime", label: "Animé", pairs: ANIME },
+    { id: "jeux", label: "Jeux vidéo", pairs: JEUX }
+  ];
+  var ROLE = { civil: "Civil", under: "Inconito", white: "Mr White" };
+  var KEY = "inconito.setup";
+  var SCREENS = ["setup", "pass", "play", "vote", "result", "end"];
+
+  var S = {
+    screen: "setup", n: 5, u: 1, w: false,
+    names: ["","","","","","","","","","","",""],
+    themes: ["general"],
+    players: [], pair: null, used: [],
+    i: 0, shown: false, round: 1, order: [],
+    pick: null, out: null, guess: null, guessText: "", winner: null, quit: false
+  };
+
+  var app = document.getElementById("app");
+  var prevScreen = null;
+  var quitTimer = null;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function sign() {
+    return '<footer class="sign"><span>Fait par</span><b>Sacripant</b><b>Plamber</b><b>Gradux</b></footer>';
+  }
+  function norm(s) {
+    return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9]+/g, " ").trim()
+      .replace(/^(de la|de l|des|du|les|la|le|l|une|un|d) /, "")
+      .replace(/ /g, "").replace(/[sx]$/, "");
+  }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function load() {
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (d && typeof d === "object") {
+        if (Number.isInteger(d.n)) S.n = d.n;
+        if (Number.isInteger(d.u)) S.u = d.u;
+        S.w = !!d.w;
+        if (Array.isArray(d.themes)) {
+          var ok = d.themes.filter(function (id) { return THEMES.some(function (t) { return t.id === id; }); });
+          if (ok.length) S.themes = ok;
+        }
+        if (Array.isArray(d.names)) {
+          for (var k = 0; k < 12; k++) S.names[k] = String(d.names[k] || "").slice(0, 16);
+        }
+      }
+    } catch (e) {}
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({ n: S.n, u: S.u, w: S.w, themes: S.themes, names: S.names })); } catch (e) {}
+  }
+
+  function clampCfg() {
+    S.n = Math.min(12, Math.max(3, S.n | 0));
+    var max = Math.floor((S.n - 1) / 2);
+    if (S.w && max < 2) S.w = false;
+    S.u = Math.max(1, Math.min((S.u | 0) || 1, max - (S.w ? 1 : 0)));
+  }
+  function recommended(n) { return n <= 6 ? 1 : n <= 9 ? 2 : 3; }
+
+  function wordOf(p) { return p.role === "civil" ? S.pair.civil : p.role === "under" ? S.pair.under : null; }
+  function aliveIdx() { var r = []; S.players.forEach(function (p, i) { if (p.alive) r.push(i); }); return r; }
+  function counts() {
+    var c = { civil: 0, under: 0, white: 0 };
+    S.players.forEach(function (p) { if (p.alive) c[p.role]++; });
+    return c;
+  }
+  function nm(i) { return esc(S.players[i].name); }
+  function ini(i) { return esc((Array.from(S.players[i].name)[0] || "?").toUpperCase()); }
+
+  function deal() {
+    var pool = [];
+    THEMES.forEach(function (t) {
+      if (S.themes.indexOf(t.id) === -1) return;
+      t.pairs.forEach(function (p) { pool.push({ key: p[0] + "|" + p[1], p: p, theme: t.label }); });
+    });
+    if (!pool.length) {
+      THEMES[0].pairs.forEach(function (p) { pool.push({ key: p[0] + "|" + p[1], p: p, theme: THEMES[0].label }); });
+    }
+    var fresh = pool.filter(function (c) { return S.used.indexOf(c.key) === -1; });
+    if (!fresh.length) { S.used = []; fresh = pool; }
+    var pick = fresh[Math.floor(Math.random() * fresh.length)];
+    S.used.push(pick.key);
+    var flip = Math.random() < 0.5;
+    S.pair = { civil: pick.p[flip ? 1 : 0], under: pick.p[flip ? 0 : 1], theme: pick.theme };
+    var idx = shuffle(Array.from({ length: S.n }, function (_, i) { return i; }));
+    var roles = [];
+    for (var i = 0; i < S.n; i++) roles.push("civil");
+    for (var a = 0; a < S.u; a++) roles[idx[a]] = "under";
+    if (S.w) roles[idx[S.u]] = "white";
+    S.players = roles.map(function (r, i) {
+      return { name: (S.names[i] || "").trim() || ("Joueur " + (i + 1)), role: r, alive: true };
+    });
+    S.i = 0; S.shown = false; S.round = 1; S.winner = null;
+    S.out = null; S.guess = null; S.guessText = ""; S.pick = null;
+    S.screen = "pass";
+  }
+
+  function makeOrder() {
+    var alive = aliveIdx();
+    var cand = alive.filter(function (i) { return S.players[i].role !== "white"; });
+    var pool = cand.length ? cand : alive;
+    var first = pool[Math.floor(Math.random() * pool.length)];
+    var pos = alive.indexOf(first);
+    S.order = alive.slice(pos).concat(alive.slice(0, pos));
+  }
+
+  function check() {
+    var c = counts();
+    var spies = c.under + c.white;
+    if (spies === 0) return "civil";
+    if (c.civil <= spies) return "spy";
+    return null;
+  }
+
+  /* ---------- Vues ---------- */
+
+  function topbar() {
+    return '<div class="topbar"><span class="mini">INCO<b>NITO</b></span>' +
+      '<button class="link' + (S.quit ? " sure" : "") + '" data-act="quit">' +
+      (S.quit ? "Confirmer : tout arrêter" : "Quitter la partie") + "</button></div>";
+  }
+
+  function countChips() {
+    var c = counts();
+    return '<div class="chips"><span class="chip civil"><b>' + c.civil + "</b> civils</span>" +
+      '<span class="chip under"><b>' + c.under + "</b> inconito</span>" +
+      (S.w ? '<span class="chip white"><b>' + c.white + "</b> Mr White</span>" : "") + "</div>";
+  }
+
+  function viewSetup() {
+    clampCfg();
+    var max = Math.floor((S.n - 1) / 2);
+    var civ = S.n - S.u - (S.w ? 1 : 0);
+    var inputs = "";
+    for (var i = 0; i < S.n; i++) {
+      inputs += '<input id="name-' + i + '" data-name="' + i + '" value="' + esc(S.names[i]) + '" placeholder="Joueur ' + (i + 1) +
+        '" aria-label="Nom du joueur ' + (i + 1) + '" maxlength="16" autocomplete="off" autocapitalize="words">';
+    }
+    var canUnder = S.u + (S.w ? 1 : 0) + 1 <= max;
+    var canWhite = S.w || S.u + 1 <= max;
+    return '<header class="intro"><h1 class="brand" data-focus tabindex="-1">INCO<span class="cover">NITO</span></h1>' +
+      '<p class="lede">Un seul téléphone, un mot secret par joueur. Trouve qui n\'a pas le même mot que les autres.</p></header>' +
+
+      '<section class="panel"><p class="label">Joueurs</p>' +
+      '<div class="row"><div class="t"><b>Combien êtes-vous ?</b><small>De 3 à 12, les prénoms sont facultatifs</small></div>' +
+      '<div class="stepper"><button class="round" data-act="n-" aria-label="Un joueur de moins"' + (S.n <= 3 ? " disabled" : "") + '>−</button>' +
+      "<output>" + S.n + '</output><button class="round" data-act="n+" aria-label="Un joueur de plus"' + (S.n >= 12 ? " disabled" : "") + ">+</button></div></div>" +
+      '<div class="names">' + inputs + "</div></section>" +
+
+      '<section class="panel"><p class="label">Rôles</p>' +
+      '<div class="row"><div class="t"><b>Inconito</b><small>Reçoivent un mot proche de celui des civils</small></div>' +
+      '<div class="stepper"><button class="round" data-act="u-" aria-label="Un inconito de moins"' + (S.u <= 1 ? " disabled" : "") + '>−</button>' +
+      "<output>" + S.u + '</output><button class="round" data-act="u+" aria-label="Un inconito de plus"' + (canUnder ? "" : " disabled") + ">+</button></div></div>" +
+      '<div class="row"><div class="t"><b>Mr White</b><small>Aucun mot. Éliminé, il peut gagner en devinant celui des civils.</small></div>' +
+      '<button class="switch" role="switch" aria-label="Mr White" aria-checked="' + S.w + '" data-act="w"' + (canWhite ? "" : " disabled") + "></button></div>" +
+      '<div class="chips"><span class="chip civil"><b>' + civ + "</b> civils</span>" +
+      '<span class="chip under"><b>' + S.u + "</b> Inconito</span>" +
+      (S.w ? '<span class="chip white"><b>1</b> Mr White</span>' : "") + "</div></section>" +
+
+      '<section class="panel"><p class="label">Thèmes des mots</p>' +
+      '<div class="packs">' + THEMES.map(function (t) {
+        return '<button class="pack" data-act="theme" data-i="' + t.id + '" aria-pressed="' + (S.themes.indexOf(t.id) !== -1) + '">' +
+          esc(t.label) + " <small>" + t.pairs.length + "</small></button>";
+      }).join("") + "</div>" +
+      '<p class="muted">Coche un ou plusieurs thèmes. Le mot est tiré au hasard parmi eux.</p></section>' +
+
+      '<button class="btn" data-act="go">Distribuer les mots</button>' +
+
+      "<details><summary>Règles en 30 secondes</summary><ol>" +
+      "<li>Chacun reçoit un mot en secret. Les civils ont tous le même, les inconito un mot proche, Mr White rien du tout.</li>" +
+      "<li>À tour de rôle, dites un mot ou une courte phrase qui décrit votre mot, sans le prononcer.</li>" +
+      "<li>Discutez, puis votez pour éliminer un joueur. Son rôle est révélé.</li>" +
+      "<li>Les civils gagnent s'ils éliminent tous les infiltrés. Les infiltrés gagnent quand ils sont aussi nombreux que les civils. Mr White gagne s'il devine le mot des civils après son élimination.</li>" +
+      "</ol></details>" + sign();
+  }
+
+  function viewPass() {
+    var p = S.players[S.i];
+    var dots = "";
+    for (var k = 0; k < S.n; k++) dots += '<i class="dot' + (k < S.i ? " done" : "") + (k === S.i ? " now" : "") + '"></i>';
+    var head = '<header><span>Dossier</span><span>' + (S.i + 1) + " / " + S.n + "</span></header>";
+    if (!S.shown) {
+      return '<div class="dots" aria-hidden="true">' + dots + "</div>" +
+        '<section class="dossier">' + head + '<div class="body"><p class="kicker">Passe le téléphone à</p>' +
+        '<h2 class="who" data-focus tabindex="-1">' + nm(S.i) + "</h2>" +
+        '<div class="bars" aria-hidden="true"><i style="--w:92%"></i><i style="--w:64%"></i><i style="--w:78%"></i></div>' +
+        '<span class="stamp over">Confidentiel</span></div></section>' +
+        '<p class="hint">Les autres détournent le regard.</p>' +
+        '<button class="btn" data-act="show">Voir mon mot</button>';
+    }
+    var w = wordOf(p);
+    var last = S.i === S.n - 1;
+    return '<div class="dots" aria-hidden="true">' + dots + "</div>" +
+      '<section class="dossier open">' + head + '<div class="body"><p class="kicker">' + nm(S.i) + ", ton mot secret</p>" +
+      (w ? '<p class="secret" data-focus tabindex="-1">' + esc(w) + "</p><p class=\"note\">Retiens-le, puis cache l'écran.</p>"
+         : '<p class="secret none" data-focus tabindex="-1">Aucun mot</p><p class="note">Tu es Mr White. Écoute les autres, bluffe, et essaie de deviner le mot des civils.</p>') +
+      "</div></section>" +
+      '<button class="btn" data-act="hide">' + (last ? "Cacher et commencer la partie" : "Cacher et passer au suivant") + "</button>";
+  }
+
+  function viewPlay() {
+    var out = [];
+    S.players.forEach(function (p, i) { if (!p.alive) out.push(i); });
+    var rows = S.order.map(function (i, k) {
+      return '<li><span class="num">' + (k + 1) + '</span><span class="nm">' + nm(i) + "</span>" + (k === 0 ? '<span class="tag">Commence</span>' : "") + "</li>";
+    }).join("");
+    var outRows = out.map(function (i) {
+      return '<li class="out"><span class="nm">' + nm(i) + '</span><span class="chip ' + S.players[i].role + '">' + ROLE[S.players[i].role] + "</span></li>";
+    }).join("");
+    return '<header><p class="label">Manche ' + S.round + '</p><h2 class="h2" data-focus tabindex="-1">À vous de parler</h2>' +
+      '<p class="muted">Chacun dit un mot ou une courte phrase qui décrit son mot, sans le prononcer. Ensuite, discutez et votez.</p></header>' +
+      countChips() +
+      '<ol class="order">' + rows + "</ol>" +
+      (out.length ? '<section><p class="label">Éliminés</p><ul class="roster">' + outRows + "</ul></section>" : "") +
+      '<button class="btn" data-act="vote">Passer au vote</button>';
+  }
+
+  function viewVote() {
+    var picks = aliveIdx().map(function (i) {
+      return '<button class="pick" data-act="pick" data-i="' + i + '" aria-pressed="' + (S.pick === i) + '"><span class="ini">' + ini(i) + '</span><span class="nm">' + nm(i) + "</span></button>";
+    }).join("");
+    return '<header><p class="label">Manche ' + S.round + '</p><h2 class="h2" data-focus tabindex="-1">Qui est éliminé ?</h2>' +
+      '<p class="muted">Votez à voix haute, puis choisissez le joueur le plus accusé.</p></header>' +
+      '<div class="picks">' + picks + "</div>" +
+      '<div class="stack"><button class="btn danger" data-act="elim"' + (S.pick === null ? " disabled" : "") + ">" +
+      (S.pick === null ? "Choisis un joueur" : "Éliminer " + nm(S.pick)) + "</button>" +
+      '<button class="btn ghost" data-act="back">Retour à la discussion</button></div>';
+  }
+
+  function viewResult() {
+    var p = S.players[S.out];
+    var body;
+    if (p.role === "white" && S.guess === null) {
+      body = '<p class="muted">Mr White, dernière chance. Quel est le mot des civils ?</p>' +
+        '<form class="guess" id="guess-form"><input id="guess" name="guess" autocomplete="off" autocapitalize="none" placeholder="Ton mot" aria-label="Mot des civils">' +
+        '<button class="btn" type="submit">Valider</button></form>';
+    } else if (p.role === "white") {
+      body = '<p class="muted">« ' + esc(S.guessText) + ' » n\'est pas le bon mot.</p>' +
+        '<button class="btn" data-act="next">Continuer</button>';
+    } else {
+      body = '<button class="btn" data-act="next">Continuer</button>';
+    }
+    return '<div class="reveal"><div><p class="label">Éliminé</p><h2 class="h2" data-focus tabindex="-1">' + nm(S.out) + "</h2></div>" +
+      '<span class="stamp big role-' + p.role + '">' + ROLE[p.role] + "</span>" + body + "</div>";
+  }
+
+  function viewEnd() {
+    var win = S.winner, title, sub, cls;
+    if (win === "civil") { title = "Les civils gagnent"; sub = "Tous les infiltrés sont démasqués."; cls = "civil"; }
+    else if (win === "spy") { title = "Les infiltrés gagnent"; sub = "Ils sont aussi nombreux que les civils."; cls = "spy"; }
+    else {
+      var wn = "Mr White";
+      S.players.forEach(function (p) { if (p.role === "white") wn = esc(p.name); });
+      title = "Mr White gagne"; sub = wn + " a deviné le mot des civils : « " + esc(S.guessText) + " »."; cls = "";
+    }
+    var roster = S.players.map(function (p) {
+      var w = wordOf(p);
+      return '<li class="' + (p.alive ? "" : "out") + '"><span class="nm">' + esc(p.name) + '</span><span class="chip ' + p.role + '">' + ROLE[p.role] + "</span>" +
+        '<span class="w">' + (w ? esc(w) : "aucun mot") + " · " + (p.alive ? "en jeu" : "hors jeu") + "</span></li>";
+    }).join("");
+    return '<div class="win ' + cls + '"><h2 data-focus tabindex="-1">' + title + "</h2><p>" + sub + "</p></div>" +
+      '<p class="muted">Thème : ' + esc(S.pair.theme || "Général") + '</p><div class="words"><div><small>Mot des civils</small><b>' + esc(S.pair.civil) + "</b></div><div><small>Mot des inconitos</small><b>" + esc(S.pair.under) + "</b></div></div>" +
+      '<section><p class="label">Tous les rôles</p><ul class="roster">' + roster + "</ul></section>" +
+      '<div class="stack"><button class="btn" data-act="again">Rejouer avec les mêmes joueurs</button>' +
+      '<button class="btn ghost" data-act="setup">Changer les réglages</button></div>' + sign();
+  }
+
+  var VIEWS = { setup: viewSetup, pass: viewPass, play: viewPlay, vote: viewVote, result: viewResult, end: viewEnd };
+
+  function render(key) {
+    app.innerHTML = (S.screen === "setup" ? "" : topbar()) + VIEWS[S.screen]();
+    app.dataset.screen = S.screen;
+    var heading = app.querySelector("[data-focus]");
+    if (S.screen !== prevScreen) {
+      window.scrollTo(0, 0);
+      if (heading) heading.focus({ preventScroll: true });
+    } else if (key) {
+      var el = app.querySelector(key);
+      var target = el && !el.disabled ? el : heading;
+      if (target) target.focus({ preventScroll: true });
+    }
+    prevScreen = S.screen;
+  }
+
+  /* ---------- Actions ---------- */
+
+  function afterElimination() {
+    var w = check();
+    if (w) { S.winner = w; S.screen = "end"; return; }
+    S.round++; S.pick = null; makeOrder(); S.screen = "play";
+  }
+
+  app.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-act]");
+    if (!b || b.disabled) return;
+    var a = b.dataset.act;
+    var key = '[data-act="' + a + '"]' + (b.dataset.i !== undefined ? '[data-i="' + b.dataset.i + '"]' : "");
+    switch (a) {
+      case "n-": case "n+":
+        S.n += a === "n+" ? 1 : -1; S.u = recommended(Math.min(12, Math.max(3, S.n))); clampCfg(); save(); break;
+      case "u-": S.u -= 1; clampCfg(); save(); break;
+      case "u+": S.u += 1; clampCfg(); save(); break;
+      case "w": S.w = !S.w; clampCfg(); save(); break;
+      case "theme": {
+        var id = b.dataset.i, at = S.themes.indexOf(id);
+        if (at === -1) S.themes.push(id);
+        else if (S.themes.length > 1) S.themes.splice(at, 1);
+        save(); break;
+      }
+      case "go":
+        clampCfg(); save();
+        try { if (navigator.wakeLock) navigator.wakeLock.request("screen").catch(function () {}); } catch (err) {}
+        deal(); break;
+      case "show": S.shown = true; break;
+      case "hide":
+        if (S.i < S.n - 1) { S.i++; S.shown = false; }
+        else { S.round = 1; makeOrder(); S.screen = "play"; }
+        break;
+      case "vote": S.pick = null; S.screen = "vote"; break;
+      case "pick": S.pick = parseInt(b.dataset.i, 10); break;
+      case "back": S.screen = "play"; break;
+      case "elim":
+        if (S.pick === null) return;
+        S.players[S.pick].alive = false; S.out = S.pick; S.guess = null; S.guessText = ""; S.screen = "result"; break;
+      case "next": afterElimination(); break;
+      case "again": deal(); break;
+      case "setup": S.screen = "setup"; break;
+      case "quit":
+        clearTimeout(quitTimer);
+        if (S.quit) { S.quit = false; S.screen = "setup"; }
+        else {
+          S.quit = true;
+          quitTimer = setTimeout(function () { if (S.quit) { S.quit = false; render(); } }, 3500);
+        }
+        break;
+      default: return;
+    }
+    render(key);
+  });
+
+  app.addEventListener("input", function (e) {
+    var t = e.target;
+    if (t.dataset && t.dataset.name !== undefined) {
+      S.names[parseInt(t.dataset.name, 10)] = t.value;
+      save();
+    }
+  });
+
+  app.addEventListener("submit", function (e) {
+    if (!e.target || e.target.id !== "guess-form") return;
+    e.preventDefault();
+    var v = document.getElementById("guess").value;
+    if (!norm(v)) return;
+    S.guessText = String(v).trim().slice(0, 40);
+    if (norm(v) === norm(S.pair.civil)) { S.winner = "white"; S.screen = "end"; }
+    else { S.guess = "wrong"; }
+    render();
+  });
+
+  /* ---------- Démarrage ---------- */
+
+  function start(data) {
+    load();
+    try {
+      if (data && data.S && SCREENS.indexOf(data.S.screen) !== -1) {
+        Object.keys(S).forEach(function (k) { if (k in data.S) S[k] = data.S[k]; });
+        if (S.screen !== "setup" && (!S.pair || !S.players.length)) S.screen = "setup";
+      }
+    } catch (e) {}
+    render();
+  }
+
+  try {
+    if (window.claude && window.claude.hot && window.claude.hot.snapshot) {
+      window.claude.hot.snapshot(function () { return { S: S }; });
+    }
+  } catch (e) {}
+  var hot = window.claude && window.claude.hot;
+  if (hot && hot.ready) hot.ready(start);
+  else start((hot && hot.data) || {});
+})();
+</script>
+
+</body></html>
