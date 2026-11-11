@@ -1,371 +1,696 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZIRARI YASSÎN // SYS.PORTFOLIO</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zirari Yassîn | IT technician &amp; software developer in Brussels</title>
+<meta name="description" content="Zirari Yassîn is an IT technician and junior software developer based in Brussels. Hardware, networks and IT support, plus Java, Python, C# and web development. French and English.">
+<link rel="canonical" href="https://zirariyassin.github.io/">
+<meta name="author" content="Zirari Yassîn">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F2F4F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#071320" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zirari Yassîn">
+<meta property="og:title" content="Zirari Yassîn | IT technician &amp; software developer">
+<meta property="og:description" content="Hardware, networks and IT support, plus Java, Python, C# and web development. Based in Brussels, working in French and English.">
+<meta property="og:url" content="https://zirariyassin.github.io/">
+<meta property="og:image" content="https://zirariyassin.github.io/zy/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="zy/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="zy/img/apple-touch-icon.png">
+
+<link rel="preload" href="zy/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="zy/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="zy/css/style.css">
+
+<script>
+/* Set the theme before first paint to avoid a flash. */
+(function () {
+  try {
+    var saved = localStorage.getItem("zy-theme");
+    var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
+  } catch (e) {}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Zirari Yassîn",
+  "jobTitle": "IT technician & software developer",
+  "url": "https://zirariyassin.github.io/",
+  "email": "mailto:yas.zirari@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Brussels", "addressCountry": "BE" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "EPFC, Université Libre de Bruxelles" },
+  "knowsLanguage": ["fr", "en", "nl", "ar"],
+  "knowsAbout": ["IT support", "Hardware repair", "Networking", "Java", "Python", "C#", "JavaScript", "Chrome extensions", "React", "Angular", "SQL"]
+}
+</script>
 </head>
+
 <body>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-5.6 6.5-11a6.5 6.5 0 0 0-13 0C5.5 15.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.500 8.500V6.700a2.200 2.200 0 0 0-2.200-2.200H6.700a2.200 2.200 0 0 0-2.200 2.200v6.600a2.200 2.200 0 0 0 2.200 2.200h1.800" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.500" width="18" height="15" rx="2.500" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m7.500 10 3 2.500-3 2.500M13 15h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.500v13l11-6.500-11-6.500Z" fill="currentColor"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.500h7l4 4v13H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3.500v4h4M9.500 12h5M9.500 15.500h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<canvas id="matrix"></canvas>
+<a class="skip" href="#main" data-i18n="ui.skip">Skip to content</a>
+<div class="progress" aria-hidden="true"><i></i></div>
 
-<!-- BOOT SCREEN -->
-<div id="boot">
-  <div class="boot-line">BIOS v2.0.6 // ZIRARI SYSTEMS INITIALIZING...</div>
-  <div class="boot-line">Checking memory...................... [  OK  ]</div>
-  <div class="boot-line">Loading kernel modules.............. [  OK  ]</div>
-  <div class="boot-line">Mounting filesystem................. [ WARN  ]  // portfolio.sys</div>
-  <div class="boot-line">Network interface eth0.............. [  OK  ]  // 192.168.1.42</div>
-  <div class="boot-line">Starting SSH daemon................. [  OK  ]</div>
-  <div class="boot-line">Loading user profile: ZIRARI........ [  OK  ]</div>
-  <div class="boot-line">Skills database verified............ [  OK  ]</div>
-  <div class="boot-line">Work history parsed................. [  OK  ]</div>
-  <div class="boot-line">&nbsp;</div>
-  <div class="boot-line">██████████████████████████████████  100% — SYSTEM READY</div>
-  <div class="boot-line">&nbsp;</div>
-  <div class="boot-line">Welcome, USER. Type a section to begin.</div>
-  <div class="boot-line">Launching portfolio interface...<span class="cursor"></span></div>
-</div>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in wrap">
+    <a class="brand" href="#top" aria-label="Zirari Yassîn, back to top">
+      <span class="brand-mark" aria-hidden="true">ZY</span>
+      <span class="brand-name">Zirari Yassîn</span>
+    </a>
 
-<!-- MAIN INTERFACE -->
-<div id="main">
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
 
-  <header class="header">
-    <!-- Row 1: photo + name identity -->
-    <div class="header-id">
-      <div class="photo-frame">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEsASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDestLktpr+Jw8imFWVt5HG41yV/cNBdrIkbRlGJVmIJJFXbj4teHLqWSWP7YjSR7WJgB5ByBgGuU1HVo9St2uIdohZsqSpBx9D0ryoRaVmeg5Xdyz4v1GDVrmOWGIfPGgaPb/EDzxWGunLcTiOGxDuTgKI+TVyC7K2tzPFEDOhUA9tp61N4d1/7LrVrLqMZFpv2T+UMttPBIB4OOD+FZ+yk5abHQqiUTDubCKCZ4prQRzISrI6lWU+hFSz6a8DeXJC0bAA7SMYBGR+lfR15NpGvaIsV5pcV4+2J5bgYSSNkbbnOCeQo9jn0rzzxBDaX1/NeRwJCkmDt9OMf07cVsoOn1vcyUlV3VrHmixlbF0xx5gP6U6FGW1uAAcHbn8666XTrf8As2dlEZkEi7UB5I9qz00vzdr/AGxLUIRuhcDMwz0AP9KtyaWqElFuylcwoU55GKj1S1kuNOnjhXc5Xgetd7HpFswG2JDkZzuqxb+H0nmCRQEueAN3FLnNPZeZwdqjpEodecDNTY+X7tehXHhKS2Kpc2bxOyh1z3U9DVGbQAGZVhfODg4JAPahyBU9NGcZPuZ8gdFAqIbsYrsbXw3cWzN9vkinDqCvkoVx7Hk1Vv8ASkgLExmOJVLu7k/KMZ5HpQpCdM4fU1WeDYrZ2upIH1qzbzpIUWM/MRkZ7is+71SwK/uvMB7NtKjAJOOevY1iyaizsio2BjAI5xWqi2YtpG/PrJgaRYwGCnbnOT+FMGsjBbIKMOATnBrln8nYVDOGPLNnqaprdGORlfkfw9hVqmmQ5naR3qT3SOFCLg/NjPHpW3Ysk2eCpXsfTtXmYuWkVX3BVDYCj+dWU1mcMVLkMv8AwLpTdN9Bc66nqJiU7iGU4XPJ6Vx3jIbNemjVhtCJ0PH3RSaJr7Bf33zxlcfvCQfbFLqYOpXT3UahtwAIU9MDFZWcXqaJprQwiD60gz61oNp04ODGwycdRS/2ZcBc+Xx/vCq5hmfg+tGD61f/ALOuMf6psfUUHT7gEAwtn8KLgJpIP2jjqATXTWzsiKCitj5ueB6elY+lWkkFyTPDKqlcD3Oa34k2RklXAPTDZqJMBbidvsvKqM9flHH6c1zuptukXa2evVcYrpLw/wDEvZdhwMDrz+dc9Nbu0n3GK+vWkBBaXd1aoRBJEobkjZntj+VX11fUi+7zoCxO4kwg5OMZ/Liq8cEC/eLj161ajhs8cysD16Gpc2ilFPcemsakoAWW2XbgjFuOMdPyqO41PUJ4RBLNbmIEYQQ4HXPY+pzUvl2IIJmIGOeG5/Sjy7Itje5OfQ1HNJjUYmXoUrz3s/y5ZpIgwQdVBY4wfcLXcLE63dpv81vLjdjlMbeQPyrA8J6LcC+imEeITcktlwCVCHb+rV6k2g+XtaQOAbMRrk8bmbJ+bp0B+tPEaq0TTDyUZe8eSanaQo1yglkuS5CM4Uk4LM3GfTPtVzTLKWSGRraG+aMyHmKNWBPf05rrLrw7DFcXsI1rSIJiZF2GZxjOMAkJj16Va8P2CaZp/wBnl1fRXcyO5K3pA+Zie61dODsrsVStTu7RPLLaKaBZDHLEkpdQ52HIH+0CK0hBqzu0P2i3lhUZJVBwPpXqdl4V1u+022nhsLKa1lhUx+bd22WXHUhuQaSH4fa3HIJI/DdkWHRku4P6PT5m9eVmFoL7R5rbW1+guFxDLHjkxD0Poad/Z1y0BdIMxAZLMoDfgM16lD4G1tJw83hJZlwcqt3Ec57/AOsqtN8N9YaYtB4a1K3iZstGksEm3nkKS2ce1VGV/s/gTJLpL8Tb8NaujeC5kuH/AHsSrt/vtkDj6cV5wbi+/tCVbnU5Li3IJWBwMLz2OAa9QstG1XTdIisbXwVqu/5lmuGeNndedoADYHUE/SuVs/BfiGGQG60HXJYwc7QiHnP16VpCahJSa/AwrwdSlKCe/mbdiPDMnhxrprbBjAWQlz5gf2Pv2rjFvQmoWqbVeMtnDqG4zXb/ANlXwB3eB9QB9rIH/wBmrjvGHgHWdZnilstG1+x2ksVSzYAZ9MGnKqpwlHXXuc9GhOlWhUstFbT0NbxBOttrc0UX2JY3kBH+iKAoZQcYroov7OtI4Q0Sybmil328R4PII56VjXei3lzJbSXGia+JERFlP2BzuKjGRWgVnWMKNJ1xCD1+wyjgdOgrmk9dD04SstWdVrXia2udHGlW9n5s6MBI0o+UHHBGeeh+lcfNZXEEAaJ/Kw3JM4H9azpYdTk8QSX0tpqpjPTfaS56fSrN/qVy7rFcafdfZh8zyvZudg9SMVhVnPluldnTR9kpcrdlcrSLawb98kKsTk7bhMk/nXlniPxdPdm/s1jZlkZkUhjlVHHPPIrQ168uJL/UZLO4jMavsSNocRbdo5BHKnJbnmvOtQmkjuZUlCq6uFYxnjjg4rXCqctaiJxcqcdKbH6hfGUheXVMrvI5Yds/lVJrjC5BPBpJDlyw5XoFNRph3Ctwrc13pJHnXbJRLJMSEUMT+dXbTR7m42kISK0vC+n+fcscfuQdvTnPpXpumaeibMIqqOgxWFWvyOyOmlQ51dnm9v4ZmkXaqurjsR1qnqegXVoNxBB5zXuKW6rGDsX8RWVq+nx3cLK6AE9DWSxLuavCqx4MSUn+dyAOuR3Fa+lakRKPkwgwQWPBq74t0hLJTK2EYHGR3NczHP5eAoYHH0z712JqpG5xSTpysz0Szu47iMF8Z7jqPqKsrcwpExIkwvHCf/Xrj9Fu2yvIUg9T0Irv9Pinns98NrFJnK8yqAD0I5rmlFRepvGXMiik9rt3+XIEHBJX/wCvUgls9/lmGVjng7OP51py2V19n2Nax+ZsIB85APwqGTT5vs0RFtyi52GdSSe3eleHcfvFaW4t4YWaVJCEyMhOP51UOp2oljWNG3N1Bj5/nUz2d7NE6yWL+Y3A+cY/LOKrx6TqCDaLEBc9in+NUlDv+JLlLoiy19EytC+VV+f9Wc/zqMC3JIbj5c8oen51NbWOox422W0A5PKD+tPltr4MGFhLt64R1JzRaHf8Q5pEFtBaybgsjnAyR5ZqSS3tlcL5zYI4xC1SW0F8ZZGazkV3+UFyBge9SGCdGJFpMTjqjA07Q7kuUiglrbPG3lMzbT3jIyagmSNY3kVmyDtwYz1rejacK4Fk2xsZUkAk+tVxFfL5si25VyTgFwenAp2h3BSkYUqs9tG0DXMUmSd8MbZI4rU07U9R0m3njhvZp5n4ked9xjITO1c55APJ9TikmtdSFpHDDbhYwXDEONwBPBUZx69ahitJnVY5YbuIRmTLgAs5buCOhprlXUUrs1n1CSeZxMyvdhm3yZ/1pz1qVHSZFfbnIyMrXNW+jXElwZNs0bIOPMHrwRnP+c1LNohmfNxLcM6/KPkOAOwGD0qXa+4Xdtjprd5Li5hhVQ7+WI0B+pqa+s9QEiw2odbouE8sEDnn8O1WvCNv9q1mBWVGhU7nDyiIY7fMenOK62WzVvF3ljTGiIlDrayXBUsMfeVz1B5ORWMXLli0afur2lvf8P8AM84sbnWXv308ec14GKeXv5BHX2q7Z3mtT3rWcTS/a0JDRhsEEde9dJZ6NM3xcmRdFnEDZmEJuCCqlcby5HTNWfDmhyy/FjUIv7JuUgjZ2MbTkFM9CXxyDz271v7xH7nS99/Lb/MwYr/XZZvIs7i5lnUHdGjkMuOveoLLX/ElxM0dpc3kskeS6KxyoHWus8MaLO/xK1a1fSr14It52LPtKAnK5fHOeah8BaO8njDW400vU2gjDAosoR48tnDEjk4otMEqDtdvfX06GFZ+K/Ec8sn2a5vZ1iXfIEY8D+lXrPxtql8t19n1C7tTDEZBvu+vsOKl+FmgS3GreJUn03VnihBTEcoRkwT8rZHzHHpWv8M/Ct94dOqvrFxpll9qQRwR3eycvwSD6AHPNHMoP39iJcvKuTfqP0nxJq0qxGbWbuLdGH+ecjPHQUy28U63Nq0kUmtXUcKqWBM5H9a6Tw9plvps2DqFl/qRakX0cZHmDnEftz1+lS2enwWWqG4uE8O2UXkGEiaFcM+7g4Lc59fSiEk1dhUcVJqOqOdtPFeuvqUkDa7dLCoLZaQ5wBTfEPiXXPsDmDWbxwo3NGZcbh14PrnFXfDNgLHWdSuNSbR4oVBi/wBMCuhfqAoz+teZeIrwQz+IW1CeWKazBkto4pmjjdcfLtA+9z9aSd7asel3oeZeJ9e1LVbgNqlw0sgBQITgRAMT+eScnvWFM6qQGwRjr61HeyySy+a7bwTlie5POarTyk4A6V0JGbdh00hBZlPyk4UE1veFbBtRaWKZcQgDLHgZ+tc3EpmkVEHzEgCvQINNeC1SFrzykIzt6/U4qKrsrF0k5O52fhnRLPT4VRZlbbyMtnmuqgSEfdYMa8WltPJO621V2YHnZ0H5Guv8JXF4VMMsrTN/friqQW9z0KU+lj0Z40IAyB+NUri3YZIOR1rmdb1q4sYmCAmfsDXNQeM9djcl7IPGOu3JqI0nLVFzqqGjND4g6ek+kPMVPmR/MMV5Oz42+YMk8L6j2r1K+8Qpq+k3UVxB5MhjJB7E49+9eWzE5cknJOQQB39+tduHTSaZwYlptSRbtZkQA9CDgHtnNdx4a8Uz6Lp15YwQWzLdYMjyRhmGP7rEfL07V5yiFMAHLcEYNbduxkU78j1FaziYxd9z33QfEesi0U2ujaXOLljPl7JGyW64yOB7DgVLqXja9sndJ9K0FZV/h/s2P/4msL4bTT3SKz3HyAbRHkZwFyWA9M1D8QNOv7/WIhZxSyogwxQ9OnWueEteVlTgrXRoz+PL3hl0nQQh/vabF/8AE1dvfGM0UxRNH0NsKP8AmFIc8eu2vM7uCa2nMM8bRSrg7W6inw3V6p/4/Jcem44ray7GWp3g8a3Icb9F0Ir3I0tRj/x2rV74ueK7ESaNojAgH5dNjJxjJ7V5+b68VwDdzAHjIeonmlnnjczybkOd2eT2osuwandHxm+8gaToHHb+zI/8Kcvi/DfPpWgkkcY0yIf0rjWXBJBYknoBzU8Gn3M1jdXsUTfZrV0SZzgbGckKMdeSDS07DOqfxcwY40jw+B76bF/hUP8AwmDAc6N4fP8A3DIv8K5bf8mDkn3qMsOhLUadgOrvPF5iWMDRPD25l3EHTY+Mk4/TFJb+LkkAMmieH89x/Zyf0rjdQ++pOfmjVv0/+tVQSNG2Pm/KqsuwN2Pdvh7c6HrLX8msaBojRQBFQQ2apljk5J57DpXG+LfFGn6f4l1K007Q9AFpDMUjEmnq7YHqe/Oag8CXjW+kXTcjzLpB9cIf8a881qd5tYvpWZsvM7Hn/aNCSbsS2zfuLeK7xFcSSJH8pygzn65ptxp1kdUjt1vbt7dIwoZl6H0AzgCpJrKC6gdbq+FooUEMF3Zwahk0rS4ZXtl8QxyB9sgm8tsDHVevXmuWlJ8isdcuW7utS9cafZHVfsv9p3skaxqoLLkDn7vXoKfLZ28mrPbNrF66bVQO4Jzj+Hr0Haqf9k6at4YU8RwlcB/NKEf8B69anfS7EM9mniK2IRxKJ9pw2RjGc9avmfcn932Jnt0bV7i1k1q/kjJQb+cNjjB+bsOlSNbPdahcxDxJf8yA7mLZYgYDH5uo6VAdA0t4Nq+KbcXKzENleCmBgg565zVZNASW4lt4/EtlHFEflm5Bfd179qfPLowtT6plq0iu57qdU8WX24XBlLHeNzdN/Xrxj1rX06d3ht1u59WulHS5jldVkGTnjB5+tcvF4SeYrEvimyh8lmjMu8gS5bO4c9B0r0zwcYdK8PwafcXMV4Ymx50Tna+TyRXLiq0oxTsmNKmtkzBAD4muU1yMM25D5rZ25Ixnb97j9aSV1uiq3/8AbCIFxGS+Pk3H5SdvJr0Z9ctLaCNHZFhZs5ZuMZwT+lVJvEmlS7ybiHZuAXD4B7E1ywxNVxTUV+Ac0L2cfxPPLqK1+zRKg1OGN42RWZui7iMN8vXHIxXkGuyiPUZoo5ZHEZ2q0p+Zh71758QfEi2mg3MulhZd0iKGzuVRjBY/lj8a+cdZNy1yZpCGEgzv6hvp9K7sJOdRXmrEzatojPnkVnHGCOuDULtuNIOvPApSCzAKM16COZu5t+D7H7bqy9cRjcf6V315oHmyJKFdyvODyD9RWF8L1R7u6dlA+6K9hs7eMplwK4K9Rqeh6WGppw1PM9L8HqJ5HjglG7gsxA2jOeDjiu68M6csV03lqpMYAz9KualcKqiGHG49+wqfQzClo/75fMdSOtYyqSnudMKcYbHN+JbE380sqDLICAB0zXDXC6paXca2YgeIgeYWUfKe/fOPevUB+5naRh+6zyRzU13oNpegTIq7jzleM1UKnLo0KpR5tUzyeW7e4SZLiHacEA4rjbnYjyM6gv0UH0r2nW9EW3tZABnjPPNeM6/H5Woso9K6qE1J6HDiYOK1KkLkyE98d607WUoWy304zWZnARSGUn1GKtQlhIwXoOnNdDOWLPRPAd61prFoVVyZJVR/K4cg9cV6zOJZ9QnlnkhhOc+X5qtgdOTnmvFfBsyxajZol0YZHlRPmXcCCeTjHYV7nDpuhzTM8nimBGIyfMs5Bg+lc0oq9zbmsjldW0C3vr1rptSUE4BCKpA4x1zVG48L21vgzaosfTG4KOoyO/pXa2+jaCk5ki8VwoynKsbR8HtjGea4Xxfpv2HdFDI17B5y7JY4mUPlSeFPI601K2lyd+hzdzD+9eMPkKxG7HXBplumbhVDE4I7VNBDM9wLaO0neZ87U2sG49sUacA2sW9vMskJdwmCpDDt0IrTmViGmb2iiKO/inniaaKBllePaSGUHkHHQEZ5r3rwvpOlL4RewhtYpdP1JWuJJJFPmPuyVOTyMDGPSsbwzaroGjzW0E8BC/NJJJAu5y3PzeoxxinG7lttkcMriGOL5UThQMdB6CvMxeYQocul7m0KEpXPI9Q06KykiSWYKjE5cgt79BWTJBv3SQndCG2gkqG9srmtm/mmtpVa9QsD8wBIcAZ9a6fQ/DWqatpsOoW2kTNZyD93Lsjwwz2Gcj8QK702TypnG3ulL9njckbxGpLeZkEDAxjHHHvWc+nkScBcdc5Br2VNP8Qxo0baXfSIOAAsZAHbq1VH0nX2lDf2LfYznOyPj/x6tEpLoJwOL0eLyNIjDfxTM35ACvNr0J9rmy6g7yf1r3bV/DniC+kt3/sy5+Uc5KAjn2NW7jw1rUkrM1sMnr8g/wAKFddAVGUtjz8ajpbuv/EivQD/AAreHp+VDXuk7jjRdQUdv9Lz/SveZtc04xACxs8k4z5K1E+qaaAz/YrToP8AlitfMfX4fynqqhPseHNeaTsBGi6lgfeP2odf++aab7RNoxpOqg/9fCn/ANlr3VtX0tsKdPs+3PkrUr6tpoh8oWdt5f8Ac8oYoWPp/wArD2FTseDR3mgsx3aZq2BxhZk6/wDfNDXOgHj+ztYB95EPP/fNe8xa9aWkLpZ21tCkg+fbEvNM0+e3cbrbR7GRAQDuWMH3PJqvr0JJckW2S6M1ds8JM2hbB5mnayOcZzHj/wBBqaG90JRiKPX0T/ZZOPyFe0H+wmklWbR7IPvOVMQ4qONfD67gmk2IB/6ZDipePpdYspYeb6Hj899pGB5I8QScdG2/4U+K70RkCyR6+HHO0RocfpXrOoRaMNJvJIdKtVlWFmRliHB25ry3+055LUPdajHasw/497TTTlfq5H8q68LUhXT5VaxnODhuiO6udJkspIYpNeCyLsKPANuD1zjrXkPjzTobGWP7NBKlqdwjMilW3E5Ofzr0e6upHY7JJ5R6zFh+gxWJ4lsW1fThHKYY2Q5UpHzn3+au6lanIynDmieQMmOAeacoQJyTurT13Sn0oxJNIGlcFiBzjn1rHzjpXpRakro8+S5XZncfDgmOW6HfKmvRr7XFsbVSfvtwoJ/WvI/Bt79lunJPXHWum8TTjUYrKO0Ys7NggVxVad6mux3UavLT0NrV/EFrJpzqsjySkZLJxg1y1r4kuILd44ZWO3P3myeT0966ax0S4tbbyheRrH3DQg/15q+mhzfZ2WO70to2+8JLfn+tEeRaG3JUnqmZHg/UrrUS9tfXqhCMgdM+1dxo9+Yna2eQHbyD6iuFvNNlsgSlnbyKP47R9pH4HFVfDV9dvq5imLgoGJ3dQPepnBSu0EZyg1GR6F4iuk+zO3Xg14FrM3nalPIOm7ANem+K9UEGnyAPl2GFFeZXaqNPicMpZmJPPOa0w0eXU58XLm0RW3F1G7licbiasxkM5DfLjnJ9aoscHAqeIknMhBArsZxRZ2fgiaG016wuZUllZJ1fYjAfJn58/UdPwr1m68Y6PEbiVluOCRhtuT+Zx6V474d09L+JkWYRBRzzzz3zWoPCNqCCLrB6AggVyTnBO0jdRk1oeqaPqemawhktnVGXBKyKrEZHHQ1t3PiW50bTmmttXu0hi2jyw2NqngYzwea8e0vQBp0jfYb6RJJgAQrAlsc1em0m+uFKSXd46nggD/61ctRxlLXVdmjeK9y1tT0mz8X6vrWkyyyeJf3BYwvFLbxs3buB71gareWSajaJqt3JcSb9tvIIY2I5zxkgg5xxXIpod1b26xRveJCmSFVSAPfpVd9KRLlDO07TgAqWJyAe4qocib5Fp5IlxtHXc9NTxPbOotn1a5jnJDMGjjZB/ePGM4wOnXNOk8QWroQ+vswcbWH2I9OlYBtby00aG/tLiGCGNNkqvtZyQSdxGc4xjrUMPiSeM4e60KXPBM1tIOPqDWNTDxqWbWxtFpGnJ/YWAg1SMgcDFk3A/Ork+p2TaZ9gHiBnsywfyBauF3DoetdH4O1fwRd2D/8ACRS6UL/f8qwTuq7cD1PXOa65NG8JKFZtMUg45Er857da5quIVGVpXLjHm+FHjeNGYHdqgB/693/xpjLo2zC6oPm6r9nkH9a9xh0Lw2+mCV9CkkGwt5mXxjnnOcdKjGi+EMl101sbc8Tv/jUvHJbt/iVaT6Hh8sOh5wurDPqLaT/GqEkOkBiDqmff7M//AMVXvv8AZHhGNin9nMct/wA92/xqRtI8GLjfpxJIzzK//wAVR/aEe7E4z/lZ5ENccL97kHinPrbGMqrEDg4riRct5ec+1OS5ITB69a53QR1+1OyTXJNzfPyQMU5tcfABY9+9cULlgR81ON0dvXvR9XQe1Z2La65iB39Kwta1aSS6SQMSQp/Ssh7o+VjPWiLXFsRsbTNNvd2TuuomYj2GGHFaU8OkyJ1W0dzb646bFLcFF/8AQRXIXvxG1JXkt1t4kCkjdHI6k89aW+vA96XjjSFXVWEceQq5UcDPauI1H/j8lJ7sa2wtGKbuiK1RtLU2brxXdXLEzI757NcyH+tQrrg/58YT9ZXP9awqegNd1kc12dBa6vbuWFzbNHn7rQtkD6huv51oFgu1lZXjcZV16GuUwferGn3JhlMTk7CCQPQ0mrjTJPFNg1/aOUTfIuCnPK+v1rzyeMxuUY8g46Yr1FZXk4SKR/opx+ZrjtY07zoJ75WSORXO+EnBPuBXTh6lvdZz16V/eRi6XKYrg9SGHIHpXXadPHHd2csRDDOQCetc54YiWbX7OOVQUdipBHqprZ1HTpdHug0Sl7UnIHXaa2qWbsY0rqNz0+Xyrm08oTiORxgZHSubj8H6qshcXkLxE5DByD+RrlT4gZJd8bEA9RmtJPGbmONWYkgfN9axVKUdjodaMviPQYrBbe3WSREO1cluorzifVPsup3ksJBLuQD7VIvi6YWkiB3JY8c/hXJz3DFmJ6scn2qqdFq/MKrWTtYs61qT3I+ZiT2rCHXNWb6GSFo/NGGdd+D2B6VXFdMUktDjm23qSEBskAD2q3YWkl26xpHIzvwiqp+b2HvUFpDJNKsaRs5Y8BRmvZ/D1tDpun28aIokRfm74bHPNc+JxHsVtdm+Ho+1fkZUHhu/0/SQljZWscmA80lxch2cnt93jHI4qxY6f4kkladF0jfKmwlpAfx5XqPWukgv4raO6mu7SO+RY1xDLI6LkuBnKEHj61F/akN2YpLaxhsEGVMUMjuD75ck5rzfrdXlvod31Wk5dQ0608R2tnc2+3RN03zq+TvV/wC+GC5B6GppfEmuW86wailoZgBl0chZf9ocUn24thg3BH51HLcrLEFlRXAGQGXP86yWJqSfvpM1WHhD4BL3xHqk6kQyW8LngNhjj3xxmufcXskCpe6pLLt7qgQ4x0zzxxW3LHZnJ+yxZHoMfyrH1uOJbrTorYtCs8u2QKxIKnA75x1NbU613ZKxE6Sa1JbdvJGbeac5UZLSk54xUck8mc+Y/wCZrLsJtkflufmjOxuehH9KsPJnPP610uRio20LH2+4UYWZ/wAcH+dXE8T63GAE1W8AHQeYSBWNnJzmoLm5W32MwzlsYxx61m0pbotPl2OifxZ4jQJL/arIp+605XDfQYyR+GKnt/HuvBv3mpabKAMfPDj+QFcJc3c13cGa4cu5AAyegHQD2pcYXih0ab3ihKpJbM9Mt/iLcBwbx9NYdzEZAf5GtVviLo8mGN5IhxggIx/9lrxeXmo1AAqfqtF/ZKVaoup0quSlPjbnrmqynC8dqkjG3A9v1rmaLuTq2aQyfKajSkY8UrDuSM/7vJ7CqlwdxT8an5IFRTYZk6VaFcv3D5mjP/TNP/QRWDfQTPM8iROyk9VGa15my8f/AFzX+VJHxyKIS5NQkuY5pjtba3yt6Hg1IjAdxWrOA2qWj9SpcZP0qxqL4g/4EK6OfVLuZ8u5jCQHHOT2A6mtbQ7Vkna6lI3sNiRqclRnnPvWfo3k+XeGUkShUMXud3P6V7T8G9VtbLwisbxRCZbmQbyF3EZBAz1pzWlkOEdTi4dO1K7UeRYXsw/2YGP9Kqa38P8AxFqsSi00i6ikY8l4du4fWvoaLW/MH+z7yL/jVgaipUYWdj6LFn9c1nCEqb5kaOPOuVnzRpHwm8QaTIL+9064PkHzNwwAmOvGckY9qnubZbiFkdQykV7N8RvFzeHdFHkRsNTvHFvbpMyjBbgsVByQAa8rjQFcdccZrZyk/ekzFQjH3YnlfiLQ3tZt8ClkbnAHSsMW8hOMYPoa9jvrRJVIasCXRR5p2jI9cVvDEO1mYywybujgbSyuZ22RxsffHH511OjeGwrrJcAyMOQOwrqbHTooNuQD9BW1DbIVGwc1M8Q3oioYdLc8v8Z6bJ9sEsSE7YgSB3GSD+WR+dYNjYrcxlvNAYfwY5r1e+sBNq2wjKxRMCcdzg/4fnXlt+ka3twsX+rEjAfnW9KTlGxzVYqMuY6TQLSOG6tkjTguCfc127SYGSQBXlGm3s9hcRywPyhyFblT+FezeCfiL4TsLCNtR0eePVFHzzHEyOfVe6D2x+Jrmr4acpXOihiIJWehWis7y5sbtLa0upi2zGyJmz83bipLXQdbSFQNI1DOf+eDV6Jp3xZ0PUPks4JJHH8ADb/++etWW+IWkZ/eW0qH6kfzrndC2lzrjJy1R50dE1oDB0m+H/bBv8Khk0zVIl/e6dfKPe3f/CvUIfH2gsw+e4Q+zA4rYHi2w8sGC5lORxlP65qPZJbs1UZPZHh8zOjt5ismP74K/wA6w9UlBvLA5zsZenu1fQr6+t3w0ZmX0aMGvFfHIjvPiOsKRxwxNcQQlQuxR93PA+tOnCzJqRaWpg2EEE91dCeMPgjByQR17iplsoDetHumVMjAEh44969TuPhppyRSyadqQS5fJwW3RnHbnkfrXmeowS2GuS21yuyaJlVxnPb9RV+9czkrbmZpMH2yFmkuJlYMRgbTxnHcfSuf1GeX7TLvbdDBLtDYxwSRk/lW14ZchuT8pDH+RqPQo47nU7qKVQ8cwwwPQ/OP8a05uVtsytdJFBeSMVKx+X3rRl0KOK4mS3uGSJZCqK67sDPrkUn9jOThrkH6Rf8A16OePcXKzJYZNOCEjiprmyaDUVg80NH5e8ttweuMDmtuPT7aNdoVm92NOU1FDjG5Anr2zUikk1FAd0KN6gVKlcb3NEKOKG96B96g9aQB1XBpuM4zinc7R+dIOHxTAdMfmT/cWlTg0kv30H+wP60/hY2PopNAygrg3tv6lif0NSao2IR/vf0qsoP2219j/Sp9Z4hXHqf5Vs17yM18LM3T+C30/rXoHw60sXtjNc3MdxLaRzMhSJto3YB5PX8q86sm5x7Veg8cX+g6Rc6dpLqjzTeYZvvbOMcDpn3NbcjnpEcasaT5pH0To76baxgpbwWiDuVAP4k1x/xO+K9hpemTad4YuftGqygxm6TlLcdyp/if0xwOvtXzvfajeajcNPf3U1xK3VpXLGq5BYjmuinhVF3lqc1bGOekFY2bW+unsr+6eaWW5SeG4MkjlmJDEZOW56+h/CvTNGvodSsEubV1b++gPzIfQivJ9Pu/sUzM8KXFvIpjmhfgOh6jPY8Ag9iKu/Y2iZr3w9evLGg3Moby7iEZ6Mv8XXquQfQVpVpKZhSqumz1xofMjDheoqOKzBbhSa4XR/Gmu2dn5ssNte23meV+9Xa27Gf4SD+OK17z4khLJBa2MH2xhlgkjMkZz0JIGeP7pPWuX6vO51LEwsdd9kSKIvOUjUDOW/z7VV+1N5DTWkW63HW6dljiX33tweORjd6cV5lc+KdTuJ/OaVA+QRlA2COhAIxkZPOM+9UNR1S/1NlbUby4uSv3fNkLBfoOg/CtI4a25nLFX2Or17xNbW9tNBpkpubybIluACI09kzy3fk/0ArgApzVjGetG30rqjBR2OWUnLciVCT7VKTt6dadjAqNuTVEk1tO8MiSRu6SKcq6MVIPqCORXovhj4p67poSK+lGq2i8GO6OZAP9mTr+ea80TmnluPaplBS3RcJyhqmfUnh7xP4d8T27Pbxwi4RcyW1xCvmKPX0Ye4/StNk0J49ptbdccDbHtx+VfKlheTW0sc0MjxyxnKupwRXpnh3W7jVLVmWN5Jo8CVUUnGeh46A/41xVaKjr0PRw1Zzdr2Z6Zd6ZpMmTFcSxY7xTkY/A157qHht7rWhdWt/u2zCQGVc5wfUfT0pZbm7U/vBIo9GBq3pmstZyDdFE0ZPzBlyPrXPa2x6CTlpPUdqR1+zO6VFEA/5bQP5ij6gcj8RXI6nO9zrU80hJZghyRjIwK9etfFUMCfPa2pXHVUANedeOH065vhqGnIsLyEpNEvAz1DAdvenFmdeEt2cbpDlIC/ZQ4/8AHTS+FXH9sDnsM/8AfQqO0bbpjEdy1L4W51oemP8A2YVpNe6zjjujomOXdj3Yn9acnMYHeh12oDxyfz60pXjA+lcpqZNyofV/+2OPzJrRiOYkPqorMnP/ABN3HTEa/wBa0bRswDrwSP1rWa91GcfiZm6WfMsYj7Yq4BzWd4dbfp+O6sRWqq4NZzVpMqL0GAc0rjOafjk0p5qRkaD5BmmIMNzn8anC/LUeMtjrzTQmxJB864/uj+ZpZhi0kP8AskVIy5Zc+n9ajvvlsXx6gfrR1HfQzoRm/h/3v6V2uk+BLzxCkcs8wsrLlt7DLuMdh2+prjdJeMa3aGYboxJkg962fH/xCmuNNfR9MfZG3y3EqfxD+4Pb1/KuiMHOaSI5owpuUjkvGNzpVnqMth4f3y28JKPdu+5piOuOwX6da5WVtwJpzHJph6N9K9KMVFWR5k5ubuxoFSqO9Ni6VNjtVEje3FKoAdW2qSpBGRmlA5p4UUAacmvX72Yt0MMQEnmF44wGJ7fTGe1ZSpj61JRSSsABRSgUClpgGKKKKAEPSojT25OKaRxQAIcL9TSOeMUZwopv8Q/OmIlSQBttdP4L8QTeHtZju42cwsPLnRT96M9fxHBH0965A8tkVZtXKtyeOlTKKasy4ScXdH0w9w88CyxSCWORQ6MCSGUjII/CsBtPR5izRKCfQ1ifCzxVYrpraRrDSK8TFrZ15G08lD9DyPYn0rpdVubKRSbC43H0YYrz5RUHY9elJ1I8yIb3TYWt8GOHOOuMH8xiudvdDtDZ7syJKrbhskyCenINTztcMCDyPXNSWNs0rKkrBFzyWOKzSNpJtanO3vheWy0USRXCupO0K67Tz9Ko+HtH1G3uzdSWcv2dRgyoNyg5HUjp+Nek6pax3kUFnbTRFVOWYsAB+Ndd4asLPTrMRC7gLHlsODWj1TRjyW1PIXOUUjkcUuBlOMMeTXp3ibw3pt4rTQPFFOOS8RAz9R0Ned3dtJbTGOXaSM4ZeQR7VzSjyhZ7nKXpxrTY/uL/ACrU06QCFw2Pvn+QrK1U7dd+saf1p/nGIkevNatXijJOzDwDZ3GpGe3tEDyAB8FgOOneu0Xwjq7n5YIuBzmVeK5v4VSmw8ZzW7HHEkZH0P8A9avb47hcsDtA4Gcc4pVY+8RGTSPOB4N1gD5oIvr5op7eC9WVQzLbgH/pr/8AWr1BHSTPOR24qVgWAUgc8DB5rErmZ5Q3g7VQBxb/APfz/wCtUcvg7Vostsgb2EnI/SvU5o9jAgdzxiqUjBGLMSGPBBHH1qkhOTPPIfCWpzKHxAo6fNJ/9aqHijw9e6ZozXFwYdnmIpCPk8mvTkmGDnGM9O1cl8UrpU8Jgk8GdGP4AmqjG7FzvqeM6neGBgsT7ZD3HYVhyMW+lOuJGlmeR+rHNRHpXqU4ciscM5uTE7Ui8lvpSHinRjOT61oZjohUtIowKUUDFFKaQUp6UAANKGFRZING7BoAnFLUatT88UALQOlJS0ANPWm9ac3SkXgUAMkPOKjY4DH8KUnJJqOVtqqPU0CFB5qaLpVfPIqxHwKYFyGUxuHVirAggjqCO9eg+H9TXU7PfkCeM7ZVxjn1Hsa8yM6BtoOT6V0fhTVTZX235fJuAFIYA4bsf5j8a569Pmjfqjswdd0526M9BX8BU6RRn77qKzxfuR/qkP8AwGkOoOvWCM/nXBY9u5dkEYOEJc+1MV5IzkEqPaqn9r7fvWo/A1HLrkAHKFfrRysfMupqG/kCkbjn60ywkTUNUtbG4dkSaZU3qMkbjjIFczfeJrGIcyrn0Xk13fw20zTri5h1aXU7K8uF+aC0hl5jb1cHBJHoBgHuafI7XZz1asEmk9TjfiLo66H4ujtkmeZWtY5NzqFPJYY4+lYdxzJkeldn8bufGGnSD+Ky29Mfdkb/ABrj2AOOatrRHCnc2oLGXS/i/JZkje93gEKcHeARx+Ne6QeENUZyY2GPVoto/U15x8aLq2sPjFpeqWELRoYoJTldoZlYjI/ACvfJ/ENzMqmJIYdwDAbdxIPvTkuboc7lZIwrPwVfBt017EvHRYs4/Wrz+GYo0Hn6rGu3pmFc/wA6Sa+u7hf3kkjc4wHABqmYkYAzMyDOD/Fn34qXBdRe0fQdLp1hCAP7QuJmH9y3X+tZt5pdvOxMU8wIPVlTn8ulbCafcXEpNvaPKpOQ5HOO2TWnD4XupQfNlhhDY3E/M36UKMUJzkzjBoSGKSQzz/Ifn2opCjPB/wDrV538cdKNn4QhK3ErSPPna4AxhSRwK+jIPDllAv8ApM7OoxwGCLXkP7Tj6VbeEdOhsvJMxuXZivJIEfc/iKuFr3Qa9T5PEgfjPzU4Cqcq4ww/GpreTeuG+8P1r0DnuK/FPtjlW9jTZOlLafdY+9AE9KKQUuKBhS0hNANACOO9MzUvWomABoEKpxUymoPpTwfWgCaimI1PoGIelIBkH3pTzSd6AID98CopG3zYHQClmYpM2OuOKhiOXY0ySXvRPKVAROp6mkzj8KWFMne3U0ANigIIZia0YRhB7VX9KspwopFI94+BGhaNrfhvUpNT060upluggeVQSg2A4B7Dqaf8ZfBuh6ZoNtfaPZy2M73SRP5M0gTaytkYLYzkDnFcj8A/GsPhLxiI9SK/2RqIFvc7hkI2fkkx7E4Psxr3P9oBdOuvh3LLamMTRXkDABiDgkg/KfrXJUTizeEm3ufJWpWU1ursl/cFFCHDsT94e30qkmlancWc15Ha3VxZwkLLOiM6Rk9NxHTOD1rZ10/6M3+15X6b69x/Zl0+7n8N69Naxl83USHD7SQIySMd+tUp2Vy56HzlaWycMeR6jmta3ZkYGOTkdM9q+nvFnw40XWmaS/0c2N255vLNfJfPvgbW/EGvKvEfwi1jT4J7vRZV1m0i+/Gkey5Qf7nIf/gJz7VEnzahCa2Z59d3VxdXNs1zK8hjUou5icDOeM9K0QPlHTp61kOoDxkdmIIPUHuD6GtZD8i/SspG6Ox+NWqaRqt9ol1pGoW11KiSRyJE+4qMggn9a958O6Xc6hoemXUk0UUclrGy7csfujmuK+O+m6XdeDoF0PR4YrxLyMo0FssbMpBDDgAkdK3/AIba7e3HgbSY1xF5ERhYhct8pIPtmm7vY57K2p28Hh+zVczySTY9flFWlm0uxCqoiVvYbjXIXV3PMxEvnvHwWzxge4/wpIYwJWYMXjK8Atg+5wOg+tLkb3ZPMlsjprnxPEpZYoXJBxljtFZk3iG9nDBGWIHoUH9TWa8spZcyNJIvClTn8KsW+l3FxLuitmQjknGFz7Z/nT5YoXM2QfaZrq5RGkkJILFmkOK8a/aOuNmmaLAvG9pSRjHTbX0FB4daQBp5kiUdNgyx+p6V4H+1ba29je+HIoAxcwSu5Zs5+YAVpTs5JEtNK589nuG6GoVzHJz9KtOcdqinTcoYdRXYZEjnIp1r/qj7saiDZjFTWo/cCmCJRQTikLYpuc0gFpRSUUAPzimMadmmNQAhNJk0maM4oAUMRT1lI4NQlqTdTAtF89KN1QK9PDUgC4TcodRll/lVVDtdh2q/GePrVe9XDK3rxQAxV3tirIHHNVrc/Nn2qzmgEAFToeMVCD6U9cevSgY/OP5V69F4zvfEXwxvNOnsGnlshALi9EgyFD4RmUnPPQkA8/WvID7Grml30ti04jchLiIwyjsVOD+hAP4VnUhzIunLllqW9az5Cg9yn/s9e/fs0X89h4R1Mx+UUk1BV2v6iJfyrwHVjvsoG7sw/Td/jX0J+ztpks3w/u54urai+cOAcBIx3rn6am9TyPYbbxDDISGh5XlvLOR+RqZ7zSbvCusfm5wFdNh5965u4trkFVaCaN88blBB9RnpUEUqxg7fNKM2NyjceOvPOB0qeVdDLmfU87/aU8LaLY6Vpuu6bbQR6hcXpguZYWP7weWSN3qcr94814tGPkX6V7R8ev3nga0dcsiahGQ+3AOUcV4zbcwjOKmaOijseyeME1LUPCmq6ok8saRQM1uwXl/XaP4Uxnnqad8Ep2vfBf2dRI7xXDj5Bk4IBrrrmPzrKeEhpo3geJY3HyAMpHT8a8//AGe9ZutP07V9Pi8sbJFc7hk55U/ypc6tdCcG9GevJpeoXEJDhIVYjO9jnjv61oRaJHljczSSk4yq4Rayjrt43eIfSP8A+vTTreoEcui/RBxUObYeyOoit7S0jzDDGp7sR/Wq9zrNtGGXzd7KCdqc1yFzftKQZpndgSevFVvtTKGC5O4/xYxTVnuJxfQ6mXX5WX9xGqIcfO7DJ+gr5s/aUv5b7xTpiyyFhHZ8cY6ue34V7Qks4bKzMD7da+f/AI73LTeOUVnLmK0jUkn1ya6KNubQzqRaV2ealSvOcilzleakIyOaZjAIFdZzlYcBh6Vatf8AULVaThj7irdsMQr9KYIeRkUzaRUlFICOkp5FIwNABSSLkUqjNSbaAKh4NMY1baEN3xTfs+O9MCrmjNWGts9Dg1C6lGw1AhgNPV+aaRSUAW4mBNJejMQPoarxsQ1WJvmtX9QM0hleI1YU5FVIjVlDx1oAkFSrjHFQipY8jigY/txSnnmkFNlfYp9TQBeNx5unQxH70chx9CK+mf2e9SFl8O9rRblN7MxKn5jwg6fhXy/bIRGA3UnNfR/wadI/AVskkQfNzO2c4P3h0/KuStodVP3onslvrNo3ylyoP8MnT9KbPLpc+d4tTk9V+Un8RXMRrE7ZRnUjs3IqQRzKchQy+oaubmNORHKfHyws1+HdzLa3LMUu7d/LLbgfmI7j3r5+t2JiXH869/8AjARL8NtYXLDZ5T4I9JUr59t/9StWm2tRxjy6I+oGcpgsQOecmvLPAH/Es+I/iSyA+VmdlHtuDD+deiLlmAKjPqWrgp4hZfGSBuVS+tevqQCD/IVKQ2z0Y3H93APvzUbszD52/M1G5UHGOR+JNCsWkwSB+posFx4HIHQEZyRxTh90cAt6DmlUAnlSx/2v8KedwXkfh0FADVB/jwv6/wAq+cfjM4k+ImogEnZHChz6iMf419BatqlnpFhLe6hcxwW8Y+Z2Bxz0A7knsK+ZfGuqx694r1LU7dWSG4kBQP8Ae2hQozj6V0Yda3MK70sYQFNcYHFSbD7U109xXWcpTm6VchGEH0qpOOOtXV4AFMELS4pRS0gGUuM0uKQdeaYCBMHinCnUYpAJRS0tMBtNdAw5AIpxbFJuBpAVJISp+Xn2qEg1osRioHAPamIqGrEBDKy+oxTHjJ6CmJujcEAjFAEMfXmrKdOKgYBZnBz1q5AFP0oARVJ6VNGrA808Y7Ubd54pDHHCjJzgelJkNgqg+rU5YwnIz/jQ0W45BoGPhyJl3HOTivpb4SeX/wAK803I+cvMfx8w180IHAwSOOlfRXwjlL+BbRQ2EE0vB+uf61zYhbM6KD6HcqepUYxUySyKMhgRVfIKfKDkdQDkUx98QVtwZa5DoMj4myGbwBr8TrybQsP+Asp/pXztbN+6GB3r6L8XOLrwjrcJGGaxmwp7/ITx+VfN9md0CmrS0C+p9JSOqeox/npXMa1Ym78YaHexkqtmH3k9WB6AfjXTRw5zJLwi889DVFw81zugG3HRiMfzouSaxQsV54PHpzT41+U4OG6D0qK3DqFE0m9x0CirRUKeSFFTcdhjSrGNoALfU/ypgErjGAqjpk5qU4UfIrHPfFRyh0YliMD14H5UDOE+McCv4FvHmcsYpYnTA/i34/kTXgA5FfQHxkfd4BvAoyRNAQBxuO/pXnnhTwTBcRRzaozyuwz5YOEHtx1rpp1FCF2YSpOpOyOCJA6kD8ajlK7TyPzr6HsfDGj28QCaXalMddgJqnquj6OqkDTrYD/cFSsYm9i3g2lufO8+AK0AvAIrsPGOk6bbxSNDaxxttLZUYribOUSR7c/MvH4V1Qnzq6OWcHB2ZYXpzS00ClqiB1NYD0pcig8imAgNPBGKZSg0AOGKDim7l7mjePWgQu0UBVphfNNd8DjrQAr7QOTS+WAvPWo4RvlG7nvVhhxQMzrmQw3DAcqcECkFzkH5RUl/FueNvbBqJYu2KBFZiWcknk1ZgYKMk4pk0eF3eldb4Y8OR3DW7zfOzEMfQCpnJRV2XCDk7IzNP0u/v/8Aj2tXdT3PArUfwvrUUe82qY9ATXr2iWcMCKqxDGOw4A/lW7LHCYVCxp8w3EEDArhlipXO+GEjbU+a7wz2TYurZlx3BqKO+t2P3mQ/7Qr2LxvoVteWFwFQCQoSuB0NeDMpViDwQcGuqjU9ojlr0/ZOx0KskgzG6sPY5r3D4JX0U/hmexEoW6guHbYe6sFII/I184RK7OPKDFv9nrXpfw/ttd0yxn18RL9itpVhlO8b+ecso/h5HPuKKyTiTRb5j6H8zYct9Pep1G4Z3kj0YVk6DqMGq2UdzbAMxHKg9D34rSVhvIkBBJzycEewNcdjsK+rIZtNvIW6NBIg4HdCK+YbJsW0fHYfyr6re2MirtffvO3AHQHjk18qRLsUoT91iv5HFOOwdT6bnZIov3pHy9Bjr71FbSB5AyxEDGSWGKlcfaVYoNgB+8TgtSLKkMYSRt20cishmkjBxwrNzyFIWoGjjVyxGD2AYk/nVJr/AAp8pQcc4T0qL7S0uCOOadhXL73O0BEGCfxP/wBaqjl3b5g3HXHJpg29Gfa2eMdKkSZc4yxJ/vDNUBz/AI3tBP4cnWUK0bMvU5YEHI/WsfRlJVcDgf559q2/G5P9itjoWBOeMdP8aw7KfyoV8peMeuMmonqjWkjpssIskAe+cVzniJiqqw6E4rWtpTNGCjkE85xwKparaO9rJxuU85xjB9ayhozWeqPLfHkhS2fnqgrzqMNE6sOor0Dx9HNJAoWMlz8pA9jXAoztwAK9Wh8J5Vf4jUjdZEDDvTsVmpK0ZKke9SrdjvWpiXNopMgDpUS3KHvUgeNu4zTAQnNMPPeptg7Gk2GgRBikxVjy80vl0AVuaTFW/KFG1B6UARWw+Yn2qZulIp7AYFOPSgZDMoZFJ7GmqijoOalf/V/Q0goAqXSFl2oCWJAAHc17B4Q0v7PZxtKSGCgf/WrifA+lf2hqhuJF3RQdB6t/9b+tevWcKKoJX7g/KuPEz+yduFp/aZopAi24wFC9gOcU55tqHcF6c45pLaQBlUEgNwPTNJLzKvQZ5BIx9RXAeijO1MDy2yAcqQD6ik0fwX4bit4LiPSLZ53UOzzZlOTznDEj9KZq/wAluzZOMZ5A49a2dDukbQrNnK7guO/TNdFNtLQ5ayV9TzX4wwJb6tpMUUaRoLVsKihQP3h7Diut+EBhk8O6pFPFDKj3ARkkbG5THgj6Vy/xlYSa9pQznFqR/wCRDXQ/BMrNpGpo2wgzRn5lz/Ce/atHsZIjRbjwP4kEIMg02cl7dyd2V7qfVlzgjuK9Ltbxb+186CQFW64GVHfr/KsvXdDttY0uS0nyvO6OWPkxOOjAH9RnkVxfhjVLrQ9Vm0vUV8u4QhWGcBgehHseoPr9TS3Geq25wIeCMMOFxtPPpXy3fIItSvoyD8lzKv5Oa+jY7gACWJiMnKspxu+o9a+evEqeX4m1hPS8l/Vif60kM91F3O+QFcFucE0DDkee2SOOuT+dZ7TTFsvgc5+bjNSpIzojxs23kfKwH86kVy/Hc+W22L5SOCAOaY7bpcxkLn24P4dqrqcE8kcd6V5Qg4+ZvQdBTESbtrYztOOackxZzhnbPXHAqt8zkebkDqAMVZicYOOcds0AZfjEZ0gM7EfvFOMcVzul77mQAqEiTjnnJra8dzBNBXP3jKoAz171m6FnCsAcEc5FRPY2pHSW6xQxqobHqR/ninybpo2O0ctgAnnH4URSM6MJE4Ix7Ae1LFZE5YliQMZyelc50tHM69owngl27kkCsA6nkZGDj8zXh2pWMum3slpOMMn3T2YdjX0qUQx4OM9hxXmHxT0XzLAX0Cjzbc7uO6Hr+XWu3DVbPlZw4qjdcyPLpIjINy8kDkVX8th24q1G5OGU4YVYQRzjONr969A84y2TjI4pRvHINaT2q55zUT2+OlAFRZpU7mp475lPzjIpPKfPSpUtcjkUATxXccg4OG9DQ84GcU17RHjIUYcdDVZoZ0GHQ8dxzQA+Sc9jUfnn3NNSNnbCgk1ajs8ck59qAIkuCp56VbEgZMigQr02gChY1ThRgUAPcfIKjkYIhZugqQuofaTVWXN1cRwp90uFJ9eelAz1vwFYfZtHgBGHkG9j7nmu2tBwQeM8Csnw+EhhiH8QG0AVvwJ5ty7Y+VB8vHVjkZryasrttnsUY2ikR3USk5BYZwDnoKUKwtlZyWkQ9O+aknAY4BJXO0ntim3DYgBBz9fSsjY57X5AsE6qeMZX6EVzOneLRZQJbpqTRiMkbDEjAfmc1qeI3cMqK24SnauOtdPDaQG2CvDbsVUDEkSsOn0roprQ5ar1OA1a/wBP1+4gm1C5WWWJCiMoaPC5zzjIrV8H61ZeGopobExSxzMrN5k7AjAIGPl9+9ZPjexhPijRIbezt41nwrJAgAf94M5A9qs/DLQ7TVY9TF5YwXRt3VP3gPynLZGR04A/StWtDJO520XjS1ZiwtwD6x3CH9DisjxVd23iGCGSLfFqNsP3UrKpBTujFScjv6g/U1cuvCeixgsukRqBywDuBj8Gqt/wi2hEBktZYmPI2XMg/rUobLXh7WRbQiLUmJA/iUMwPv0/P8D615j41lhl8W6rPC2YppvMRtpXIKjnB9812PinwvDa6cl7ocl4Gh5mgaUvuX1Q46j07ivPdZuz9sHkSySxFFKmUhiMjJGe/OaLBc9pVSM5BCt196nV124AOfU/4VCAcDPfrjmng+WRtO1TxyOT9KkCUZBJbkjsetIZG3AKhAHvTCCF53L6g4BpoO085Y7sg+9AEmRg4BO09evNK0ywANtw49ahaU7nLnI9vWqplLuNuD7/AOetUkSyj4wkebRwzA4R1bJ49qoaJc+Wihj8xHoeK1tdj36DqEsmWMcRYZ7fh2rC8PSpIiuQCh6ZqKi0NaLO209g5JOd3XLdhWm0hCYLDB6E/wBfeuctWmlMnlP5UYPGEBLEev8AhUyz+XuaWRix6sXBP5VzNHUmaF5CrbWUMpfghTnOaxdSslntpLacMd6kYb+6f/11rWl5AZECMGUcY9/U0zVlIZShDDbx/hVRbTJkro+b7+xa3uJoxnzYXMbD1warqwwJU6Hhh6Gur8bwfZfE87AYS4RZf6H+VczNEIZd4GYZOGHp717EHzRTPFnHlk0WI3DrzTtmRxVNA8MhQnjqD6irKHv3qiR4jHpzTsYpuTTGcetAEuQDS7qqtMo6momugOhoAu5BPQUhKj2rPa7IHHNV3nmkPJx9KANR54161VlvB0jwPoKqBC33iTViGHnOMUALEjy8k4Hv1NaegW5m1i1RQMK+4/hVcLtHTArr/AGneZNJcugx0BNRUlyxbNKceaSR6X4dgKKCAXfbnca6d1SFUAznGd3qay9KxGAAdxJGST29K1CWKKCMHJ5PpXkTd2ezBWRVlQfOx6E5OKzZpShMUncZU9j9DV+d/Jbb2IrD1GbZGSxBAY7T3HHShDbMdSLjxFboxGIS0nXHPb9a6hZfJUfKCPU9q5XQEM73ly210eTYnQ8Dr+tbEcwVSoyF/HGf6V1JWVjilK7MXxAom1OKdWIdCCG71q+EyNMSaQgsJT834d+Ky7wh5ySD9RzW/pMYEAC9CODnINDEjpYZQz5jyVZRy3HHpnvVK5tY0mAiOI5OQc4AbupHSi3jIBAz5kYxx/Ev/wBapyv2q2cKQU5zgcqfcVOxW5neVNGx2q3HXt/9avHviDYx2PiFhaII45oxNsxwpJOce2RXsqrJlg0mDHjcMdR24rh/H2n/AGvV7eRQuBbqvB/2mq47knYpsUkEEuR0zx+dKrhB8gG7v3qupLk57cUI5Ksx6qcCoGTSSKoLOQD1xTMs4ypCg9KVQA5JAJ6880ROWG7jIHFNCGbem9AT7jH5VV1C8tdLg+0306xwj7oKklj6AdzWnOgynJJJHP5V4z4nvrjUNZu5Ll9xikaKNR0RQSMAfhWsI8zIqS5Ua/ib4gTXdlNZWNnHFbyrsaSY7nI9gOB+tN8D6j5tuUkILqcfhXGygFeateFZXi1TahwrckfjWlWmuTQzpVHzq57LaTuLXahAZ/lz6c1rWNkPJ3O5bJxt2gk/4VzGnSMViz2b/wCvW/b3Egt7g55U4HtXmyR6cWW5JobVWECBAONpbOfwp07+fAp2IuMDA6iswTsFjGBliMnv9K17Vi+mtIeMDO0cCp2KPIfihamOa1mx9xmjJHocEfrmuMiZZYzG4yDxXpvxRjU6MXI+cSdfxryeJiH4Neth3eB5GIVqjJpoWKFDy8fKn+8Kggn+U7u1aIO6IE9RzWZOoS+CgfK2CRWxgNluix+XNRfvXPpVyKFDdFccCnTYjX5VFMCl5B6u35mmFF/hGfenhjI3zHj0qdEFAECw+1WYbbcfm6VPFEmelLNI0afJgUgFWGOMZIH41HLPHEOBk1Tlnds5NRL8xyaYi1CZbq4Vc4UnoO9e2+FdPFhpsC7Q74zt9T3P0FeS+EoUfXrRXXcu/JB74Ga9v8GXBvrZ5ZY41ZXwAgOOAPUn1rjxTaVjtwkVe50lra+VHGZDhm5OOtPupljwCflIwfaiY4CsOpOao3h8xk3AdcV51rs9MgvXCkAnPPB/pXDeLdS+w2Vwwbk8IPftXS6hIyAxg/KrcZ968q8ZTSTagInb5FGQPeumjDmlY5q8+WLZo/DKW4kkvixxacZBbJ8zsQO3Gcn6V2tzKYskZx7npXl3hC4kh1m28s4EsgicdmU9j/OvULr5BhT1A5rpqq0jjpO8SpHKssuQBnvz0P1roNPVgf3TMpPXHU/0rnraNWnbjB9RxW/p5IMY7McGsjVGpFNtlIJZXAxgd/wP+IqxZL5ETNIyvJnPBwxB9QeapxcztnkEZwRkDtSMNs6Y+6QflPIHHb0pWuUT3LvLKCSBtP4/gKqXcUEso3AAqMf1/rTr92to7do2JEgGVbkDj86jW4Y9UQ/UZoQj/9k=" alt="Yassîn Zirari">
-        <div class="photo-scanline"></div>
+    <div class="nav-tools">
+      <button class="kbd-btn" type="button" data-open-palette aria-haspopup="dialog" data-i18n-attr="aria-label:ui.openMenu">
+        <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+        <span data-i18n="nav.search">Search</span>
+        <kbd class="kbd-mod">Ctrl</kbd><kbd>K</kbd>
+      </button>
+      <div class="seg" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
       </div>
-      <div class="name-block">
-        <div class="prompt-path">root@zirari-dev:~/portfolio$</div>
-        <div class="name">ZIRARI YASSÎN</div>
-        <div class="title-tag">IT TECHNICIAN &amp; SOFTWARE DEVELOPER</div>
-      </div>
+      <button class="icon-btn" id="theme-toggle" type="button" data-i18n-attr="aria-label:ui.theme">
+        <svg class="i i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="i i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:ui.menu">
+        <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
     </div>
-    <!-- Row 2: status + contact -->
-    <div class="header-meta">
-      <div class="status-dots">
-        <div class="dot"><div class="dot-led"></div>AVAILABLE</div>
-        <div class="dot"><div class="dot-led amber"></div>FR/EN READY</div>
-        <div class="dot"><div class="dot-led cyan"></div>REMOTE OK</div>
-        <div style="font-size:10px; color:var(--green-dim);">UPTIME: <span id="uptime">00:00:00</span></div>
-      </div>
-      <div class="contact-row">
-        <span>+32 475 612 116</span>
-        <span>yas.zirari@gmail.com</span>
-        <span>Jette, Brussels</span>
-      </div>
-    </div>
-  </header>
-
-  <nav class="nav">
-    <button class="nav-btn active" onclick="showSection('about')">ABOUT</button>
-    <button class="nav-btn" onclick="showSection('skills')">SKILLS</button>
-    <button class="nav-btn" onclick="showSection('experience')">EXPERIENCE</button>
-    <button class="nav-btn" onclick="showSection('projects')">PROJECTS</button>
-    <button class="nav-btn" onclick="showSection('contact')">CONTACT</button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Mobile" hidden>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#experience" data-i18n="nav.experience">Experience</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#skills" data-i18n="nav.skills">Skills</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <button type="button" data-open-palette data-i18n="nav.search">Search</button>
   </nav>
+</header>
 
-  <!-- ABOUT -->
-  <section id="about" class="section active">
-    <div class="terminal-window">
-      <div class="term-titlebar">cat ./about.md<span class="cursor"></span></div>
-      <div class="term-body">
-        <div class="cmd-line">whoami</div>
-        <p class="output-text" style="margin-bottom:14px;">
-          Junior Analyst Programmer with strong hands-on experience in IT support, computer repair, and software development.
-          Experienced in hardware troubleshooting, networking basics, and web development, with a solid academic background
-          from ULB/EPFC. Comfortable in multilingual environments (FR/EN) and used to working independently or in team-based technical settings.
-        </p>
-        <div class="about-grid">
-          <div>
-            <div class="cmd-line">cat education.log</div>
-            <div class="output-text">
-              <div style="color:var(--amber); margin-bottom:4px;">EPFC — Université Libre de Bruxelles</div>
-              <div>Bachelor of Analyst Programmer</div>
-              <div style="color:var(--green-dim); font-size:11px; margin-top:4px;">Software Engineering · Systems · Web Dev</div>
-            </div>
-          </div>
-          <div>
-            <div class="cmd-line">cat languages.cfg</div>
-            <div class="output-text">
-              <div class="lang-row"><span class="lang-name" style="color:var(--green);">FRENCH</span><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:100%"></div></div><span class="lang-level">Native</span></div>
-              <div class="lang-row"><span class="lang-name" style="color:var(--green);">ENGLISH</span><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:100%"></div></div><span class="lang-level">Fluent</span></div>
-              <div class="lang-row"><span class="lang-name" style="color:var(--green-dim);">DUTCH</span><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:35%; background:var(--green-dim); box-shadow:0 0 6px var(--green-dim);"></div></div><span class="lang-level" style="color:var(--green-dim);">Basics</span></div>
-              <div class="lang-row"><span class="lang-name" style="color:var(--green-dim);">ARABIC</span><div class="lang-bar-bg"><div class="lang-bar-fill" style="width:30%; background:var(--green-dim); box-shadow:0 0 6px var(--green-dim);"></div></div><span class="lang-level" style="color:var(--green-dim);">Basics</span></div>
-            </div>
-          </div>
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="stage" aria-hidden="true">
+    <canvas id="net"></canvas>
+    <div class="stage-hud">
+      <span class="hud-key"><i class="dot dot-infra"></i><span data-i18n="hero.legendInfra">Infrastructure</span></span>
+      <span class="hud-key"><i class="dot dot-code"></i><span data-i18n="hero.legendCode">Code</span></span>
+      <span class="hud-count"><span id="net-count">0</span>/<span id="net-total">12</span> <span data-i18n="hero.online">online</span></span>
+    </div>
+  </div>
+
+  <div class="hero-copy wrap">
+    <p class="status"><i class="led" aria-hidden="true"></i><span data-i18n="hero.status">Available for work in Brussels</span></p>
+    <h1 class="name" id="hero-title"><span>Zirari</span><span>Yassîn</span></h1>
+    <p class="hero-role" data-i18n="hero.role">IT technician &amp; software developer</p>
+    <p class="lede" data-i18n="hero.lede">I build, repair and run IT systems, and write the code that sits on top of them. Trained as an analyst programmer at EPFC (ULB), working in French and English.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="zy/CV_Zirari_Yassin.pdf" download>
+        <svg class="i" aria-hidden="true"><use href="#i-download"/></svg>
+        <span data-i18n="hero.cv">Download CV</span>
+      </a>
+      <a class="btn" href="#contact" data-i18n="hero.contact">Contact me</a>
+    </div>
+    <p class="hint" aria-hidden="true"><span data-i18n="hero.hint">Hover or tap the nodes to explore. Select one to see where I used it.</span></p>
+  </div>
+
+  <dl class="facts wrap">
+    <div><dt data-i18n="facts.basedLabel">Based in</dt><dd><span data-i18n="facts.basedValue">Brussels, Belgium</span> <time id="clock" class="clock" aria-label="Local time in Brussels"></time></dd></div>
+    <div><dt data-i18n="facts.fluentLabel">Fluent in</dt><dd data-i18n="facts.fluentValue">French, English</dd></div>
+    <div><dt data-i18n="facts.freelanceLabel">Freelance</dt><dd data-i18n="facts.freelanceValue">4 years, IT and web</dd></div>
+    <div><dt data-i18n="facts.builtLabel">Built or repaired</dt><dd data-i18n="facts.builtValue">100+ systems</dd></div>
+  </dl>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="wrap about">
+    <figure class="portrait">
+      <img src="zy/img/yassin.webp" width="448" height="448" alt="Portrait of Zirari Yassîn" decoding="async">
+      <figcaption data-i18n="about.caption">Jette, Brussels</figcaption>
+    </figure>
+    <div class="about-text">
+      <h2 id="about-title" data-i18n="about.title">About</h2>
+      <p class="lead" data-i18n="about.lead">Junior analyst programmer with hands-on experience in IT support, computer repair and software development.</p>
+      <p data-i18n="about.body">I'm used to hardware troubleshooting, networking basics and web development, backed by my studies at ULB/EPFC. I'm at ease in French and English, and just as comfortable working alone as in a technical team.</p>
+    </div>
+  </div>
+
+  <div class="wrap focus">
+    <div>
+      <h3 data-i18n="focus.supportTitle">Support and hardware</h3>
+      <p data-i18n="focus.supportBody">I assemble, upgrade and repair PCs (100+ so far), diagnose hardware and LAN or Wi-Fi faults, and tune systems and basic security.</p>
+    </div>
+    <div>
+      <h3 data-i18n="focus.softwareTitle">Software</h3>
+      <p data-i18n="focus.softwareBody">Java, Python and C#, with OOP, Agile and Git. At SPEOS I worked on a print-spool program built through Jenkins.</p>
+    </div>
+    <div>
+      <h3 data-i18n="focus.webTitle">Web</h3>
+      <p data-i18n="focus.webBody">Client websites in HTML, CSS and JavaScript, plus React and Angular. I've built Chrome extensions for a media company and browser games with Three.js.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section split" id="experience" aria-labelledby="exp-title">
+  <div class="wrap split-in">
+    <div class="split-head"><h2 id="exp-title" data-i18n="exp.title">Experience</h2></div>
+    <div class="roles">
+
+      <article class="role" data-skills="hardware diagnostics network">
+        <div class="role-meta">
+          <p class="org">Novarys</p>
         </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.novarys.role">Cluster IT technician</h3>
+          <ul>
+            <li data-i18n="exp.novarys.b1">Provided on-site IT support for users and equipment across the cluster.</li>
+            <li data-i18n="exp.novarys.b2">Installed, configured and replaced workstations and peripherals.</li>
+            <li data-i18n="exp.novarys.b3">Diagnosed hardware, software and LAN or Wi-Fi faults, and followed each one through to a fix.</li>
+            <li data-i18n="exp.novarys.b4">Worked with colleagues and end users in French and English.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-skills="js html css chromeext">
+        <div class="role-meta">
+          <p class="org">Bump</p>
+          <p class="kind" data-i18n="exp.bump.kind">Media company</p>
+        </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.bump.role">Chrome extension developer</h3>
+          <ul>
+            <li data-i18n="exp.bump.b1">Developed Chrome extensions for a media company.</li>
+            <li data-i18n="exp.bump.b2">Built them with JavaScript, HTML and CSS.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-skills="java git jenkins agile sdlc">
+        <div class="role-meta">
+          <p class="org">SPEOS</p>
+          <p class="kind" data-i18n="exp.kindInterim">Interim</p>
+        </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.speosDev.role">Junior developer / IT assistant</h3>
+          <ul>
+            <li data-i18n="exp.speosDev.b1">Contributed to the development of a print-spool management program for internal automation.</li>
+            <li data-i18n="exp.speosDev.b2">Used Git and Jenkins for code versioning and builds.</li>
+            <li data-i18n="exp.speosDev.b3">Worked with QA and operations to troubleshoot print-job errors and improve performance.</li>
+            <li data-i18n="exp.speosDev.b4">Helped deploy and monitor test builds across environments.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-skills="hardware diagnostics network security optimization html css js">
+        <div class="role-meta">
+          <p class="org" data-i18n="exp.freelance.org">Freelance</p>
+          <p class="kind" data-i18n="exp.freelance.kind">4 years, alongside studies</p>
+        </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.freelance.role">Independent computer technician &amp; web developer</h3>
+          <ul>
+            <li data-i18n="exp.freelance.b1">Built, upgraded, repaired and optimized desktop systems for private clients and small businesses.</li>
+            <li data-i18n="exp.freelance.b2">Diagnosed hardware, software and network issues, including LAN/Wi-Fi, connectivity and basic security.</li>
+            <li data-i18n="exp.freelance.b3">Designed and built websites for clients: structure, styling and functionality.</li>
+            <li data-i18n="exp.freelance.b4">Managed clients on my own: communication, scheduling and technical follow-up.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role is-minor" data-skills="diagnostics">
+        <div class="role-meta">
+          <p class="org">SPEOS</p>
+          <p class="kind" data-i18n="exp.kindStudent">Student job</p>
+        </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.speosPrint.role">Polyvalent printing operator</h3>
+          <ul>
+            <li data-i18n="exp.speosPrint.b1">Operated and maintained high-volume printing equipment: Riso T2100, Xerox Nuvera and Canon ColorStream 6000 (continuous feed).</li>
+            <li data-i18n="exp.speosPrint.b2">Worked with the team to meet tight deadlines in a fast-paced production environment.</li>
+            <li data-i18n="exp.speosPrint.b3">Checked print quality and troubleshot issues to limit downtime.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role is-minor" data-skills="">
+        <div class="role-meta">
+          <p class="org">Okay Jette</p>
+          <p class="kind" data-i18n="exp.kindStudent">Student job</p>
+        </div>
+        <div class="role-body">
+          <h3 data-i18n="exp.okay.role">Store assistant</h3>
+          <ul>
+            <li data-i18n="exp.okay.b1">Baked bread and kept stock fresh and available through the day.</li>
+            <li data-i18n="exp.okay.b2">Ran the cash register and helped customers with questions, recommendations and problems.</li>
+            <li data-i18n="exp.okay.b3">Worked as part of a team to keep the store running and meet daily targets.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects" aria-labelledby="proj-title">
+  <div class="wrap">
+    <div class="proj-head">
+      <div>
+        <h2 id="proj-title" data-i18n="work.title">Projects</h2>
+        <p class="sub" data-i18n="work.sub">Two browser games you can play, plus four IT and development projects.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects" data-i18n-attr="aria-label:work.filterLabel">
+        <button type="button" data-filter="all" aria-pressed="true" data-i18n="work.fAll">All</button>
+        <button type="button" data-filter="games" aria-pressed="false" data-i18n="work.fGames">Games</button>
+        <button type="button" data-filter="infra" aria-pressed="false" data-i18n="work.fInfra">Infrastructure</button>
+        <button type="button" data-filter="software" aria-pressed="false" data-i18n="work.fSoftware">Software</button>
       </div>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="terminal-window">
-      <div class="term-titlebar">ls -la ./skills/ | sort -k5 -r<span class="cursor"></span></div>
-      <div class="term-body" id="skills-body">
+    <div class="grid" id="proj-grid">
 
-        <div class="skill-group-title">// PROGRAMMING &amp; SOFTWARE</div>
-        <div class="skill-row"><span class="skill-name">Java</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.82"></div></div><span class="skill-pct">89%</span></div>
-        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.78"></div></div><span class="skill-pct">78%</span></div>
-        <div class="skill-row"><span class="skill-name">C#</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.72"></div></div><span class="skill-pct">72%</span></div>
-        <div class="skill-row"><span class="skill-name">OOP / SDLC / Agile</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.85"></div></div><span class="skill-pct">85%</span></div>
-        <div class="skill-row"><span class="skill-name">Git</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.80"></div></div><span class="skill-pct">80%</span></div>
-
-        <div class="skill-group-title">// WEB DEVELOPMENT</div>
-        <div class="skill-row"><span class="skill-name">HTML / CSS</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.90"></div></div><span class="skill-pct">90%</span></div>
-        <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.82"></div></div><span class="skill-pct">82%</span></div>
-        <div class="skill-row"><span class="skill-name">React</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.70"></div></div><span class="skill-pct">70%</span></div>
-        <div class="skill-row"><span class="skill-name">Angular</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.65"></div></div><span class="skill-pct">65%</span></div>
-
-        <div class="skill-group-title">// DATABASES</div>
-        <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.80"></div></div><span class="skill-pct">80%</span></div>
-        <div class="skill-row"><span class="skill-name">DB Design &amp; Modeling</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.75"></div></div><span class="skill-pct">75%</span></div>
-
-        <div class="skill-group-title">// IT SUPPORT &amp; HARDWARE</div>
-        <div class="skill-row"><span class="skill-name">PC Assembly / Repair</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-name">Hardware Diagnostics</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.92"></div></div><span class="skill-pct">92%</span></div>
-        <div class="skill-row"><span class="skill-name">LAN / Wi-Fi Config</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.88"></div></div><span class="skill-pct">88%</span></div>
-        <div class="skill-row"><span class="skill-name">System Optimization</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.90"></div></div><span class="skill-pct">90%</span></div>
-        <div class="skill-row"><span class="skill-name">Windows / PowerShell</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="0.87"></div></div><span class="skill-pct">87%</span></div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="terminal-window">
-      <div class="term-titlebar">cat ./experience.log | grep -v "^\s*$"<span class="cursor"></span></div>
-      <div class="term-body">
-
-        <div class="exp-item">
-          <div class="exp-role">Independent Computer Technician &amp; Web Developer</div>
-          <div class="exp-company">Freelance</div>
-          <div class="exp-date">4 years alongside studies | Brussels</div>
-          <ul class="exp-bullets">
-            <li>Built, upgraded, repaired, and optimized 100+ desktop systems for private and small business clients</li>
-            <li>Diagnosed hardware, software, and network issues — LAN/Wi-Fi, connectivity, basic security</li>
-            <li>Designed and developed websites: structure, styling, and full functionality</li>
-            <li>Managed clients independently: communication, scheduling, technical follow-up</li>
-          </ul>
+      <!-- Inconito -->
+      <article class="proj proj-feature" data-cat="games" data-skills="js html css">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <g class="a-dash"><path d="M240 135 340 135M240 135 290 221.600M240 135 190 221.600M240 135 140 135M240 135 190 48.400M240 135 290 48.400"/></g>
+            <circle class="fs" cx="240" cy="135" r="40"/>
+            <path class="l" d="M222 135h36M222 126h36M222 144h20"/>
+            <g class="fs"><circle cx="340" cy="135" r="22"/><circle cx="290" cy="221.600" r="22"/><circle cx="190" cy="221.600" r="22"/><circle cx="190" cy="48.400" r="22"/><circle cx="290" cy="48.400" r="22"/></g>
+            <circle class="fa" cx="140" cy="135" r="22"/>
+            <g class="fi"><circle cx="333" cy="131" r="2.600"/><circle cx="347" cy="131" r="2.600"/><circle cx="283" cy="217.600" r="2.600"/><circle cx="297" cy="217.600" r="2.600"/><circle cx="183" cy="217.600" r="2.600"/><circle cx="197" cy="217.600" r="2.600"/><circle cx="183" cy="44.400" r="2.600"/><circle cx="197" cy="44.400" r="2.600"/><circle cx="283" cy="44.400" r="2.600"/><circle cx="297" cy="44.400" r="2.600"/></g>
+            <text x="140" y="144" text-anchor="middle" class="txt-ink" font-size="26" font-weight="700">?</text>
+          </svg>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-role">Junior Developer / IT Assistant</div>
-          <div class="exp-company">SPEOS (Interim)</div>
-          <div class="exp-date">Interim contract | Brussels</div>
-          <ul class="exp-bullets">
-            <li>Contributed to development of a Print Spool management program for internal automation</li>
-            <li>Code versioning and build processes using Git and Jenkins</li>
-            <li>Collaborated with QA and operations to troubleshoot print job errors and improve performance</li>
-            <li>Assisted in deployment and monitoring of test builds across environments</li>
-          </ul>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-role">Polyvalent Printing Operator</div>
-          <div class="exp-company">SPEOS (Student)</div>
-          <div class="exp-date">Student position</div>
-          <ul class="exp-bullets">
-            <li>Operated high-volume printing equipment: Riso T2100, Xerox Nuvera, Canon ColorStream 6000</li>
-            <li>Ensured print quality and troubleshot issues to minimize downtime</li>
-            <li>Collaborated in fast-paced production environment to meet tight deadlines</li>
-          </ul>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-role">Store Assistant</div>
-          <div class="exp-company">Okay Jette (Student)</div>
-          <div class="exp-date">Student position | Jette</div>
-          <ul class="exp-bullets">
-            <li>Managed bread baking and fresh stock availability throughout the day</li>
-            <li>Operated cash register with accurate transaction handling</li>
-            <li>Customer service: inquiries, product recommendations, problem resolution</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="terminal-window">
-      <div class="term-titlebar">ls ./projects/ --color=auto<span class="cursor"></span></div>
-      <div class="term-body">
-
-        <div class="project-card" data-id="PROJECT_06">
-          <div class="proj-title">▸ Inconito — Cross-Platform Social Deduction Game</div>
-        
-          <div class="proj-tools">
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">Responsive Design</span>
-            <span class="tag">Game Logic</span>
-            <span class="tag">Mobile/Desktop</span>
-          </div>
-        
-          <div class="proj-desc">
-            Designed and developed Inconito, a browser-based social deduction
-            game inspired by Undercover, playable on both mobile devices and
-            desktop computers.<br>
-            Tasks: Game flow implementation, player interaction mechanics,
-            role assignment, responsive user interface, and round management
-            for a cross-platform gaming experience.<br>
-            Outcome: An accessible multiplayer party-game experience combining
-            interactive gameplay, responsive web development, and social
-            deduction mechanics.
-          </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.inconito.type">Browser game</p>
+          <h3>Inconito</h3>
+          <p data-i18n="work.inconito.desc">A social deduction game that runs in the browser, playable on mobile and desktop.</p>
+          <ul class="tags"><li>JavaScript</li><li>HTML5</li><li>CSS3</li></ul>
           <div class="proj-actions">
-            <a href="inconito.html" class="sandwave-launch">
-              <span class="launch-icon">▶</span>
-              <span class="launch-label">
-                <span class="launch-title">LAUNCH GAME </span>
-                <span class="launch-subtitle">Inconito</span>
-              </span>
-            </a>
+            <a class="btn btn-primary btn-sm" href="inconito.html"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="work.inconito.cta">Play Inconito</span></a>
           </div>
         </div>
-        
-        <div class="project-card" data-id="PROJECT_05">
-          <div class="proj-title">▸ SandWake — Browser-Based 3D Game</div>
-        
-          <div class="proj-tools">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">WebGL</span>
-            <span class="tag">HTML5/CSS3</span>
-            <span class="tag">3D Rendering</span>
-          </div>
-        
-          <div class="proj-desc">
-            Developed SandWave, a 3D game playable directly in the browser
-            without requiring a separate installation.<br>
-            Tasks: Real-time 3D rendering, interactive gameplay mechanics,
-            player input handling, scene management, and browser performance
-            optimization.<br>
-            Outcome: An interactive 3D gaming experience demonstrating
-            front-end development, real-time graphics, and web-based game
-            development skills.
-          </div>
+      </article>
+
+      <!-- SandWake -->
+      <article class="proj proj-feature" data-cat="games" data-skills="js threejs">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <circle class="fa" cx="335" cy="92" r="36"/>
+            <path class="l" d="M0 168C80 126 160 152 240 138S400 118 480 150"/>
+            <path class="l" d="M0 196C100 160 200 192 300 172S420 168 480 184"/>
+            <path class="l" d="M0 222h480"/>
+            <path class="l" d="M0 222 0 270M80 222 40 270M160 222 120 270M240 222V270M320 222 360 270M400 222 440 270M480 222V270"/>
+            <path class="l soft" d="M0 238h480M0 254h480"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.sandwake.type">3D browser game</p>
+          <h3>SandWake</h3>
+          <p data-i18n="work.sandwake.desc">A 3D game rendered in the browser with Three.js and WebGL.</p>
+          <ul class="tags"><li>JavaScript</li><li>Three.js</li><li>WebGL</li></ul>
           <div class="proj-actions">
-            <a href="sandwake.html" class="sandwave-launch">
-              <span class="launch-icon">▶</span>
-              <span class="launch-label">
-                <span class="launch-title">LAUNCH GAME </span>
-                <span class="launch-subtitle">SANDWAKE</span>
-              </span>
-            </a>
+            <a class="btn btn-primary btn-sm" href="sandwake.html"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="work.sandwake.cta">Play SandWake</span></a>
           </div>
         </div>
+      </article>
 
-
-        <div class="project-card" data-id="PROJECT_01">
-          <div class="proj-title">▸ Windows Login Failure — Troubleshooting Scenario</div>
-          <div class="proj-tools">
-            <span class="tag">Windows 10/11</span>
-            <span class="tag">Event Viewer</span>
-            <span class="tag">CMD</span>
-            <span class="tag">PowerShell</span>
-            <span class="tag">Local Policy</span>
-          </div>
-          <div class="proj-desc">
-            Problem: User unable to log in — "Incorrect password" despite correct credentials.<br>
-            Steps: Safe mode access → Local user account reset → Security logs examination → Preventative policy creation.<br>
-            Outcome: Restored login functionality. Documented steps and applied user policy to prevent recurrence.
-          </div>
+      <!-- Windows login failure -->
+      <article class="proj proj-wide" data-cat="infra" data-skills="diagnostics">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <rect class="fs" x="110" y="38" width="260" height="194" rx="12"/>
+            <path class="l" d="M110 66h260"/>
+            <g class="fi"><circle cx="126" cy="52" r="3"/><circle cx="138" cy="52" r="3"/><circle cx="150" cy="52" r="3"/></g>
+            <circle class="l" cx="240" cy="110" r="22"/>
+            <path class="l" d="M226 128c4-8 24-8 28 0"/>
+            <rect class="l" x="170" y="148" width="140" height="28" rx="7"/>
+            <g class="fi"><circle cx="186" cy="162" r="3"/><circle cx="200" cy="162" r="3"/><circle cx="214" cy="162" r="3"/><circle cx="228" cy="162" r="3"/><circle cx="242" cy="162" r="3"/></g>
+            <circle class="fa" cx="292" cy="162" r="9"/>
+            <path class="l" d="m288 158 8 8m0-8-8 8"/>
+            <rect class="fa soft" x="170" y="188" width="140" height="14" rx="4"/>
+          </svg>
         </div>
-
-        <div class="project-card" data-id="PROJECT_02">
-          <div class="proj-title">▸ Virtual IT Support Home Lab</div>
-          <div class="proj-tools">
-            <span class="tag">VirtualBox</span>
-            <span class="tag">Windows Server</span>
-            <span class="tag">Active Directory</span>
-            <span class="tag">Group Policy</span>
-          </div>
-          <div class="proj-desc">
-            Built a full home lab environment simulating a corporate IT setup.<br>
-            Tasks: Creating/managing user accounts, Group Policy basics, permission control, shared folder configuration, login restrictions.<br>
-            Outcome: Real hands-on environment mirroring enterprise IT — directly applicable to Level 1/2 support roles.
-          </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.login.type">Troubleshooting case</p>
+          <h3 data-i18n="work.login.title">Windows login failure</h3>
+          <p data-i18n="work.login.desc">Diagnosing and fixing a Windows account that can't sign in.</p>
+          <ul class="tags"><li data-i18n="work.login.t1">Safe Mode</li><li data-i18n="work.login.t2">Log review</li></ul>
+          <div class="proj-actions"><button class="btn btn-sm" type="button" data-case><span data-i18n="work.read">Read the case</span></button></div>
         </div>
-
-        <div class="project-card" data-id="PROJECT_03">
-          <div class="proj-title">▸ Network Configuration &amp; Troubleshooting Demo</div>
-          <div class="proj-tools">
-            <span class="tag">Static IP Config</span>
-            <span class="tag">DNS</span>
-            <span class="tag">Wireshark</span>
-            <span class="tag">diagrams.net</span>
-            <span class="tag">Router Admin</span>
-          </div>
-          <div class="proj-desc">
-            Documented hands-on home network configuration tasks.<br>
-            Tasks: Static IP assignment, DNS configuration, ping failure diagnosis, router admin setup, network map diagram creation.<br>
-            Outcome: Full network topology diagram + packet capture samples with annotated analysis.
-          </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.login.desc">Diagnosing and fixing a Windows account that can't sign in.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.login.c1">Starting Windows in Safe Mode to regain access.</li>
+            <li data-i18n="work.login.c2">Resetting the affected account.</li>
+            <li data-i18n="work.login.c3">Reading the event logs to find the cause.</li>
+            <li data-i18n="work.login.c4">A preventive policy so it doesn't happen again.</li>
+          </ul>
         </div>
+      </article>
 
-        <div class="project-card" data-id="PROJECT_04">
-          <div class="proj-title">▸ Print Spool Management Program (SPEOS)</div>
-          <div class="proj-tools">
-            <span class="tag">Java</span>
-            <span class="tag">Git</span>
-            <span class="tag">Jenkins</span>
-            <span class="tag">QA Testing</span>
-          </div>
-          <div class="proj-desc">
-            Contributed to internal automation tool for print job queue management at SPEOS.<br>
-            Tasks: Feature development, code versioning, build pipeline management, cross-team troubleshooting.<br>
-            Outcome: Reduced print job errors, improved production flow efficiency.
-          </div>
+      <!-- Home lab -->
+      <article class="proj proj-wide" data-cat="infra" data-skills="vbox winserver ad gpo">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <rect class="fs" x="190" y="34" width="100" height="50" rx="8"/>
+            <path class="l" d="M206 52h68M206 66h40"/>
+            <circle class="fa" cx="268" cy="66" r="4"/>
+            <path class="l" d="M240 84v34M100 118h280M100 118v38M240 118v38M380 118v38"/>
+            <rect class="a-dash-box" x="40" y="140" width="400" height="96" rx="10"/>
+            <g class="fs"><rect x="60" y="156" width="80" height="48" rx="7"/><rect x="200" y="156" width="80" height="48" rx="7"/><rect x="340" y="156" width="80" height="48" rx="7"/></g>
+            <path class="l" d="M74 214h52M214 214h52M354 214h52" />
+            <path class="l" d="M76 172h48M216 172h48M356 172h48"/>
+          </svg>
         </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.lab.type">Home lab</p>
+          <h3 data-i18n="work.lab.title">Virtual IT support home lab</h3>
+          <p data-i18n="work.lab.desc">A virtual lab for practising IT support on a Windows Server domain.</p>
+          <ul class="tags"><li>VirtualBox</li><li>Windows Server</li><li>Active Directory</li><li>Group Policy</li></ul>
+          <div class="proj-actions"><button class="btn btn-sm" type="button" data-case><span data-i18n="work.read">Read the case</span></button></div>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.lab.desc">A virtual lab for practising IT support on a Windows Server domain.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.lab.c1">Windows Server running Active Directory in VirtualBox.</li>
+            <li data-i18n="work.lab.c2">Group Policy to manage settings on the client machines.</li>
+            <li data-i18n="work.lab.c3">A safe place to reproduce typical help-desk problems.</li>
+          </ul>
+        </div>
+      </article>
 
-      </div>
+      <!-- Network -->
+      <article class="proj proj-wide" data-cat="infra" data-skills="network capture diagnostics">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <rect class="fs" x="40" y="44" width="76" height="52" rx="8"/>
+            <path class="l" d="M56 112h44M78 96v16"/>
+            <rect class="fs" x="198" y="56" width="104" height="30" rx="6"/>
+            <g class="fi"><rect x="208" y="66" width="10" height="10" rx="2"/><rect x="226" y="66" width="10" height="10" rx="2"/><rect x="244" y="66" width="10" height="10" rx="2"/><rect x="262" y="66" width="10" height="10" rx="2"/></g>
+            <circle class="fa" cx="288" cy="71" r="4"/>
+            <rect class="fs" x="372" y="44" width="76" height="52" rx="26"/>
+            <path class="l" d="M116 70h82M302 70h70"/>
+            <g class="fa"><circle cx="150" cy="70" r="4.500"/><circle cx="336" cy="70" r="4.500"/></g>
+            <rect class="fs" x="60" y="130" width="360" height="104" rx="10"/>
+            <path class="l" d="M60 152h360"/>
+            <path class="l soft" d="M80 174h70M170 174h60M250 174h120M80 194h50M150 194h110M280 194h90M80 214h90M190 214h40M250 214h100"/>
+            <rect class="fa soft" x="68" y="184" width="344" height="20" rx="4"/>
+            <path class="l" d="M80 194h50M150 194h110M280 194h90"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.net.type">Networking demo</p>
+          <h3 data-i18n="work.net.title">Network configuration and troubleshooting</h3>
+          <p data-i18n="work.net.desc">Configuring a small network and tracing problems down to the packet.</p>
+          <ul class="tags"><li data-i18n="work.net.t1">Static IP</li><li>DNS</li><li data-i18n="work.net.t3">Packet capture</li></ul>
+          <div class="proj-actions"><button class="btn btn-sm" type="button" data-case><span data-i18n="work.read">Read the case</span></button></div>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.net.desc">Configuring a small network and tracing problems down to the packet.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.net.c1">Static IP addressing and DNS configuration.</li>
+            <li data-i18n="work.net.c2">Diagnosing connectivity with ping and packet captures.</li>
+            <li data-i18n="work.net.c3">A network diagram documenting the setup.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Print spool -->
+      <article class="proj proj-wide" data-cat="software" data-skills="java git jenkins agile sdlc">
+        <div class="cover" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+            <rect class="fs" x="52" y="150" width="70" height="86" rx="5"/>
+            <rect class="fs" x="68" y="134" width="70" height="86" rx="5"/>
+            <rect class="fs" x="84" y="118" width="70" height="86" rx="5"/>
+            <rect class="fa soft" x="84" y="118" width="70" height="86" rx="5"/>
+            <path class="l" d="M98 140h42M98 154h42M98 168h28"/>
+            <path class="a-dash" d="M170 160h74"/>
+            <path class="a" d="m238 153 8 7-8 7"/>
+            <rect class="fs" x="270" y="124" width="150" height="78" rx="10"/>
+            <rect class="fs" x="296" y="92" width="98" height="32" rx="4"/>
+            <rect class="fs" x="306" y="196" width="78" height="46" rx="3"/>
+            <path class="l" d="M318 212h54M318 224h40"/>
+            <circle class="fa" cx="398" cy="146" r="5"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.spool.type">Internal tool, SPEOS</p>
+          <h3 data-i18n="work.spool.title">Print spool management program</h3>
+          <p data-i18n="work.spool.desc">A tool that automates print-queue management, built during my interim at SPEOS.</p>
+          <ul class="tags"><li>Java</li><li>Git</li><li>Jenkins</li></ul>
+          <div class="proj-actions"><button class="btn btn-sm" type="button" data-case><span data-i18n="work.read">Read the case</span></button></div>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.spool.desc">A tool that automates print-queue management, built during my interim at SPEOS.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.spool.c1">Automates print-queue management for internal use.</li>
+            <li data-i18n="work.spool.c2">Versioned with Git and built through Jenkins.</li>
+            <li data-i18n="work.spool.c3">Tested with QA and operations, with test builds deployed across environments.</li>
+          </ul>
+        </div>
+      </article>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="terminal-window">
-      <div class="term-titlebar">cat ./contact.json<span class="cursor"></span></div>
-      <div class="term-body">
-        <div class="cmd-line">echo "Open to: IT Support | Web Dev | Junior Dev roles"</div>
-        <p class="output-text" style="margin-bottom:18px;">Available for full-time, part-time, or freelance. Comfortable in FR/EN environments. Based in Jette, Brussels — open to remote and on-site.</p>
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="c-label">// PHONE</div>
-            <div class="c-value">+32 475 612 116</div>
-          </div>
-          <div class="contact-item">
-            <div class="c-label">// EMAIL</div>
-            <div class="c-value">yas.zirari@gmail.com</div>
-          </div>
-          <div class="contact-item">
-            <div class="c-label">// LOCATION</div>
-            <div class="c-value">47 Avenue Odon Warland<br>1090 Jette, Brussels</div>
-          </div>
-          <div class="contact-item">
-            <div class="c-label">// STATUS</div>
-            <div class="c-value" style="color:var(--green);">● ACTIVELY LOOKING</div>
-          </div>
-        </div>
-      </div>
+<!-- ============ SKILLS ============ -->
+<section class="section split alt" id="skills" aria-labelledby="skills-title">
+  <div class="wrap split-in">
+    <div class="split-head">
+      <h2 id="skills-title" data-i18n="skills.title">Skills</h2>
+      <p class="sub" data-i18n="skills.sub">Select a skill to highlight where I've used it.</p>
     </div>
-  </section>
+    <dl class="spec">
+      <div class="spec-row">
+        <dt data-i18n="skills.prog">Programming and software</dt>
+        <dd>
+          <button class="chip" type="button" data-skill="java">Java</button>
+          <button class="chip" type="button" data-skill="python">Python</button>
+          <button class="chip" type="button" data-skill="csharp">C#</button>
+          <button class="chip" type="button" data-skill="oop"><span data-i18n="skills.oop">OOP</span></button>
+          <button class="chip" type="button" data-skill="sdlc">SDLC</button>
+          <button class="chip" type="button" data-skill="agile">Agile</button>
+          <button class="chip" type="button" data-skill="git">Git</button>
+        </dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="skills.web">Web</dt>
+        <dd>
+          <button class="chip" type="button" data-skill="html">HTML</button>
+          <button class="chip" type="button" data-skill="css">CSS</button>
+          <button class="chip" type="button" data-skill="js">JavaScript</button>
+          <button class="chip" type="button" data-skill="react">React</button>
+          <button class="chip" type="button" data-skill="angular">Angular</button>
+          <button class="chip" type="button" data-skill="chromeext"><span data-i18n="skills.chromeext">Chrome extensions</span></button>
+        </dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="skills.db">Databases</dt>
+        <dd>
+          <button class="chip" type="button" data-skill="sql">SQL</button>
+          <button class="chip" type="button" data-skill="dbdesign"><span data-i18n="skills.dbdesign">Database design</span></button>
+          <button class="chip" type="button" data-skill="datamodel"><span data-i18n="skills.datamodel">Data modeling</span></button>
+        </dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="skills.it">IT support and hardware</dt>
+        <dd>
+          <button class="chip" type="button" data-skill="hardware"><span data-i18n="skills.hardware">PC assembly, upgrade and repair</span></button>
+          <button class="chip" type="button" data-skill="diagnostics"><span data-i18n="skills.diagnostics">Hardware diagnostics</span></button>
+          <button class="chip" type="button" data-skill="network"><span data-i18n="skills.network">LAN / Wi-Fi</span></button>
+          <button class="chip" type="button" data-skill="optimization"><span data-i18n="skills.optimization">System optimization</span></button>
+          <button class="chip" type="button" data-skill="security"><span data-i18n="skills.security">Basic security</span></button>
+        </dd>
+      </div>
+      <div class="spec-row">
+        <dt data-i18n="skills.tools">Tools and platforms</dt>
+        <dd>
+          <button class="chip" type="button" data-skill="winserver">Windows Server</button>
+          <button class="chip" type="button" data-skill="ad">Active Directory</button>
+          <button class="chip" type="button" data-skill="gpo">Group Policy</button>
+          <button class="chip" type="button" data-skill="powershell">PowerShell</button>
+          <button class="chip" type="button" data-skill="vbox">VirtualBox</button>
+          <button class="chip" type="button" data-skill="capture"><span data-i18n="skills.capture">Packet capture</span></button>
+          <button class="chip" type="button" data-skill="jenkins">Jenkins</button>
+          <button class="chip" type="button" data-skill="threejs">Three.js</button>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
 
-  <footer class="footer">
-    <span>ZIRARI.YASSÎN © 2025 // ALL RIGHTS RESERVED</span>
-    <span>sys.portfolio v2.0 — node: BRUSSELS-01 — <span id="clock"></span></span>
-  </footer>
+<!-- ============ EDUCATION ============ -->
+<section class="section split" id="education" aria-labelledby="edu-title">
+  <div class="wrap split-in">
+    <div class="split-head"><h2 id="edu-title" data-i18n="edu.title">Education and languages</h2></div>
+    <div class="edu">
+      <div class="edu-school">
+        <h3>EPFC, Université Libre de Bruxelles (ULB)</h3>
+        <p class="edu-degree">Bachelor of Analyst Programmer</p>
+        <p data-i18n="edu.focus">Software engineering, systems and web development.</p>
+      </div>
+      <ul class="langs">
+        <li><span data-i18n="lang.fr">French</span><span class="meter" data-level="3" role="img" data-i18n-attr="aria-label:lang.fluent"><i></i><i></i><i></i></span><em data-i18n="lang.fluent">Fluent</em></li>
+        <li><span data-i18n="lang.en">English</span><span class="meter" data-level="3" role="img" data-i18n-attr="aria-label:lang.fluent"><i></i><i></i><i></i></span><em data-i18n="lang.fluent">Fluent</em></li>
+        <li><span data-i18n="lang.nl">Dutch</span><span class="meter" data-level="1" role="img" data-i18n-attr="aria-label:lang.basics"><i></i><i></i><i></i></span><em data-i18n="lang.basics">Basics</em></li>
+        <li><span data-i18n="lang.ar">Arabic</span><span class="meter" data-level="1" role="img" data-i18n-attr="aria-label:lang.basics"><i></i><i></i><i></i></span><em data-i18n="lang.basics">Basics</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-in">
+    <div class="contact-intro">
+      <h2 id="contact-title" data-i18n="contact.title">Contact</h2>
+      <p class="lead" data-i18n="contact.lead">Open to IT support, web development and junior developer roles: full-time, part-time or freelance, remote or on site.</p>
+      <ul class="reach">
+        <li>
+          <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>
+          <a href="mailto:yas.zirari@gmail.com">yas.zirari@gmail.com</a>
+          <button class="copy" type="button" data-copy="yas.zirari@gmail.com" data-toast="toast.email" data-i18n-attr="aria-label:contact.copyEmail"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg></button>
+        </li>
+        <li>
+          <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>
+          <a href="tel:+32475612116">+32 475 612 116</a>
+          <button class="copy" type="button" data-copy="+32 475 612 116" data-toast="toast.phone" data-i18n-attr="aria-label:contact.copyPhone"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg></button>
+        </li>
+        <li>
+          <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
+          <span data-i18n="contact.place">Jette, Brussels, Belgium</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="contact-form" novalidate>
+      <label>
+        <span data-i18n="form.name">Name</span>
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>
+        <span data-i18n="form.email">Email</span>
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        <span data-i18n="form.message">Message</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span data-i18n="form.send">Send by email</span></button>
+        <p class="note" data-i18n="form.note">Opens your email app with the message ready to send.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© <span id="year">2026</span> Zirari Yassîn</p>
+    <p class="foot-mid" data-i18n="foot.built">Built by hand with HTML, CSS and JavaScript.</p>
+    <p class="foot-tools">
+      <button type="button" class="link-btn" data-open-term><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg><span data-i18n="foot.term">Open terminal</span></button>
+      <a class="link-btn" href="#top"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg><span data-i18n="foot.top">Back to top</span></a>
+    </p>
+  </div>
+</footer>
+
+<!-- Active skill filter -->
+<div class="filter-pill" id="filter-pill" hidden>
+  <span data-i18n="ui.highlighting">Highlighting</span> <strong id="filter-name"></strong>
+  <button type="button" id="filter-show" class="pill-show" data-i18n="ui.show">Show</button>
+  <button type="button" id="filter-clear" data-i18n-attr="aria-label:ui.clear"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
 </div>
 
-<script src="script.js"></script>
+<!-- Case study dialog -->
+<dialog class="modal" id="case-dialog" aria-labelledby="case-title">
+  <div class="modal-in">
+    <button class="icon-btn modal-close" type="button" data-close data-i18n-attr="aria-label:ui.close"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <p class="proj-type" id="case-type"></p>
+    <h3 id="case-title"></h3>
+    <div id="case-body"></div>
+    <ul class="tags" id="case-tags"></ul>
+  </div>
+</dialog>
+
+<!-- Command palette -->
+<dialog class="palette" id="palette" aria-label="Command menu" data-i18n-attr="aria-label:ui.openMenu">
+  <div class="pal-in">
+    <div class="pal-field">
+      <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="pal-input" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" data-i18n-attr="placeholder:ui.palettePlaceholder" placeholder="Search sections, projects and actions">
+      <kbd>Esc</kbd>
+    </div>
+    <ul id="pal-list" role="listbox"></ul>
+    <p class="pal-empty" id="pal-empty" hidden data-i18n="ui.noResults">No matches. Try another word.</p>
+  </div>
+</dialog>
+
+<!-- Terminal -->
+<aside class="term" id="term" aria-label="Terminal" inert>
+  <div class="term-bar">
+    <span class="term-title">visitor@zirari: ~</span>
+    <button class="term-x" type="button" data-close-term data-i18n-attr="aria-label:ui.close"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="term-out" id="term-out" role="log" aria-live="polite"></div>
+  <label class="term-line">
+    <span class="term-prompt" aria-hidden="true">$</span>
+    <input id="term-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command">
+  </label>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="zy/js/i18n.js" defer></script>
+<script src="zy/js/network.js" defer></script>
+<script src="zy/js/app.js" defer></script>
 </body>
 </html>
