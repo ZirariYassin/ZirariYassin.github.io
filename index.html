@@ -51,7 +51,7 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Brussels", "addressCountry": "BE" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "EPFC, Université Libre de Bruxelles" },
   "knowsLanguage": ["fr", "en", "nl", "ar"],
-  "knowsAbout": ["IT support", "Hardware repair", "Networking", "PowerShell", "Active Directory", "Java", "Python", "C#", "ASP.NET Core", "JavaScript", "Chrome extensions", "React", "Angular", "SQL"]
+  "knowsAbout": ["IT support", "Hardware repair", "Networking", "PowerShell", "Active Directory", "Java", "Python", "C#", "ASP.NET Core", "Django", "JavaScript", "Chrome extensions", "React", "Angular", "SQL"]
 }
 </script>
 </head>
@@ -182,7 +182,7 @@
     </div>
     <div>
       <h3 data-i18n="focus.softwareTitle">Software</h3>
-      <p data-i18n="focus.softwareBody">Java, Python and C#, with OOP, Agile and Git. I built HelpDesk, an IT ticketing app on ASP.NET Core, and at SPEOS I worked on a print-spool program built through Jenkins.</p>
+      <p data-i18n="focus.softwareBody">Java, Python and C#, with OOP, Agile and Git. I built HelpDesk, an IT ticketing app on ASP.NET Core, and AssetTrack, an equipment inventory in Django. At SPEOS I worked on a print-spool program built through Jenkins.</p>
     </div>
     <div>
       <h3 data-i18n="focus.webTitle">Web</h3>
@@ -298,7 +298,7 @@
     <div class="proj-head">
       <div>
         <h2 id="proj-title" data-i18n="work.title">Projects</h2>
-        <p class="sub" data-i18n="work.sub">Two flagship applications, two browser games you can play, and four IT and development projects.</p>
+        <p class="sub" data-i18n="work.sub">Three flagship projects, two browser games you can play, and four IT and development projects.</p>
       </div>
       <div class="filters" role="group" aria-label="Filter projects" data-i18n-attr="aria-label:work.filterLabel">
         <button type="button" data-filter="all" aria-pressed="true" data-i18n="work.fAll">All</button>
@@ -362,8 +362,55 @@
         </div>
       </article>
 
+      <!-- AssetTrack -->
+      <article class="proj proj-lead proj-flip" data-cat="software" data-skills="python django sql postgres js">
+        <div class="cover cover-asset" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
+            <rect class="fs" x="30" y="92" width="100" height="64" rx="7"/>
+            <path class="l" d="M42 108h46M42 120h30"/><circle class="fa" cx="114" cy="108" r="4"/>
+            <rect class="fs" x="16" y="156" width="128" height="10" rx="5"/>
+            <rect class="fs" x="96" y="124" width="24" height="24" rx="4"/><rect class="fa soft" x="96" y="124" width="24" height="24" rx="4"/><path class="l" d="M102 132h12M102 140h8"/>
+            <path class="a-dash" d="M146 128h14"/><path class="a" d="m156 122 6 6-6 6"/>
+            <rect class="fs" x="170" y="46" width="140" height="156" rx="10"/>
+            <rect class="fs" x="191" y="63" width="25" height="25" rx="3"/><rect class="fi" x="199" y="71" width="9" height="9" rx="1.500"/><rect class="fs" x="263" y="63" width="25" height="25" rx="3"/><rect class="fi" x="271" y="71" width="9" height="9" rx="1.500"/><rect class="fs" x="191" y="135" width="25" height="25" rx="3"/><rect class="fi" x="199" y="143" width="9" height="9" rx="1.500"/><path class="fi" d="M226 62h9v9h-9zM226 71h9v9h-9zM226 80h9v9h-9zM235 89h9v9h-9zM244 89h9v9h-9zM190 98h9v9h-9zM217 98h9v9h-9zM262 98h9v9h-9zM271 98h9v9h-9zM190 107h9v9h-9zM199 107h9v9h-9zM208 107h9v9h-9zM217 107h9v9h-9zM226 107h9v9h-9zM235 107h9v9h-9zM271 107h9v9h-9zM190 116h9v9h-9zM199 116h9v9h-9zM244 116h9v9h-9zM253 116h9v9h-9zM262 116h9v9h-9zM271 116h9v9h-9zM226 125h9v9h-9zM244 125h9v9h-9zM271 125h9v9h-9zM280 125h9v9h-9zM235 134h9v9h-9zM253 134h9v9h-9zM262 134h9v9h-9zM226 143h9v9h-9zM235 143h9v9h-9zM244 143h9v9h-9zM271 143h9v9h-9zM280 143h9v9h-9zM226 152h9v9h-9zM235 152h9v9h-9zM253 152h9v9h-9zM271 152h9v9h-9zM280 152h9v9h-9z"/>
+            <path class="l" d="M190 178h56M190 190h32"/>
+            <rect class="fa" x="184" y="60" width="112" height="3" rx="1.500"><animateTransform attributeName="transform" type="translate" calcMode="spline" values="0 0;0 98;0 0" keyTimes="0;.5;1" keySplines=".45 0 .55 1;.45 0 .55 1" dur="3.6s" repeatCount="indefinite"/></rect>
+            <path class="a-dash" d="M314 114h8"/><path class="a" d="m320 108 6 6-6 6"/>
+            <rect class="fs" x="330" y="46" width="126" height="40" rx="6"/><rect class="fs" x="339" y="56" width="20" height="20" rx="4"/><path class="l" d="M369 61h52M369 73h30"/><circle class="fa" cx="446" cy="66" r="4"/><rect class="fs" x="330" y="94" width="126" height="40" rx="6"/><rect class="fs" x="339" y="104" width="20" height="20" rx="4"/><path class="l" d="M369 109h52M369 121h30"/><circle class="fa" cx="446" cy="114" r="4"/><rect class="fs" x="330" y="142" width="126" height="40" rx="6"/><rect class="fs" x="339" y="152" width="20" height="20" rx="4"/><path class="l" d="M369 157h52M369 169h30"/><circle class="fs" cx="446" cy="162" r="4"/><rect class="fs" x="330" y="190" width="126" height="40" rx="6"/><rect class="fs" x="339" y="200" width="20" height="20" rx="4"/><path class="l" d="M369 205h52M369 217h30"/><circle class="fa" cx="446" cy="210" r="4"/>
+            <rect class="fa soft" x="330" y="94" width="126" height="40" rx="6"><animate attributeName="opacity" values="1;0;0;1;1" keyTimes="0;.04;.5;.62;1" dur="3.6s" repeatCount="indefinite"/></rect>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.asset.type">IT management tool</p>
+          <h3 data-i18n="work.asset.title">AssetTrack: IT asset inventory</h3>
+          <p data-i18n="work.asset.desc">An inventory system for companies to track computers, monitors, peripherals and other IT equipment.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul class="covers">
+            <li data-i18n="work.asset.c1">Hardware inventory with serial numbers.</li>
+            <li data-i18n="work.asset.c2">QR code generation for equipment identification.</li>
+            <li data-i18n="work.asset.c3">Assignment of devices to employees.</li>
+            <li data-i18n="work.asset.c4">Maintenance and repair history.</li>
+            <li data-i18n="work.asset.c5">Warranty and lifecycle tracking.</li>
+            <li data-i18n="work.asset.c6">Searchable inventory with export to CSV.</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>JavaScript</li><li>QR Codes</li><li>CRUD</li></ul>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.asset.desc">An inventory system for companies to track computers, monitors, peripherals and other IT equipment.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.asset.c1">Hardware inventory with serial numbers.</li>
+            <li data-i18n="work.asset.c2">QR code generation for equipment identification.</li>
+            <li data-i18n="work.asset.c3">Assignment of devices to employees.</li>
+            <li data-i18n="work.asset.c4">Maintenance and repair history.</li>
+            <li data-i18n="work.asset.c5">Warranty and lifecycle tracking.</li>
+            <li data-i18n="work.asset.c6">Searchable inventory with export to CSV.</li>
+          </ul>
+        </div>
+      </article>
+
       <!-- SysAdmin Toolkit -->
-      <article class="proj proj-lead proj-flip" data-cat="infra" data-skills="powershell winserver ad gpo automation">
+      <article class="proj proj-lead" data-cat="infra" data-skills="powershell winserver ad gpo automation">
         <div class="cover cover-sysadmin" aria-hidden="true">
           <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
             <rect class="fs" x="24" y="70" width="96" height="130" rx="7"/>
@@ -625,6 +672,7 @@
         <dd>
           <button class="chip" type="button" data-skill="java">Java</button>
           <button class="chip" type="button" data-skill="python">Python</button>
+          <button class="chip" type="button" data-skill="django">Django</button>
           <button class="chip" type="button" data-skill="csharp">C#</button>
           <button class="chip" type="button" data-skill="aspnet">ASP.NET Core</button>
           <button class="chip" type="button" data-skill="oop"><span data-i18n="skills.oop">OOP</span></button>
@@ -650,6 +698,7 @@
         <dt data-i18n="skills.db">Databases</dt>
         <dd>
           <button class="chip" type="button" data-skill="sql">SQL</button>
+          <button class="chip" type="button" data-skill="postgres">PostgreSQL</button>
           <button class="chip" type="button" data-skill="dbdesign"><span data-i18n="skills.dbdesign">Database design</span></button>
           <button class="chip" type="button" data-skill="datamodel"><span data-i18n="skills.datamodel">Data modeling</span></button>
         </dd>

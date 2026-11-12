@@ -52,7 +52,7 @@
     "focus.supportTitle": "Support et matériel",
     "focus.supportBody": "Je monte, mets à niveau et répare des PC (plus de 100 à ce jour), diagnostique les pannes matérielles, LAN ou Wi-Fi, et optimise les systèmes et la sécurité de base. J'automatise aussi l'administration Windows avec PowerShell.",
     "focus.softwareTitle": "Logiciel",
-    "focus.softwareBody": "Java, Python et C#, avec POO, Agile et Git. J'ai développé HelpDesk, une application de tickets IT sur ASP.NET Core, et chez SPEOS j'ai travaillé sur un programme de gestion de spool d'impression construit avec Jenkins.",
+    "focus.softwareBody": "Java, Python et C#, avec POO, Agile et Git. J'ai développé HelpDesk, une application de tickets IT sur ASP.NET Core, et AssetTrack, un inventaire d'équipements sous Django. Chez SPEOS, j'ai travaillé sur un programme de gestion de spool d'impression construit avec Jenkins.",
     "focus.webTitle": "Web",
     "focus.webBody": "Sites clients en HTML, CSS et JavaScript, ainsi que React et Angular. J'ai développé des extensions Chrome pour une entreprise de médias et des jeux navigateur avec Three.js.",
 
@@ -90,7 +90,7 @@
     "exp.okay.b3": "Travail en équipe pour assurer le fonctionnement du magasin et atteindre les objectifs quotidiens.",
 
     "work.title": "Projets",
-    "work.sub": "Deux applications phares, deux jeux jouables dans le navigateur et quatre projets IT et de développement.",
+    "work.sub": "Trois projets phares, deux jeux jouables dans le navigateur et quatre projets IT et de développement.",
     "work.filterLabel": "Filtrer les projets",
     "work.fAll": "Tous",
     "work.fGames": "Jeux",
@@ -154,6 +154,15 @@
     "work.sys.c5": "Informations sur les PC et diagnostics système.",
     "work.sys.c6": "Rapports automatiques et journalisation des erreurs.",
     "work.sys.t5": "Automatisation",
+    "work.asset.type": "Outil de gestion IT",
+    "work.asset.title": "AssetTrack : inventaire du parc informatique",
+    "work.asset.desc": "Un système d'inventaire pour que les entreprises suivent leurs ordinateurs, écrans, périphériques et autres équipements informatiques.",
+    "work.asset.c1": "Inventaire du matériel avec numéros de série.",
+    "work.asset.c2": "Génération de QR codes pour identifier les équipements.",
+    "work.asset.c3": "Attribution des appareils aux employés.",
+    "work.asset.c4": "Historique de maintenance et de réparation.",
+    "work.asset.c5": "Suivi des garanties et du cycle de vie.",
+    "work.asset.c6": "Inventaire consultable avec export CSV.",
 
     "skills.title": "Compétences",
     "skills.sub": "Sélectionnez une compétence pour voir où je l'ai utilisée.",
@@ -194,7 +203,6 @@
     "form.note": "Ouvre votre application e-mail avec le message prêt à envoyer.",
     "form.errRequired": "Renseignez votre nom, votre e-mail et votre message.",
     "form.errEmail": "Saisissez une adresse e-mail valide.",
-    "foot.built": "Fait à la main en HTML, CSS et JavaScript.",
     "foot.term": "Ouvrir le terminal",
     "foot.top": "Haut de page",
 
