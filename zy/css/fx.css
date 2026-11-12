@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Motion layer
+   Progressive enhancement: every rule that moves something is gated on html.fx
+   (added by fx.js) and on prefers-reduced-motion, so the page is complete without it.
+   ========================================================================== */
+
+@layer motion {
+
+  /* ---------- Tokens for the hero background ---------- */
+  :root { --aurora-a: #9DBFEA; --aurora-b: #FFC677; --aurora-k: .5; }
+  :root[data-theme="dark"] { --aurora-a: #174C86; --aurora-b: #B8741A; --aurora-k: .62; }
+
+  /* ---------- Hero: GPU background + scroll depth ---------- */
+  .aurora {
+    position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none;
+    transform: translate3d(0, calc(var(--sy, 0) * .3px), 0) scale(1.1); transform-origin: 50% 0;
+  }
+  html.fx .stage { transform: translate3d(0, calc(var(--sy, 0) * .14px), 0); }
+  html.fx .hero-copy {
+    transform: translate3d(0, calc(var(--sy, 0) * -.05px), 0);
+    opacity: clamp(.35, calc(1 - var(--sy, 0) / 1100), 1);
+  }
+
+  /* ---------- Technology ticker ---------- */
+  .marquee {
+    position: relative; display: grid; gap: clamp(6px, 1vw, 14px); overflow: hidden;
+    padding-block: clamp(20px, 2.8vw, 36px); border-top: 1px solid var(--line);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .mq-row { display: flex; width: max-content; min-width: 100%; will-change: transform; }
+  .mq-track { display: flex; flex: none; gap: clamp(28px, 4vw, 56px); padding-right: clamp(28px, 4vw, 56px); }
+  .mq-i {
+    display: inline-flex; align-items: center; gap: .5em; white-space: nowrap;
+    font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3.3vw, 2.6rem);
+    letter-spacing: -.03em; line-height: 1.15; color: var(--ink);
+  }
+  .mq-i .dot { width: .3em; height: .3em; flex: none; }
+  .mq-alt .mq-i { color: transparent; -webkit-text-stroke: 1.2px var(--ink-3); }
+
+  /* ---------- Contact: reactive dot grid ---------- */
+  .contact { position: relative; overflow: hidden; }
+  .dotgrid { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+  .contact-in { position: relative; z-index: 1; }
+
+  /* ---------- Project art: the base shapes ---------- */
+  .cover .halo { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .cover .spd { fill: var(--ink); font-family: var(--font-display); font-variant-numeric: tabular-nums; opacity: .85; }
+  .cover-inconito .fi { transform: translate(var(--ex, 0px), var(--ey, 0px)); transition: transform .18s ease-out; }
+
+  /* ---------- Section headings: a wipe on first view ---------- */
+  html.fx h2[data-wipe] {
+    clip-path: inset(-.1em 100% -.25em -.1em); translate: -16px 0;
+    transition: clip-path .9s var(--ease), translate .9s var(--ease);
+  }
+  html.fx h2[data-wipe].in-view { clip-path: inset(-.1em -.1em -.25em -.1em); translate: 0 0; }
+
+  /* ---------- Experience: a signal that travels down the timeline ---------- */
+  html.fx .roles { position: relative; --rail-x: -30px; --role-off: 0px; }
+  html.fx .roles::before { content: ""; position: absolute; left: var(--rail-x); top: 6px; bottom: 6px; width: 2px; border-radius: 2px; background: var(--line); }
+  html.fx .roles .rail {
+    position: absolute; left: var(--rail-x); top: 6px; width: 2px; border-radius: 2px;
+    height: calc((100% - 12px) * var(--p, 0)); background: var(--accent);
+  }
+  html.fx .roles .rail::after {
+    content: ""; position: absolute; left: 50%; bottom: -6px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 26%, transparent), 0 0 22px 4px color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  html.fx .role { position: relative; }
+  html.fx .role::before {
+    content: ""; position: absolute; top: 40px; left: calc(var(--rail-x) - var(--role-off) - 5px);
+    width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line-2);
+    transition: background .3s, border-color .3s, box-shadow .3s;
+  }
+  html.fx .role:first-child::before { top: 8px; }
+  html.fx .role.is-reached::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent); }
+  html.fx .role li { opacity: .35; translate: -10px 0; transition: opacity .6s var(--ease), translate .6s var(--ease); transition-delay: calc(var(--i, 0) * 80ms + 100ms); }
+  html.fx .role.is-reached li { opacity: 1; translate: 0 0; }
+  @media (max-width: 860px) {
+    html.fx .roles { --rail-x: 0px; --role-off: 28px; padding-left: 28px; }
+  }
+  @media (max-width: 600px) {
+    html.fx .role::before { top: 34px; }
+    html.fx .role:first-child::before { top: 6px; }
+  }
+
+  /* ---------- Everything that moves on its own ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes mq { to { transform: translateX(-100%); } }
+    html.fx .mq-track { animation: mq 46s linear infinite; }
+    html.fx .mq-alt .mq-track { animation-duration: 58s; animation-direction: reverse; }
+    html.fx .marquee.is-paused .mq-track { animation-play-state: paused; }
+
+    /* Project art only animates while it is on screen (fx.js toggles .live). */
+    @keyframes flow { to { stroke-dashoffset: -10; } }
+    @keyframes ants { to { stroke-dashoffset: -12; } }
+    @keyframes halo { 0% { opacity: .75; transform: scale(1); } 100% { opacity: 0; transform: scale(1.9); } }
+    @keyframes ledblink { 50% { opacity: .22; } }
+    @keyframes bob { 50% { transform: translateY(-6px); } }
+    @keyframes road { to { transform: translateY(16px); } }
+    @keyframes suspect { 0% { stroke: var(--ink); stroke-width: 2; } 7%, 17% { stroke: var(--accent); stroke-width: 4.5; } 30%, 100% { stroke: var(--ink); stroke-width: 2; } }
+    @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+    @keyframes typed { 0% { opacity: 0; } 4%, 70% { opacity: 1; } 80%, 100% { opacity: 0; } }
+    @keyframes shake {
+      0%, 62% { opacity: 0; transform: translateX(0); }
+      64% { opacity: 1; transform: translateX(-4px); } 68% { transform: translateX(4px); } 72% { transform: translateX(-3px); } 76% { transform: translateX(3px); }
+      80%, 90% { opacity: 1; transform: translateX(0); } 97%, 100% { opacity: 0; transform: translateX(0); }
+    }
+    @keyframes fieldfail { 0%, 62% { stroke: var(--ink); } 64%, 90% { stroke: var(--accent); } 97%, 100% { stroke: var(--ink); } }
+    @keyframes scan {
+      0%, 26% { transform: translateY(-20px); } 33%, 59% { transform: translateY(0); } 66%, 92% { transform: translateY(20px); } 100% { transform: translateY(-20px); }
+    }
+
+    html.fx .cover.live .a-dash path, html.fx .cover.live path.a-dash { animation: flow 1.1s linear infinite; }
+    html.fx .cover.live .a-dash-box { animation: ants 1.4s linear infinite; }
+    html.fx .cover.live .halo { animation: halo 2.6s ease-out infinite; }
+    html.fx .cover.live .led { animation: ledblink 1.8s ease-in-out infinite; }
+
+    html.fx .cover-inconito.live g.fs > circle { animation: suspect 8s ease-in-out infinite; }
+    html.fx .cover-inconito.live g.fs > circle:nth-child(2) { animation-delay: 1.6s; }
+    html.fx .cover-inconito.live g.fs > circle:nth-child(3) { animation-delay: 3.2s; }
+    html.fx .cover-inconito.live g.fs > circle:nth-child(4) { animation-delay: 4.8s; }
+    html.fx .cover-inconito.live g.fs > circle:nth-child(5) { animation-delay: 6.4s; }
+    html.fx .cover-inconito.live .fi circle { transform-box: fill-box; transform-origin: center; animation: blink 5.5s infinite; }
+    html.fx .cover-inconito.live .fi circle:nth-child(3), html.fx .cover-inconito.live .fi circle:nth-child(4) { animation-delay: 1.1s; }
+    html.fx .cover-inconito.live .fi circle:nth-child(5), html.fx .cover-inconito.live .fi circle:nth-child(6) { animation-delay: 2.2s; }
+    html.fx .cover-inconito.live .fi circle:nth-child(7), html.fx .cover-inconito.live .fi circle:nth-child(8) { animation-delay: 3.3s; }
+    html.fx .cover-inconito.live .fi circle:nth-child(9), html.fx .cover-inconito.live .fi circle:nth-child(10) { animation-delay: 4.4s; }
+
+    html.fx .cover-sandwake.live .sun { animation: bob 7s ease-in-out infinite; }
+    html.fx .cover-sandwake.live .road { animation: road .9s cubic-bezier(.45, 0, 1, 1) infinite; }
+
+    html.fx .cover-login.live .pw circle { animation: typed 5.2s infinite both; }
+    html.fx .cover-login.live .pw circle:nth-child(2) { animation-delay: .35s; }
+    html.fx .cover-login.live .pw circle:nth-child(3) { animation-delay: .7s; }
+    html.fx .cover-login.live .pw circle:nth-child(4) { animation-delay: 1.05s; }
+    html.fx .cover-login.live .pw circle:nth-child(5) { animation-delay: 1.4s; }
+    html.fx .cover-login.live .x-badge { animation: shake 5.2s infinite; }
+    html.fx .cover-login.live rect.l { animation: fieldfail 5.2s infinite; }
+
+    html.fx .cover-net.live .scan { animation: scan 6s cubic-bezier(.6, 0, .3, 1) infinite; }
+
+    /* Cards: tilt, with the light following the pointer (set by fx.js). Individual `translate` keeps the entrance and the tilt from fighting. */
+    @keyframes rise2 { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+    html.fx .proj:not(.is-out) { animation-name: rise2; }
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    html.fx .proj {
+      transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .45s var(--ease), border-color .2s, opacity .25s;
+    }
+    html.fx .proj.is-tilting { transition: transform .08s linear, border-color .2s, opacity .25s; }
+  }
+
+  /* Light that follows the pointer on cards and the three focus columns. */
+  html.fx .proj::after, html.fx .focus > div::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 62%);
+  }
+  html.fx .focus > div { position: relative; }
+  @media (hover: hover) {
+    html.fx .proj:hover::after, html.fx .focus > div:hover::before { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.fx .role li { opacity: 1; translate: 0 0; }
+    html.fx h2[data-wipe] { clip-path: none; translate: 0 0; }
+  }
+}

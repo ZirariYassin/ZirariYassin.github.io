@@ -31,6 +31,7 @@
   var pointer = null, hover = null, running = false, visible = true, booted = false;
   var bootStart = 0, lastNow = 0, nextPacket = 0, lastCount = -1;
   var labelW = {};
+  var ripples = []; // clicks send a shockwave through the network
   var elCount = document.getElementById("net-count");
   var elTotal = document.getElementById("net-total");
   if (elTotal) elTotal.textContent = HUBS.length;
@@ -163,11 +164,24 @@
   /* ---------- simulation ---------- */
   function step(now, dt) {
     var allOn = true;
+    if (ripples.length && !reduce) {
+      for (var q = ripples.length - 1; q >= 0; q--) {
+        var rp = ripples[q], age = Math.max(0, now - rp.t0);
+        if (age > 1700) { ripples.splice(q, 1); continue; }
+        var ring = age * 0.46, fade = 1 - age / 1700;
+        for (var m = 0; m < nodes.length; m++) {
+          var nn = nodes[m]; if (!nn.online) continue;
+          var rdx = nn.x - rp.x, rdy = nn.y - rp.y, rd = Math.hypot(rdx, rdy) || 1, w = Math.abs(rd - ring);
+          if (w < 44) { var kk = (1 - w / 44) * fade; nn.vx += rdx / rd * kk * 5; nn.vy += rdy / rd * kk * 5; nn.fl = Math.max(nn.fl || 0, kk); }
+        }
+      }
+    }
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
       if (!n.online) {
         if (now - bootStart >= n.bootDelay) { n.online = true; n.at = now; } else allOn = false;
       }
+      if (n.fl) n.fl = n.fl > 0.01 ? n.fl * 0.94 : 0;
       var tx = n.hx, ty = n.hy;
       if (!reduce) {
         tx += Math.sin(now * 0.00055 + n.ph) * 5;
@@ -246,6 +260,17 @@
       ctx.fillStyle = rgba(c, 1); ctx.beginPath(); ctx.arc(x, y, 2.3, 0, 6.283); ctx.fill();
     });
 
+    // Shockwave rings
+    ripples.forEach(function (rp) {
+      var age = Math.max(0, now - rp.t0), fade = 1 - age / 1700; // rAF time can be a hair before the click time
+      if (fade <= 0) return;
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = rgba(col.infra, fade * 0.5);
+      ctx.beginPath(); ctx.arc(rp.x, rp.y, age * 0.46, 0, 6.283); ctx.stroke();
+      ctx.strokeStyle = rgba(col.code, fade * 0.28);
+      ctx.beginPath(); ctx.arc(rp.x, rp.y, age * 0.46 * 0.72, 0, 6.283); ctx.stroke();
+    });
+
     // Nodes
     nodes.forEach(function (n) {
       var c = colorOf(n);
@@ -265,6 +290,10 @@
       if (n.hub) {
         ctx.fillStyle = rgba(c, isHover ? 0.3 : 0.16);
         ctx.beginPath(); ctx.arc(n.x, n.y, r + 6, 0, 6.283); ctx.fill();
+      }
+      if (n.fl > 0.03) { // lit by a passing shockwave
+        ctx.strokeStyle = rgba(c, n.fl * 0.85); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(n.x, n.y, r + 5 + (1 - n.fl) * 12, 0, 6.283); ctx.stroke();
       }
       ctx.fillStyle = rgba(c, n.hub ? 1 : 0.75);
       ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 6.283); ctx.fill();
@@ -353,8 +382,13 @@
   });
   hero.addEventListener("pointerleave", function () { pointer = null; setHover(null); });
   hero.addEventListener("click", function (e) {
-    if (e.target.closest("a, button")) return;
+    if (e.target.closest("a, button, .hero-copy, .facts")) return;
     var p = toLocal(e);
+    if (!reduce && p.x >= 0 && p.y >= 0 && p.x <= W && p.y <= H) {
+      ripples.push({ x: p.x, y: p.y, t0: performance.now() });
+      if (ripples.length > 4) ripples.shift();
+      start();
+    }
     var hub = findHub(p.x, p.y, e.pointerType === "touch" || e.detail === 0 ? 34 : 26) || (hover);
     if (hub && window.ZY && ZY.selectSkill) ZY.selectSkill(hub.key, { scroll: true });
   });

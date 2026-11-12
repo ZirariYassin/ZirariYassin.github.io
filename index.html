@@ -27,6 +27,7 @@
 <link rel="preload" href="zy/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="zy/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="zy/css/style.css">
+<link rel="stylesheet" href="zy/css/fx.css">
 
 <script>
 /* Set the theme before first paint to avoid a flash. */
@@ -50,7 +51,7 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Brussels", "addressCountry": "BE" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "EPFC, Université Libre de Bruxelles" },
   "knowsLanguage": ["fr", "en", "nl", "ar"],
-  "knowsAbout": ["IT support", "Hardware repair", "Networking", "Java", "Python", "C#", "JavaScript", "Chrome extensions", "React", "Angular", "SQL"]
+  "knowsAbout": ["IT support", "Hardware repair", "Networking", "PowerShell", "Active Directory", "Java", "Python", "C#", "ASP.NET Core", "JavaScript", "Chrome extensions", "React", "Angular", "SQL"]
 }
 </script>
 </head>
@@ -126,6 +127,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" aria-labelledby="hero-title">
+  <canvas class="aurora" id="aurora" aria-hidden="true"></canvas>
   <div class="stage" aria-hidden="true">
     <canvas id="net"></canvas>
     <div class="stage-hud">
@@ -137,7 +139,7 @@
 
   <div class="hero-copy wrap">
     <p class="status"><i class="led" aria-hidden="true"></i><span data-i18n="hero.status">Available for work in Brussels</span></p>
-    <h1 class="name" id="hero-title"><span>Zirari</span><span>Yassîn</span></h1>
+    <h1 class="name" id="hero-title"><span>Zirari</span> <span>Yassîn</span></h1>
     <p class="hero-role" data-i18n="hero.role">IT technician &amp; software developer</p>
     <p class="lede" data-i18n="hero.lede">I build, repair and run IT systems, and write the code that sits on top of them. Trained as an analyst programmer at EPFC (ULB), working in French and English.</p>
     <div class="cta">
@@ -158,15 +160,16 @@
   </dl>
 </section>
 
+<div class="marquee" aria-hidden="true">
+  <div class="mq-row"><div class="mq-track"><span class="mq-i"><i class="dot dot-code"></i>Java</span><span class="mq-i"><i class="dot dot-code"></i>Python</span><span class="mq-i"><i class="dot dot-code"></i>C#</span><span class="mq-i"><i class="dot dot-code"></i>JavaScript</span><span class="mq-i"><i class="dot dot-code"></i>React</span><span class="mq-i"><i class="dot dot-code"></i>Angular</span><span class="mq-i"><i class="dot dot-code"></i>Three.js</span><span class="mq-i"><i class="dot dot-code"></i>HTML5 and CSS3</span><span class="mq-i"><i class="dot dot-code"></i>SQL</span><span class="mq-i"><i class="dot dot-code"></i>Git</span><span class="mq-i"><i class="dot dot-code"></i>Jenkins</span><span class="mq-i"><i class="dot dot-code"></i>Chrome extensions</span></div></div>
+  <div class="mq-row mq-alt"><div class="mq-track"><span class="mq-i"><i class="dot dot-infra"></i>Windows Server</span><span class="mq-i"><i class="dot dot-infra"></i>Active Directory</span><span class="mq-i"><i class="dot dot-infra"></i>Group Policy</span><span class="mq-i"><i class="dot dot-infra"></i>PowerShell</span><span class="mq-i"><i class="dot dot-infra"></i>VirtualBox</span><span class="mq-i"><i class="dot dot-infra"></i>LAN and Wi-Fi</span><span class="mq-i"><i class="dot dot-infra"></i>Hardware diagnostics</span><span class="mq-i"><i class="dot dot-infra"></i>PC assembly</span><span class="mq-i"><i class="dot dot-infra"></i>Packet capture</span><span class="mq-i"><i class="dot dot-infra"></i>Basic security</span></div></div>
+</div>
+
 <!-- ============ ABOUT ============ -->
 <section class="section" id="about" aria-labelledby="about-title">
-  <div class="wrap about">
-    <!-- <figure class="portrait">
-      <img src="zy/img/yassin.webp" width="448" height="448" alt="Portrait of Zirari Yassîn" decoding="async">
-      <figcaption data-i18n="about.caption">Jette, Brussels</figcaption>
-    </figure> -->
+  <div class="wrap split-in">
+    <div class="split-head"><h2 id="about-title" data-i18n="about.title">About</h2></div>
     <div class="about-text">
-      <h2 id="about-title" data-i18n="about.title">About</h2>
       <p class="lead" data-i18n="about.lead">Junior analyst programmer with hands-on experience in IT support, computer repair and software development.</p>
       <p data-i18n="about.body">I'm used to hardware troubleshooting, networking basics and web development, backed by my studies at ULB/EPFC. I'm at ease in French and English, and just as comfortable working alone as in a technical team.</p>
     </div>
@@ -175,11 +178,11 @@
   <div class="wrap focus">
     <div>
       <h3 data-i18n="focus.supportTitle">Support and hardware</h3>
-      <p data-i18n="focus.supportBody">I assemble, upgrade and repair PCs (100+ so far), diagnose hardware and LAN or Wi-Fi faults, and tune systems and basic security.</p>
+      <p data-i18n="focus.supportBody">I assemble, upgrade and repair PCs (100+ so far), diagnose hardware and LAN or Wi-Fi faults, and tune systems and basic security. I also script Windows administration in PowerShell.</p>
     </div>
     <div>
       <h3 data-i18n="focus.softwareTitle">Software</h3>
-      <p data-i18n="focus.softwareBody">Java, Python and C#, with OOP, Agile and Git. At SPEOS I worked on a print-spool program built through Jenkins.</p>
+      <p data-i18n="focus.softwareBody">Java, Python and C#, with OOP, Agile and Git. I built HelpDesk, an IT ticketing app on ASP.NET Core, and at SPEOS I worked on a print-spool program built through Jenkins.</p>
     </div>
     <div>
       <h3 data-i18n="focus.webTitle">Web</h3>
@@ -295,7 +298,7 @@
     <div class="proj-head">
       <div>
         <h2 id="proj-title" data-i18n="work.title">Projects</h2>
-        <p class="sub" data-i18n="work.sub">Two browser games you can play, plus four IT and development projects.</p>
+        <p class="sub" data-i18n="work.sub">Two flagship applications, two browser games you can play, and four IT and development projects.</p>
       </div>
       <div class="filters" role="group" aria-label="Filter projects" data-i18n-attr="aria-label:work.filterLabel">
         <button type="button" data-filter="all" aria-pressed="true" data-i18n="work.fAll">All</button>
@@ -307,14 +310,120 @@
 
     <div class="grid" id="proj-grid">
 
+      <!-- HelpDesk (lead project) -->
+      <article class="proj proj-lead" data-cat="software" data-skills="csharp aspnet sql react rest auth">
+        <div class="cover cover-helpdesk" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
+            <rect class="l soft" x="28" y="28" width="136" height="214" rx="9"/>
+            <rect class="l soft" x="172" y="28" width="136" height="214" rx="9"/>
+            <rect class="l soft" x="316" y="28" width="136" height="214" rx="9"/>
+            <path class="l soft" d="M28 60h136M172 60h136M316 60h136"/>
+            <circle class="fs" cx="44" cy="44" r="5"/><path class="l" d="M58 44h42"/>
+            <circle class="halo" cx="188" cy="44" r="7"/><circle class="fa" cx="188" cy="44" r="5"/><path class="l" d="M202 44h50"/>
+            <path class="a" d="m328 44 3.500 3.500 6.500-7.500"/><path class="l" d="M346 44h38"/>
+            <g class="tk"><rect class="fs" x="38" y="72" width="116" height="40" rx="6"/><path class="a" d="M47 80v24"/><path class="l" d="M54 86h50M54 98h30"/><circle class="fs" cx="140" cy="92" r="7"/></g>
+            <g class="tk"><rect class="fs" x="38" y="120" width="116" height="40" rx="6"/><path class="l soft" d="M47 128v24"/><path class="l" d="M54 134h44M54 146h34"/><circle class="fs" cx="140" cy="140" r="7"/></g>
+            <g class="tk"><rect class="fs" x="182" y="72" width="116" height="40" rx="6"/><path class="l soft" d="M191 80v24"/><path class="l" d="M198 86h52M198 98h26"/><circle class="fs" cx="284" cy="92" r="7"/></g>
+            <g class="tk"><rect class="fs" x="182" y="120" width="116" height="40" rx="6"/><path class="a" d="M191 128v24"/><path class="l" d="M198 134h40M198 146h32"/><circle class="fs" cx="284" cy="140" r="7"/></g>
+            <g class="tk"><rect class="fs" x="326" y="72" width="116" height="40" rx="6"/><path class="l soft" d="M335 80v24"/><path class="l" d="M342 86h48M342 98h28"/><circle class="fs" cx="428" cy="92" r="7"/></g>
+            <g class="tk"><rect class="fs" x="326" y="120" width="116" height="40" rx="6"/><path class="l soft" d="M335 128v24"/><path class="l" d="M342 134h38M342 146h44"/><circle class="fs" cx="428" cy="140" r="7"/></g>
+            <g class="mv">
+              <animateTransform attributeName="transform" type="translate" calcMode="spline" values="0 0;0 0;144 0;144 0;288 0;288 0" keyTimes="0;.14;.28;.52;.66;1" keySplines="0 0 1 1;.4 0 .2 1;0 0 1 1;.4 0 .2 1;0 0 1 1" dur="8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.86;.93;.98;1" dur="8s" repeatCount="indefinite"/>
+              <rect class="fs" x="38" y="168" width="116" height="40" rx="6"/><rect class="fa soft" x="38" y="168" width="116" height="40" rx="6"/>
+              <path class="a" d="M47 176v24"/><path class="l" d="M54 182h50M54 194h30"/><circle class="fs" cx="140" cy="188" r="7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.help.type">Business application</p>
+          <h3 data-i18n="work.help.title">HelpDesk: IT support management system</h3>
+          <p data-i18n="work.help.desc">A web application for managing IT support requests. Users submit tickets, technicians assign priorities, track incidents and update resolution status.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul class="covers">
+            <li data-i18n="work.help.c1">Ticket creation, assignment and status tracking.</li>
+            <li data-i18n="work.help.c2">User and technician accounts with role-based permissions.</li>
+            <li data-i18n="work.help.c3">Priority levels, categories and deadlines.</li>
+            <li data-i18n="work.help.c4">Dashboard with statistics and response times.</li>
+            <li data-i18n="work.help.c5">Ticket history and comments.</li>
+          </ul>
+          <ul class="tags"><li>C#</li><li>ASP.NET Core</li><li>SQL Server</li><li>React</li><li>REST API</li><li data-i18n="work.help.t6">Authentication</li></ul>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.help.desc">A web application for managing IT support requests. Users submit tickets, technicians assign priorities, track incidents and update resolution status.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.help.c1">Ticket creation, assignment and status tracking.</li>
+            <li data-i18n="work.help.c2">User and technician accounts with role-based permissions.</li>
+            <li data-i18n="work.help.c3">Priority levels, categories and deadlines.</li>
+            <li data-i18n="work.help.c4">Dashboard with statistics and response times.</li>
+            <li data-i18n="work.help.c5">Ticket history and comments.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- SysAdmin Toolkit -->
+      <article class="proj proj-lead proj-flip" data-cat="infra" data-skills="powershell winserver ad gpo automation">
+        <div class="cover cover-sysadmin" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
+            <rect class="fs" x="24" y="70" width="96" height="130" rx="7"/>
+            <rect class="fa soft" x="31" y="77" width="82" height="16" rx="3"/>
+            <path class="l soft" d="M62 77v116M90 77v116"/>
+            <path class="l" d="M34 85h20M68 85h14M96 85h12M34 110h22M68 110h14M96 110h10M34 128h18M68 128h18M96 128h12M34 146h24M68 146h12M96 146h8M34 164h16M68 164h16M96 164h12M34 182h20M68 182h10M96 182h10"/>
+            <path class="a-dash" d="M124 135h16"/><path class="a" d="m142 129 6 6-6 6"/>
+            <rect class="fs" x="150" y="40" width="180" height="190" rx="10"/>
+            <path class="l soft" d="M150 62h180"/>
+            <g class="fi"><circle cx="166" cy="51" r="2.600"/><circle cx="177" cy="51" r="2.600"/><circle cx="188" cy="51" r="2.600"/></g>
+            <g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.81;0.822;1" dur="8s" repeatCount="indefinite"/><path class="a" d="m168 84 7 5-7 5"/><path class="l" d="M182 89h86"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.844;0.856;1" dur="8s" repeatCount="indefinite"/><path class="l" d="M168 114h112"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.878;0.89;1" dur="8s" repeatCount="indefinite"/><path class="l" d="M168 134h72"/><path class="l soft" d="M248 134h34"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.912;0.924;1" dur="8s" repeatCount="indefinite"/><path class="a" d="m168 160 4 4 7-8"/><path class="l" d="M188 160h86"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.946;0.958;1" dur="8s" repeatCount="indefinite"/><path class="l" d="M168 182h58"/></g>
+            <path class="a" d="m168 204 7 5-7 5"/><rect class="fa led" x="182" y="203" width="8" height="13" rx="1"/>
+            <path class="a-dash" d="M334 113h10"/><path class="a" d="m342 107 6 6-6 6"/>
+            <rect class="fs" x="352" y="44" width="104" height="30" rx="7"/><circle class="fa" cx="368" cy="59" r="5"/><path class="l" d="M380 59h50"/>
+            <path class="l" d="M404 74v12M376 86h56M376 86v14M432 86v14"/>
+            <rect class="fs" x="352" y="100" width="48" height="26" rx="6"/><path class="l" d="M361 113h24"/>
+            <rect class="fs" x="408" y="100" width="48" height="26" rx="6"/><path class="l" d="M417 113h24"/>
+            <path class="l" d="M376 126v8M364 134h24M364 134v8M388 134v8M432 126v8M420 134h24M420 134v8M444 134v8"/>
+            <g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.83;0.842;1" dur="8s" repeatCount="indefinite"/><circle class="fs" cx="364" cy="152" r="10"/><circle class="fi" cx="364" cy="150" r="2.600"/><path class="l" d="M359 157a5 4 0 0 1 10 0"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.864;0.876;1" dur="8s" repeatCount="indefinite"/><circle class="fs" cx="388" cy="152" r="10"/><circle class="fi" cx="388" cy="150" r="2.600"/><path class="l" d="M383 157a5 4 0 0 1 10 0"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.898;0.91;1" dur="8s" repeatCount="indefinite"/><circle class="fs" cx="420" cy="152" r="10"/><circle class="fi" cx="420" cy="150" r="2.600"/><path class="l" d="M415 157a5 4 0 0 1 10 0"/></g><g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;.8;.801;0.932;0.944;1" dur="8s" repeatCount="indefinite"/><circle class="halo" cx="444" cy="152" r="10"/><circle class="fs" cx="444" cy="152" r="10"/><circle class="fa soft" cx="444" cy="152" r="10"/><circle class="fi" cx="444" cy="150" r="2.600"/><path class="l" d="M439 157a5 4 0 0 1 10 0"/></g>
+            <rect class="fs" x="352" y="184" width="104" height="44" rx="6"/><path class="l" d="M364 198h54M364 210h34"/><circle class="fa led" cx="438" cy="206" r="5"/>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <p class="proj-type" data-i18n="work.sys.type">Infrastructure automation</p>
+          <h3 data-i18n="work.sys.title">SysAdmin Toolkit: Windows administration automation</h3>
+          <p data-i18n="work.sys.desc">A collection of PowerShell scripts designed to automate common system administration tasks in a Windows environment.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul class="covers">
+            <li data-i18n="work.sys.c1">Automated Active Directory user creation.</li>
+            <li data-i18n="work.sys.c2">Group and permission management.</li>
+            <li data-i18n="work.sys.c3">Bulk user import using CSV.</li>
+            <li data-i18n="work.sys.c4">Password expiry and account auditing.</li>
+            <li data-i18n="work.sys.c5">PC information and system diagnostics.</li>
+            <li data-i18n="work.sys.c6">Automated reports and error logging.</li>
+          </ul>
+          <ul class="tags"><li>PowerShell</li><li>Windows Server</li><li>Active Directory</li><li>CSV</li><li data-i18n="work.sys.t5">Automation</li><li>Group Policy</li></ul>
+        </div>
+        <div class="case" hidden>
+          <p class="case-lede" data-i18n="work.sys.desc">A collection of PowerShell scripts designed to automate common system administration tasks in a Windows environment.</p>
+          <h4 data-i18n="work.covers">What it covers</h4>
+          <ul>
+            <li data-i18n="work.sys.c1">Automated Active Directory user creation.</li>
+            <li data-i18n="work.sys.c2">Group and permission management.</li>
+            <li data-i18n="work.sys.c3">Bulk user import using CSV.</li>
+            <li data-i18n="work.sys.c4">Password expiry and account auditing.</li>
+            <li data-i18n="work.sys.c5">PC information and system diagnostics.</li>
+            <li data-i18n="work.sys.c6">Automated reports and error logging.</li>
+          </ul>
+        </div>
+      </article>
+
       <!-- Inconito -->
       <article class="proj proj-feature" data-cat="games" data-skills="js html css">
-        <div class="cover" aria-hidden="true">
+        <div class="cover cover-inconito" aria-hidden="true">
           <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
             <g class="a-dash"><path d="M240 135 340 135M240 135 290 221.600M240 135 190 221.600M240 135 140 135M240 135 190 48.400M240 135 290 48.400"/></g>
             <circle class="fs" cx="240" cy="135" r="40"/>
             <path class="l" d="M222 135h36M222 126h36M222 144h20"/>
             <g class="fs"><circle cx="340" cy="135" r="22"/><circle cx="290" cy="221.600" r="22"/><circle cx="190" cy="221.600" r="22"/><circle cx="190" cy="48.400" r="22"/><circle cx="290" cy="48.400" r="22"/></g>
+            <circle class="halo" cx="140" cy="135" r="22"/>
             <circle class="fa" cx="140" cy="135" r="22"/>
             <g class="fi"><circle cx="333" cy="131" r="2.600"/><circle cx="347" cy="131" r="2.600"/><circle cx="283" cy="217.600" r="2.600"/><circle cx="297" cy="217.600" r="2.600"/><circle cx="183" cy="217.600" r="2.600"/><circle cx="197" cy="217.600" r="2.600"/><circle cx="183" cy="44.400" r="2.600"/><circle cx="197" cy="44.400" r="2.600"/><circle cx="283" cy="44.400" r="2.600"/><circle cx="297" cy="44.400" r="2.600"/></g>
             <text x="140" y="144" text-anchor="middle" class="txt-ink" font-size="26" font-weight="700">?</text>
@@ -333,14 +442,16 @@
 
       <!-- SandWake -->
       <article class="proj proj-feature" data-cat="games" data-skills="js threejs">
-        <div class="cover" aria-hidden="true">
+        <div class="cover cover-sandwake" aria-hidden="true">
           <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
-            <circle class="fa" cx="335" cy="92" r="36"/>
-            <path class="l" d="M0 168C80 126 160 152 240 138S400 118 480 150"/>
-            <path class="l" d="M0 196C100 160 200 192 300 172S420 168 480 184"/>
+            <circle class="halo" cx="335" cy="92" r="36"/>
+            <circle class="fa sun" cx="335" cy="92" r="36"/>
+            <path class="l" d="M0 168C80 126 160 152 240 138S400 118 480 150"><animate attributeName="d" dur="9s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".45 0 .55 1;.45 0 .55 1" values="M0 168C80 126 160 152 240 138S400 118 480 150;M0 158C80 136 160 146 240 146S400 128 480 140;M0 168C80 126 160 152 240 138S400 118 480 150"/></path>
+            <path class="l" d="M0 196C100 160 200 192 300 172S420 168 480 184"><animate attributeName="d" dur="11s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.5;1" keySplines=".45 0 .55 1;.45 0 .55 1" values="M0 196C100 160 200 192 300 172S420 168 480 184;M0 190C100 172 200 184 300 180S420 160 480 190;M0 196C100 160 200 192 300 172S420 168 480 184"/></path>
             <path class="l" d="M0 222h480"/>
             <path class="l" d="M0 222 0 270M80 222 40 270M160 222 120 270M240 222V270M320 222 360 270M400 222 440 270M480 222V270"/>
-            <path class="l soft" d="M0 238h480M0 254h480"/>
+            <g class="road"><path class="l soft" d="M0 222h480M0 238h480M0 254h480M0 270h480"/></g>
+            <text class="spd" x="24" y="40" font-size="16" font-weight="600">0 km/h</text>
           </svg>
         </div>
         <div class="proj-body">
@@ -356,17 +467,17 @@
 
       <!-- Windows login failure -->
       <article class="proj proj-wide" data-cat="infra" data-skills="diagnostics">
-        <div class="cover" aria-hidden="true">
-          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+        <div class="cover cover-login" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
             <rect class="fs" x="110" y="38" width="260" height="194" rx="12"/>
             <path class="l" d="M110 66h260"/>
             <g class="fi"><circle cx="126" cy="52" r="3"/><circle cx="138" cy="52" r="3"/><circle cx="150" cy="52" r="3"/></g>
             <circle class="l" cx="240" cy="110" r="22"/>
             <path class="l" d="M226 128c4-8 24-8 28 0"/>
             <rect class="l" x="170" y="148" width="140" height="28" rx="7"/>
-            <g class="fi"><circle cx="186" cy="162" r="3"/><circle cx="200" cy="162" r="3"/><circle cx="214" cy="162" r="3"/><circle cx="228" cy="162" r="3"/><circle cx="242" cy="162" r="3"/></g>
-            <circle class="fa" cx="292" cy="162" r="9"/>
-            <path class="l" d="m288 158 8 8m0-8-8 8"/>
+            <g class="fi pw"><circle cx="186" cy="162" r="3"/><circle cx="200" cy="162" r="3"/><circle cx="214" cy="162" r="3"/><circle cx="228" cy="162" r="3"/><circle cx="242" cy="162" r="3"/></g>
+            <g class="x-badge"><circle class="fa" cx="292" cy="162" r="9"/>
+            <path class="l" d="m288 158 8 8m0-8-8 8"/></g>
             <rect class="fa soft" x="170" y="188" width="140" height="14" rx="4"/>
           </svg>
         </div>
@@ -391,12 +502,13 @@
 
       <!-- Home lab -->
       <article class="proj proj-wide" data-cat="infra" data-skills="vbox winserver ad gpo">
-        <div class="cover" aria-hidden="true">
-          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+        <div class="cover cover-lab" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
             <rect class="fs" x="190" y="34" width="100" height="50" rx="8"/>
             <path class="l" d="M206 52h68M206 66h40"/>
-            <circle class="fa" cx="268" cy="66" r="4"/>
+            <circle class="fa led" cx="268" cy="66" r="4"/>
             <path class="l" d="M240 84v34M100 118h280M100 118v38M240 118v38M380 118v38"/>
+            <g class="fa pk"><circle r="4.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M240 84V118H100V156"/></circle><circle r="4.5"><animateMotion dur="2.6s" begin="0.9s" repeatCount="indefinite" path="M240 84V156"/></circle><circle r="4.5"><animateMotion dur="2.6s" begin="1.7s" repeatCount="indefinite" path="M240 84V118H380V156"/></circle></g>
             <rect class="a-dash-box" x="40" y="140" width="400" height="96" rx="10"/>
             <g class="fs"><rect x="60" y="156" width="80" height="48" rx="7"/><rect x="200" y="156" width="80" height="48" rx="7"/><rect x="340" y="156" width="80" height="48" rx="7"/></g>
             <path class="l" d="M74 214h52M214 214h52M354 214h52" />
@@ -423,8 +535,8 @@
 
       <!-- Network -->
       <article class="proj proj-wide" data-cat="infra" data-skills="network capture diagnostics">
-        <div class="cover" aria-hidden="true">
-          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+        <div class="cover cover-net" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
             <rect class="fs" x="40" y="44" width="76" height="52" rx="8"/>
             <path class="l" d="M56 112h44M78 96v16"/>
             <rect class="fs" x="198" y="56" width="104" height="30" rx="6"/>
@@ -433,10 +545,11 @@
             <rect class="fs" x="372" y="44" width="76" height="52" rx="26"/>
             <path class="l" d="M116 70h82M302 70h70"/>
             <g class="fa"><circle cx="150" cy="70" r="4.500"/><circle cx="336" cy="70" r="4.500"/></g>
+            <g class="fa pk"><circle r="5"><animateMotion dur="2.4s" repeatCount="indefinite" path="M116 70H372"/></circle><circle r="5"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M372 70H116"/></circle></g>
             <rect class="fs" x="60" y="130" width="360" height="104" rx="10"/>
             <path class="l" d="M60 152h360"/>
             <path class="l soft" d="M80 174h70M170 174h60M250 174h120M80 194h50M150 194h110M280 194h90M80 214h90M190 214h40M250 214h100"/>
-            <rect class="fa soft" x="68" y="184" width="344" height="20" rx="4"/>
+            <rect class="fa soft scan" x="68" y="184" width="344" height="20" rx="4"/>
             <path class="l" d="M80 194h50M150 194h110M280 194h90"/>
           </svg>
         </div>
@@ -460,8 +573,8 @@
 
       <!-- Print spool -->
       <article class="proj proj-wide" data-cat="software" data-skills="java git jenkins agile sdlc">
-        <div class="cover" aria-hidden="true">
-          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice">
+        <div class="cover cover-spool" aria-hidden="true">
+          <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
             <rect class="fs" x="52" y="150" width="70" height="86" rx="5"/>
             <rect class="fs" x="68" y="134" width="70" height="86" rx="5"/>
             <rect class="fs" x="84" y="118" width="70" height="86" rx="5"/>
@@ -469,11 +582,12 @@
             <path class="l" d="M98 140h42M98 154h42M98 168h28"/>
             <path class="a-dash" d="M170 160h74"/>
             <path class="a" d="m238 153 8 7-8 7"/>
+            <rect class="fs sheet" x="170" y="146" width="20" height="26" rx="3"><animateTransform attributeName="transform" type="translate" values="0 0;62 0" dur="2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.75;1" dur="2.2s" repeatCount="indefinite"/></rect>
             <rect class="fs" x="270" y="124" width="150" height="78" rx="10"/>
             <rect class="fs" x="296" y="92" width="98" height="32" rx="4"/>
             <rect class="fs" x="306" y="196" width="78" height="46" rx="3"/>
             <path class="l" d="M318 212h54M318 224h40"/>
-            <circle class="fa" cx="398" cy="146" r="5"/>
+            <circle class="fa led" cx="398" cy="146" r="5"/>
           </svg>
         </div>
         <div class="proj-body">
@@ -512,6 +626,7 @@
           <button class="chip" type="button" data-skill="java">Java</button>
           <button class="chip" type="button" data-skill="python">Python</button>
           <button class="chip" type="button" data-skill="csharp">C#</button>
+          <button class="chip" type="button" data-skill="aspnet">ASP.NET Core</button>
           <button class="chip" type="button" data-skill="oop"><span data-i18n="skills.oop">OOP</span></button>
           <button class="chip" type="button" data-skill="sdlc">SDLC</button>
           <button class="chip" type="button" data-skill="agile">Agile</button>
@@ -526,6 +641,8 @@
           <button class="chip" type="button" data-skill="js">JavaScript</button>
           <button class="chip" type="button" data-skill="react">React</button>
           <button class="chip" type="button" data-skill="angular">Angular</button>
+          <button class="chip" type="button" data-skill="rest">REST API</button>
+          <button class="chip" type="button" data-skill="auth"><span data-i18n="skills.auth">Authentication</span></button>
           <button class="chip" type="button" data-skill="chromeext"><span data-i18n="skills.chromeext">Chrome extensions</span></button>
         </dd>
       </div>
@@ -554,6 +671,7 @@
           <button class="chip" type="button" data-skill="ad">Active Directory</button>
           <button class="chip" type="button" data-skill="gpo">Group Policy</button>
           <button class="chip" type="button" data-skill="powershell">PowerShell</button>
+          <button class="chip" type="button" data-skill="automation"><span data-i18n="skills.automation">Automation</span></button>
           <button class="chip" type="button" data-skill="vbox">VirtualBox</button>
           <button class="chip" type="button" data-skill="capture"><span data-i18n="skills.capture">Packet capture</span></button>
           <button class="chip" type="button" data-skill="jenkins">Jenkins</button>
@@ -586,6 +704,7 @@
 
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact" aria-labelledby="contact-title">
+  <canvas class="dotgrid" id="dotgrid" aria-hidden="true"></canvas>
   <div class="wrap contact-in">
     <div class="contact-intro">
       <h2 id="contact-title" data-i18n="contact.title">Contact</h2>
@@ -635,6 +754,7 @@
 <footer class="foot">
   <div class="wrap foot-in">
     <p>© <span id="year">2026</span> Zirari Yassîn</p>
+    <p class="foot-mid" data-i18n="foot.built">Built by hand with HTML, CSS and JavaScript.</p>
     <p class="foot-tools">
       <button type="button" class="link-btn" data-open-term><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg><span data-i18n="foot.term">Open terminal</span></button>
       <a class="link-btn" href="#top"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg><span data-i18n="foot.top">Back to top</span></a>
@@ -691,5 +811,6 @@
 <script src="zy/js/i18n.js" defer></script>
 <script src="zy/js/network.js" defer></script>
 <script src="zy/js/app.js" defer></script>
+<script src="zy/js/fx.js" defer></script>
 </body>
 </html>
