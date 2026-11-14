@@ -27,6 +27,245 @@
 <link rel="stylesheet" href="zy/css/style.css">
 <link rel="stylesheet" href="zy/css/fx.css">
 <link rel="stylesheet" href="zy/css/zirafix.css">
+<style id="zf-sharp">
+/* ZiraFix: sharp edition. Square corners, hard edges, offset shadows, a workbench look. */
+html {
+  --edge: #1B1030; --shade: #1B1030; --grid: rgba(27, 16, 48, .075);
+  --bar: #1B1030; --bar-ink: #F6F3FC;
+  --mono: var(--font-mono);
+}
+html[data-theme="dark"] {
+  --edge: #7C69CC; --shade: #2A1B68; --grid: rgba(183, 160, 255, .07);
+  --bar: #2A1B68; --bar-ink: #EEE9FA;
+}
+html ::selection { background: var(--accent); color: var(--accent-ink); }
+html :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 0; }
+html .skip { border-radius: 0; }
+html .progress { height: 4px; }
+
+/* ---------- Header ---------- */
+html .nav, html .nav.is-scrolled, html .nav.is-open { background: var(--bg); border-bottom: 2px solid var(--edge); -webkit-backdrop-filter: none; backdrop-filter: none; }
+html .brand { font-weight: 800; letter-spacing: -.03em; font-size: 1.16rem; }
+html .brand-mark { width: 38px; height: 38px; border-radius: 0; background: var(--navy); color: #fff; border: 2px solid var(--edge); box-shadow: 3px 3px 0 var(--accent); font-family: var(--mono); font-weight: 800; font-size: .8rem; letter-spacing: -.05em; }
+html[data-theme="dark"] .brand-mark { background: var(--navy); color: #0F0A1C; box-shadow: 3px 3px 0 var(--accent); }
+html .brand-mark::after { display: none; }
+html .nav-links a { border-radius: 0; font-weight: 600; color: var(--ink); }
+html .nav-links a:hover { background: var(--bg-2); box-shadow: inset 0 -3px 0 var(--accent); }
+html .nav-links a[aria-current="true"] { background: var(--bar); color: var(--bar-ink); box-shadow: none; }
+html[data-theme="dark"] .nav-links a[aria-current="true"] { color: var(--accent); }
+html .kbd-btn { height: 40px; border-radius: 0; border: 2px solid var(--edge); color: var(--ink); background: var(--surface); font-weight: 600; }
+html .kbd-btn:hover { background: var(--accent); border-color: var(--edge); color: var(--accent-ink); }
+html kbd { border-radius: 0; font-family: var(--mono); font-weight: 700; border: 1.5px solid currentColor; background: transparent; color: inherit; padding: 3px 5px; }
+html .seg { padding: 0; gap: 0; border-radius: 0; background: var(--surface); border: 2px solid var(--edge); }
+html .seg button { height: 36px; border-radius: 0; font-family: var(--mono); font-weight: 700; color: var(--ink); }
+html .seg button + button { border-left: 2px solid var(--edge); }
+html .seg button:hover { background: var(--bg-2); }
+html .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: none; }
+html .icon-btn { width: 40px; height: 40px; border-radius: 0; border: 2px solid var(--edge); background: var(--surface); }
+html .icon-btn:hover { background: var(--accent); color: var(--accent-ink); }
+html .menu:not([hidden]) { background: var(--bg); border-bottom: 2px solid var(--edge); box-shadow: none; }
+html .menu a, html .menu button { border-bottom: 2px solid var(--edge); font-weight: 750; }
+
+/* ---------- Buttons ---------- */
+html .btn { min-height: 50px; padding: 0 22px; border-radius: 0; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); font-weight: 700; box-shadow: 4px 4px 0 var(--shade); transition: translate .15s var(--ease), box-shadow .15s var(--ease), background .15s; }
+html .btn:hover { background: var(--bg-2); border-color: var(--edge); translate: -2px -2px; box-shadow: 6px 6px 0 var(--shade); }
+html .btn:active { translate: 3px 3px; box-shadow: 1px 1px 0 var(--shade); }
+html .btn-primary, html[data-theme="dark"] .btn-primary { background: var(--accent); border-color: var(--edge); color: var(--accent-ink); }
+html .btn-primary:hover { background: #63E8BC; border-color: var(--edge); color: var(--accent-ink); }
+html[data-theme="dark"] .btn-primary:hover { background: #8DF0CF; border-color: var(--edge); color: #0F0A1C; }
+
+/* ---------- Hero: a bench with a grid mat ---------- */
+html .hero { background-color: var(--bg); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 40px 40px; background-position: -1px -1px; }
+html .status { border-radius: 0; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); padding: 6px 12px; font-family: var(--mono); font-size: .8rem; font-weight: 700; box-shadow: 3px 3px 0 var(--shade); }
+html .led { border-radius: 0; width: 10px; height: 10px; }
+html .hero .name { font-weight: 800; letter-spacing: -.06em; }
+html .hero .name span:last-child { width: fit-content; margin-top: .02em; padding: .09em .1em 0 .05em; background: var(--accent); color: var(--accent-ink); box-shadow: .045em .045em 0 var(--edge); }
+html .hero-role { font-weight: 700; letter-spacing: -.02em; }
+html .hero .cta { gap: 16px; }
+
+html .facts { gap: 0; padding: 0; margin-bottom: 36px; border: 2px solid var(--edge); background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: 6px 6px 0 var(--shade); }
+html .facts > div { padding: 16px 20px 18px; }
+html .facts > div + div { border-left: 2px solid var(--edge); }
+html .facts dt { font-family: var(--mono); font-size: .74rem; font-weight: 600; color: var(--ink-3); }
+html .facts dd { margin-top: 2px; font-weight: 800; font-size: 1.3rem; letter-spacing: -.03em; }
+@media (max-width: 959px) {
+  html .facts { background: var(--surface); }
+  html .facts > div:nth-child(3) { border-left: 0; }
+  html .facts > div:nth-child(n+3) { border-top: 2px solid var(--edge); }
+}
+
+/* The device board is a bench panel: title bar, ruled cells, hint strip */
+html .board { border: 2px solid var(--edge); background: var(--surface); box-shadow: 8px 8px 0 var(--shade); }
+html .board-head { margin: 0; padding: 10px 16px; justify-content: flex-start; align-items: center; gap: 10px; background: var(--bar); color: var(--bar-ink); }
+html .board-head::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--accent); }
+html .board-title { font-size: 1.05rem; font-weight: 750; letter-spacing: -.01em; color: inherit; }
+html .tiles { gap: 2px; background: var(--edge); }
+html .tile { min-height: 150px; padding: 16px; border: 0; border-radius: 0; background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; transform: none; transition: background .15s; }
+html .tile::before { display: none; }
+html .tile .tile-i { width: 38px; height: 38px; color: var(--navy); }
+html .tile-name { font-weight: 750; font-size: 1.1rem; }
+html .tile-n { font-family: var(--mono); font-size: .74rem; }
+html .tile:hover, html .tile:last-child:hover { background: var(--accent); transform: none; }
+html .tile:hover .tile-i, html .tile:hover .tile-name, html .tile:hover .tile-n, html .tile:hover .tile-n b { color: var(--accent-ink); animation: none; }
+html .tile:last-child { border: 0; background: var(--bg-2); }
+html .board-hint { margin: 0; padding: 10px 16px; border-top: 2px solid var(--edge); background: var(--bg-2); font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+@media (min-width: 960px) { html .tile { min-height: 164px; } }
+@media (min-width: 960px) and (max-width: 1180px) { html .tile { min-height: 146px; padding: 14px; } }
+
+/* ---------- Ticker: two hard bands ---------- */
+html .marquee { gap: 0; padding-block: 0; border-top: 2px solid var(--edge); border-bottom: 2px solid var(--edge); -webkit-mask-image: none; mask-image: none; }
+html .mq-row { padding-block: 10px; background: var(--bar); }
+html .mq-alt { background: var(--accent); border-top: 2px solid var(--edge); }
+html .mq-i { color: var(--bar-ink); font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 750; letter-spacing: -.02em; }
+html .mq-alt .mq-i { color: var(--accent-ink); -webkit-text-stroke: 0; }
+html .mq-i .dot { width: .42em; height: .42em; border-radius: 0; background: var(--accent); }
+html .mq-alt .mq-i .dot { background: var(--accent-ink); }
+
+/* ---------- Sections ---------- */
+html .section { border-top: 2px solid var(--edge); }
+html #services { border-top: 0; }
+html h2 { font-weight: 800; letter-spacing: -.05em; }
+html .proj-head .sub, html .split-head .sub { color: var(--ink-2); }
+
+/* Finder */
+html .finder-field { height: 54px; padding: 0 6px 0 16px; border-radius: 0; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); box-shadow: 4px 4px 0 var(--shade); transition: box-shadow .15s; }
+html .finder-field:hover { border-color: var(--edge); }
+html .finder-field:focus-within { border-color: var(--edge); box-shadow: 5px 5px 0 var(--accent); }
+html .finder-clear { border-radius: 0; }
+html .finder-clear:hover { background: var(--bg-2); }
+html .filters { gap: 8px; }
+html .filters button { height: 40px; padding: 0 14px; border-radius: 0; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); font-weight: 700; transition: background .15s, color .15s, box-shadow .15s, translate .15s; }
+html .filters button:hover { background: var(--bg-2); border-color: var(--edge); color: var(--ink); box-shadow: 3px 3px 0 var(--shade); translate: -1px -1px; }
+html .filters button[aria-pressed="true"] { background: var(--bar); border-color: var(--edge); color: var(--accent); box-shadow: none; translate: 0 0; }
+html #cat-filters .n { font-family: var(--mono); font-size: .72rem; }
+html .sym-label { font-family: var(--mono); font-size: .78rem; font-weight: 600; color: var(--ink-2); }
+html .sym { height: 34px; padding: 0 12px; border-radius: 0; border: 2px dashed var(--edge); background: transparent; color: var(--ink); font-size: .86rem; font-weight: 600; }
+html .sym:hover { background: var(--surface); border-style: solid; }
+html .sym[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-style: solid; }
+html .finder-status { font-family: var(--mono); font-size: .8rem; }
+
+/* Cards */
+html .grid { gap: 28px; }
+html .proj { border: 2px solid var(--edge); border-radius: 0; background: var(--surface); box-shadow: 6px 6px 0 var(--shade); transition: box-shadow .15s, opacity .25s; }
+html .proj:hover { border-color: var(--edge); box-shadow: 6px 6px 0 var(--navy); }
+html.fx .proj, html.fx .proj.is-tilting { transform: none; }
+html.fx .proj::after, html.fx .proj:hover::after, html.fx .focus > div::before, html.fx .focus > div:hover::before { display: none; }
+html .cover { background-color: var(--bg-2); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 24px 24px; border-right: 2px solid var(--edge); }
+html .proj-flip .cover { border-right: 0; border-left: 2px solid var(--edge); }
+@media (max-width: 700px) { html .cover, html .proj-flip .cover { border: 0; border-bottom: 2px solid var(--edge); } }
+html .cover .l, html .cover .a, html .cover .fs, html .cover g.fs > *, html .cover .chk { stroke-linejoin: miter; stroke-linecap: square; }
+html .cover .l { stroke-width: 2.4; opacity: 1; }
+html .cover .l.soft { opacity: .28; }
+html .cover .fs, html .cover g.fs > * { stroke-width: 2.6; }
+html .cover .a-dash path, html .cover path.a-dash { stroke-linecap: butt; }
+html .proj-icon { width: 48px; height: 48px; margin-bottom: 20px; border-radius: 0; border: 2px solid var(--edge); background: var(--navy); color: #fff; box-shadow: 3px 3px 0 var(--accent); }
+html[data-theme="dark"] .proj-icon { color: #0F0A1C; }
+html .proj-type { display: inline-flex; align-items: center; gap: 8px; padding: 2px 8px 2px 6px; border: 2px solid var(--edge); background: var(--bg-2); color: var(--ink); font-family: var(--mono); font-size: .74rem; font-weight: 700; }
+html .proj-type::before { content: ""; width: 8px; height: 8px; background: var(--accent); flex: none; }
+html .proj-body h3 { margin-top: 14px; font-weight: 800; letter-spacing: -.04em; }
+html .proj-lead h4 { width: 100%; padding-bottom: 6px; border-bottom: 2px solid var(--edge); color: var(--ink); font-family: var(--mono); font-size: .78rem; font-weight: 700; }
+
+/* Service lines: square checkboxes */
+html .covers li, html .proj-lead .covers li { padding-left: 18px; }
+html .covers li::before, html .proj-lead .covers li::before { left: 0; top: .4em; width: 14px; height: 14px; border-radius: 0; border: 2px solid var(--edge); background: var(--surface); transition: background .15s; }
+html .covers li:has(.svc:hover)::before { width: 14px; background: var(--accent); }
+html .covers li.is-picked::before { left: 0; top: .4em; width: 14px; height: 14px; border-radius: 0; box-shadow: 2px 2px 0 var(--edge); background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.6 7.2l3 3 5.6-6' fill='none' stroke='%2314102A' stroke-width='2.2'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+html .svc { padding: 4px 6px; border-radius: 0; }
+html .svc:hover { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+html .covers li.is-picked .svc { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+html .svc-empty { margin-top: 8px; padding: 32px; border: 2px dashed var(--edge); }
+html .svc-empty h3 { font-weight: 800; }
+
+/* ---------- Why: ruled cells ---------- */
+html .lead { font-weight: 650; }
+html .focus { border: 2px solid var(--edge); background: var(--surface); box-shadow: 6px 6px 0 var(--shade); }
+html .focus > div { padding: 26px; }
+html .focus > div + div { padding-left: 26px; border-left: 2px solid var(--edge); }
+html .focus h3 { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.035em; }
+html .focus h3::before { content: ""; flex: none; width: 12px; height: 12px; background: var(--accent); border: 2px solid var(--edge); }
+@media (max-width: 860px) {
+  html .focus > div, html .focus > div + div { padding: 22px; border-left: 0; margin-top: 0; }
+  html .focus > div + div { border-top: 2px solid var(--edge); }
+}
+
+/* ---------- Process: a four-step strip ---------- */
+html #process .split-in { grid-template-columns: 1fr; }
+html #process .split-head { position: static; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 32px; }
+html #process .split-head .sub { margin-top: 0; max-width: none; }
+html .roles { display: grid; grid-template-columns: 1fr; gap: 0; padding-left: 0; border: 2px solid var(--edge); background: var(--surface); box-shadow: 6px 6px 0 var(--shade); counter-reset: step; }
+html .roles::before, html .roles .rail { display: none; }
+html .role { position: relative; display: block; padding: 24px 22px 26px; border: 0; counter-increment: step; }
+html .role:first-child { padding-top: 24px; }
+html .role + .role { border-top: 2px solid var(--edge); }
+html .role-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+html .role::before, html.fx .role::before, html.fx .role:first-child::before {
+  content: counter(step, decimal-leading-zero); position: static; display: inline-block; width: auto; height: auto; margin: 0 0 18px; padding: 6px 12px 8px;
+  border: 2px solid var(--edge); border-radius: 0; background: var(--bg-2); color: var(--ink); box-shadow: none;
+  font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; letter-spacing: -.05em; transition: background .3s, box-shadow .3s;
+}
+html.fx .role.is-reached::before { background: var(--accent); color: var(--accent-ink); border-color: var(--edge); box-shadow: 4px 4px 0 var(--edge); }
+html .role-body h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.035em; }
+html .role-body ul { gap: 10px; }
+html .role-body li { padding-left: 18px; max-width: none; }
+html .role-body li::before { top: .62em; width: 8px; height: 8px; border-radius: 0; background: var(--accent); }
+html.fx .role li, html.fx .role.is-reached li { opacity: 1; translate: 0 0; }
+@media (min-width: 640px) {
+  html .roles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html .role + .role { border-top: 0; }
+  html .role:nth-child(even) { border-left: 2px solid var(--edge); }
+  html .role:nth-child(n+3) { border-top: 2px solid var(--edge); }
+}
+@media (min-width: 1040px) {
+  html .roles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  html .role:nth-child(n+3) { border-top: 0; }
+  html .role:nth-child(n+2) { border-left: 2px solid var(--edge); }
+}
+
+/* ---------- FAQ: a ruled index ---------- */
+html .faq { border: 2px solid var(--edge); background: var(--surface); box-shadow: 6px 6px 0 var(--shade); }
+html .faq details { border-top: 2px solid var(--edge); }
+html .faq details:first-child { border-top: 0; }
+html .faq summary, html .faq details:first-child summary { padding: 18px 20px; font-weight: 750; transition: background .15s; }
+html .faq summary:hover { background: var(--bg-2); color: var(--ink); }
+html .faq summary::after { width: 16px; height: 16px; }
+html .faq details[open] summary, html .faq details[open] summary:hover { background: var(--accent); color: var(--accent-ink); }
+html .faq .a, html .faq details:first-child .a { max-width: none; padding: 18px 20px 22px; border-top: 2px solid var(--edge); }
+
+/* ---------- Contact: a solid mint slab ---------- */
+html .contact {
+  --ink: #14102A; --ink-2: #2B2150; --ink-3: #3A3064; --bg: #FFFFFF; --surface: #FFFFFF; --edge: #14102A; --shade: #14102A;
+  --line: rgba(20, 16, 42, .3); --line-2: #14102A; --focus: #14102A;
+  background: var(--accent); color: #14102A; border-top: 2px solid #14102A;
+}
+html .contact .lead { color: #14102A; }
+html .reach li { border-top: 2px solid #14102A; font-weight: 600; }
+html .reach li:last-child { border-bottom: 2px solid #14102A; }
+html .reach .i { color: #14102A; }
+html .reach a:hover { text-decoration-color: #14102A; }
+html .copy { width: 40px; height: 40px; border-radius: 0; border: 2px solid #14102A; background: #fff; color: #14102A; }
+html .copy:hover { background: #14102A; color: var(--accent); }
+html .form label { font-weight: 800; font-size: .9rem; }
+html .form input, html .form textarea, html .form select { padding: 13px 14px; border-radius: 0; border: 2px solid #14102A; background-color: #fff; color: #14102A; box-shadow: 3px 3px 0 #14102A; }
+html .form select { padding-right: 44px; }
+html .form input:hover, html .form textarea:hover, html .form select:hover { border-color: #14102A; }
+html .form input:focus-visible, html .form textarea:focus-visible, html .form select:focus-visible { outline: 3px solid #14102A; outline-offset: 3px; border-color: #14102A; }
+html .form select option { background: #fff; color: #14102A; }
+html .form input[aria-invalid="true"], html .form textarea[aria-invalid="true"] { border-color: #B3200A; box-shadow: 3px 3px 0 #B3200A; }
+html .form-error, html:not([data-theme="dark"]) .contact .form-error { padding: 10px 12px; border: 2px solid #7A1100; background: #fff; color: #7A1100; font-weight: 700; }
+html .note { color: #2B2150; }
+html .contact .btn-primary { background: #14102A; border-color: #14102A; color: var(--accent); box-shadow: 4px 4px 0 #fff; }
+html .contact .btn-primary:hover, html[data-theme="dark"] .contact .btn-primary:hover { background: #fff; border-color: #14102A; color: #14102A; box-shadow: 6px 6px 0 #14102A; }
+
+/* ---------- Footer, pill, toast ---------- */
+html .foot { border-top: 2px solid var(--edge); background: var(--bar); color: var(--bar-ink); font-family: var(--mono); font-size: .8rem; }
+html .foot .link-btn { color: inherit; font-weight: 600; }
+html .foot .link-btn:hover { color: var(--accent); }
+html .filter-pill { padding: 6px 6px 6px 16px; border-radius: 0; border: 2px solid var(--edge); background: var(--bar); color: var(--bar-ink); box-shadow: 5px 5px 0 var(--accent); font-family: var(--mono); font-size: .84rem; font-weight: 600; }
+html .filter-pill button { border-radius: 0; background: color-mix(in srgb, var(--bar-ink) 16%, transparent); }
+html .filter-pill button:hover { background: color-mix(in srgb, var(--bar-ink) 30%, transparent); }
+html #pick-pill .pill-show { border-radius: 0; background: var(--accent); color: var(--accent-ink); }
+html .toast { border-radius: 0; border: 2px solid var(--edge); background: var(--bar); color: var(--bar-ink); box-shadow: 4px 4px 0 var(--accent); font-family: var(--mono); font-size: .84rem; font-weight: 600; }
+</style>
 <script>
 /* Set the theme before first paint (shared with the portfolio). */
 (function () {
@@ -156,7 +395,7 @@
 </script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.500-5.600 6.500-11a6.500 6.500 0 0 0-13 0C5.500 15.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.300" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.200" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.500 8.500V6.700a2.200 2.200 0 0 0-2.200-2.200H6.700a2.200 2.200 0 0 0-2.200 2.200v6.600a2.200 2.200 0 0 0 2.200 2.200h1.800" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5.500" width="14" height="9.500" rx="1.800" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 18.500h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.500V7M14 3.500V7M10 17v3.500M14 17v3.500M3.500 10H7M3.500 14H7M17 10h3.500M17 14h3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4.500h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="9" width="16" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 14.500h10V20H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.500 7.500h9a4.500 4.500 0 0 1 4.400 3.600l.9 4.300a2.400 2.400 0 0 1-4.200 2l-1.600-2.400H8L6.400 17.400a2.400 2.400 0 0 1-4.200-2l.9-4.300a4.500 4.500 0 0 1 4.400-3.600Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10.500v3M6.500 12h3M15.500 11h.01M17.500 13h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3.500 9.500a12 12 0 0 1 17 0M6.500 12.800a7.700 7.700 0 0 1 11 0M9.500 16a3.500 3.500 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 19h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.500" height="6.500" rx="1.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="13.500" y="4" width="6.500" height="6.500" rx="1.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="13.500" width="6.500" height="6.500" rx="1.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="13.500" y="13.500" width="6.500" height="6.500" rx="1.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.500 5 6v5.500c0 4.200 2.900 7.400 7 9 4.100-1.600 7-4.800 7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2.200 2.200L15.500 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-tv" viewBox="0 0 24 24"><rect x="3.500" y="6" width="17" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20.500h6M12 17v3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5.500h14a1.500 1.500 0 0 1 1.500 1.500v8a1.500 1.500 0 0 1-1.500 1.500h-7l-4.500 3.500v-3.500H5A1.500 1.500 0 0 1 3.500 15V7A1.500 1.500 0 0 1 5 5.500Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-brief" viewBox="0 0 24 24"><rect x="3.500" y="7.500" width="17" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7.500V6a1.500 1.500 0 0 1 1.500-1.500h3A1.500 1.500 0 0 1 15 6v1.500M3.500 13h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.500-5.600 6.500-11a6.500 6.500 0 0 0-13 0C5.500 15.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="12" cy="10" r="2.300" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M15.500 8.500V6.700a2.200 2.200 0 0 0-2.200-2.200H6.700a2.200 2.200 0 0 0-2.200 2.200v6.600a2.200 2.200 0 0 0 2.200 2.200h1.800" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5.500" width="14" height="9.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M3 18.500h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M10 3.500V7M14 3.500V7M10 17v3.500M14 17v3.500M3.500 10H7M3.500 14H7M17 10h3.500M17 14h3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4.500h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="9" width="16" height="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M7 14.500h10V20H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.500 7.500h9a4.500 4.500 0 0 1 4.400 3.600l.9 4.300a2.400 2.400 0 0 1-4.200 2l-1.600-2.400H8L6.400 17.400a2.400 2.400 0 0 1-4.200-2l.9-4.300a4.500 4.500 0 0 1 4.400-3.600Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M8 10.500v3M6.500 12h3M15.500 11h.01M17.500 13h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3.500 9.500a12 12 0 0 1 17 0M6.500 12.800a7.700 7.700 0 0 1 11 0M9.500 16a3.500 3.500 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 19h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.500 5 6v5.500c0 4.200 2.900 7.400 7 9 4.100-1.600 7-4.800 7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m9 12 2.200 2.200L15.500 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="15" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="9" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-tv" viewBox="0 0 24 24"><rect x="3.500" y="6" width="17" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 20.500h6M12 17v3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5.500h14a1.500 1.500 0 0 1 1.500 1.500v8a1.500 1.500 0 0 1-1.500 1.500h-7l-4.500 3.500v-3.500H5A1.500 1.500 0 0 1 3.500 15V7A1.500 1.500 0 0 1 5 5.500Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-brief" viewBox="0 0 24 24"><rect x="3.500" y="7.500" width="17" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 7.500V6a1.500 1.500 0 0 1 1.500-1.500h3A1.500 1.500 0 0 1 15 6v1.500M3.500 13h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol></svg>
 <a class="skip" href="#main" data-i18n="ui.skip">Aller au contenu</a>
 <div class="progress" aria-hidden="true"><i></i></div>
 
@@ -187,7 +426,6 @@
 
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <canvas class="aurora" id="aurora" aria-hidden="true"></canvas>
   <div class="stage">
     <div class="board">
       <div class="board-head"><h2 class="board-title" data-i18n="hero.board" id="board-title">Quel appareil ?</h2></div>
@@ -232,44 +470,44 @@
     </div>
     <p class="finder-status" id="svc-status" role="status" aria-live="polite"></p>
     <div class="grid svc-grid" id="svc-grid"><article class="proj proj-lead svc-card" data-cat="pc"><div class="cover cover-pc" aria-hidden="true"><svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
-<rect class="fs" x="104" y="30" width="272" height="170" rx="12"/>
-<rect class="l soft" x="118" y="44" width="244" height="142" rx="5"/>
-<path class="l" d="M134 76h30"/><rect class="l soft" x="176" y="70" width="170" height="12" rx="6"/>
-<rect class="fa" x="176" y="70" width="120" height="12" rx="6"><animate attributeName="width" values="120;154;92;120" keyTimes="0;.35;.7;1" dur="7s" repeatCount="indefinite"/></rect>
-<path class="l" d="M134 106h30"/><rect class="l soft" x="176" y="100" width="170" height="12" rx="6"/>
-<rect class="fv" x="176" y="100" width="64" height="12" rx="6"><animate attributeName="width" values="64;96;150;64" keyTimes="0;.3;.65;1" dur="9s" repeatCount="indefinite"/></rect>
-<path class="l" d="M134 136h30"/><rect class="l soft" x="176" y="130" width="170" height="12" rx="6"/>
-<rect class="fa" x="176" y="130" width="100" height="12" rx="6"><animate attributeName="width" values="100;60;136;100" keyTimes="0;.4;.75;1" dur="8s" repeatCount="indefinite"/></rect>
+<rect class="fs" x="104" y="30" width="272" height="170"/>
+<rect class="l soft" x="118" y="44" width="244" height="142"/>
+<path class="l" d="M134 76h30"/><rect class="l soft" x="176" y="70" width="170" height="12"/>
+<rect class="fa" x="176" y="70" width="120" height="12"><animate attributeName="width" values="120;154;92;120" keyTimes="0;.35;.7;1" dur="7s" repeatCount="indefinite"/></rect>
+<path class="l" d="M134 106h30"/><rect class="l soft" x="176" y="100" width="170" height="12"/>
+<rect class="fv" x="176" y="100" width="64" height="12"><animate attributeName="width" values="64;96;150;64" keyTimes="0;.3;.65;1" dur="9s" repeatCount="indefinite"/></rect>
+<path class="l" d="M134 136h30"/><rect class="l soft" x="176" y="130" width="170" height="12"/>
+<rect class="fa" x="176" y="130" width="100" height="12"><animate attributeName="width" values="100;60;136;100" keyTimes="0;.4;.75;1" dur="8s" repeatCount="indefinite"/></rect>
 <circle class="halo" cx="140" cy="166" r="8"/><circle class="fa" cx="140" cy="166" r="7"/><path class="chk" d="m136.500 166 2.600 2.800 4.600-5.600"/>
 <path class="l" d="M158 166h120"/>
-<path class="fs" d="M84 200h312l10 16a5 5 0 0 1-4.300 7.500H78.300A5 5 0 0 1 74 216z"/>
+<path class="fs" d="M84 200h312l10 16l-4.300 7.500H78.300L74 216z"/>
 <path class="l soft" d="M212 210h56"/>
-<g transform="rotate(32 424 176)"><rect class="fs" x="414" y="138" width="20" height="44" rx="7"/><path class="a" d="M424 182v40"/><path class="l soft" d="M418 150h12"/></g>
+<g transform="rotate(32 424 176)"><rect class="fs" x="414" y="138" width="20" height="44"/><path class="a" d="M424 182v40"/><path class="l soft" d="M418 150h12"/></g>
 </svg></div><div class="proj-body"><p class="proj-type" data-count>11 prestations</p><h3 data-i18n="cat.pc.title">PC et portables : dépannage et réparation</h3><p data-i18n="cat.pc.intro">Windows qui rame, écran noir, bruit, surchauffe, panne matérielle : je cherche la cause et je répare sur place quand c’est possible.</p><ul class="covers"><li><button class="svc" type="button" aria-pressed="false" data-kw="diagnostic d&#x27;une panne materielle ou logicielle diagnosis of a hardware or software fault diagnose van een hardware- of softwarepanne panne diagnostic probleme fault" data-i18n="svc.pc.1">Diagnostic d’une panne matérielle ou logicielle</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="pc lent, qui rame ou qui plante : nettoyage et optimisation slow, laggy or crashing pc: clean-up and optimisation trage of vastlopende pc: opschonen en optimaliseren lent rame plante slow traag lag crash bloque" data-i18n="svc.pc.2">PC lent, qui rame ou qui plante : nettoyage et optimisation</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="pc qui ne demarre plus, ecran noir ou bleu, redemarrages en boucle pc that won&#x27;t start, black or blue screen, restart loops pc die niet meer start, zwart of blauw scherm, herstartlussen demarre demarrage allume noir bleu boot boucle" data-i18n="svc.pc.3">PC qui ne démarre plus, écran noir ou bleu, redémarrages en boucle</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="reinstallation de windows, avec ou sans conservation de vos fichiers windows reinstall, with or without keeping your files windows opnieuw installeren, met of zonder uw bestanden te bewaren windows reinstallation formatage reinstall reset" data-i18n="svc.pc.4">Réinstallation de Windows, avec ou sans conservation de vos fichiers</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="mises a jour windows, pilotes et bios windows updates, drivers and bios windows-updates, stuurprogramma&#x27;s en bios mise a jour pilote driver update bios" data-i18n="svc.pc.5">Mises à jour Windows, pilotes et BIOS</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="remplacement d&#x27;ecran, de clavier, de batterie, de ventilateur ou de charnieres de portable laptop screen, keyboard, battery, fan or hinge replacement vervangen van scherm, toetsenbord, batterij, ventilator of scharnieren van een laptop ecran casse cracked screen clavier batterie ventilateur charniere laptop" data-i18n="svc.pc.6">Remplacement d’écran, de clavier, de batterie, de ventilateur ou de charnières de portable</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="remplacement ou ajout d&#x27;un ssd, d&#x27;un disque dur ou de memoire ram ssd, hard drive or ram replacement or addition vervangen of toevoegen van een ssd, harde schijf of werkgeheugen ssd disque dur ram memoire stockage" data-i18n="svc.pc.7">Remplacement ou ajout d’un SSD, d’un disque dur ou de mémoire RAM</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="nettoyage interne, depoussierage et pate thermique (surchauffe, bruit) internal cleaning, dust removal and thermal paste (overheating, noise) interne reiniging, ontstoffen en koelpasta (oververhitting, lawaai) chauffe surchauffe bruit bruyant ventilateur poussiere pate thermique overheating noise koelpasta" data-i18n="svc.pc.8">Nettoyage interne, dépoussiérage et pâte thermique (surchauffe, bruit)</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="recuperation de fichiers, sauvegarde et clonage de disque file recovery, backup and disk cloning bestanden herstellen, back-up en schijf klonen donnees fichiers perdu perdus recuperation sauvegarde clone clonage recovery lost data" data-i18n="svc.pc.9">Récupération de fichiers, sauvegarde et clonage de disque</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="transfert de vos donnees et programmes vers un nouveau pc moving your data and programs to a new pc uw gegevens en programma&#x27;s overzetten naar een nieuwe pc transfert migration nouveau pc transfer" data-i18n="svc.pc.10">Transfert de vos données et programmes vers un nouveau PC</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="problemes d&#x27;usb, de son, de webcam, de touchpad ou de bluetooth usb, sound, webcam, touchpad or bluetooth problems problemen met usb, geluid, webcam, touchpad of bluetooth usb son webcam touchpad bluetooth audio" data-i18n="svc.pc.11">Problèmes d’USB, de son, de webcam, de touchpad ou de Bluetooth</button></li></ul></div></article><article class="proj proj-lead svc-card proj-flip" data-cat="build"><div class="cover cover-build" aria-hidden="true"><svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
-<rect class="fs" x="132" y="18" width="216" height="234" rx="14"/>
-<rect class="l soft" x="148" y="34" width="184" height="202" rx="6"/>
-<rect class="fs" x="168" y="52" width="50" height="50" rx="6"/><rect class="fa soft" x="178" y="62" width="30" height="30" rx="3"/>
+<rect class="fs" x="132" y="18" width="216" height="234"/>
+<rect class="l soft" x="148" y="34" width="184" height="202"/>
+<rect class="fs" x="168" y="52" width="50" height="50"/><rect class="fa soft" x="178" y="62" width="30" height="30"/>
 <circle class="halo" cx="193" cy="77" r="9"/>
-<rect class="fs" x="238" y="50" width="9" height="62" rx="3"/><rect class="fs" x="252" y="50" width="9" height="62" rx="3"/><rect class="fs" x="266" y="50" width="9" height="62" rx="3"/><rect class="fa" x="280" y="50" width="9" height="62" rx="3"/>
-<rect class="fs" x="162" y="130" width="156" height="36" rx="7"/>
+<rect class="fs" x="238" y="50" width="9" height="62"/><rect class="fs" x="252" y="50" width="9" height="62"/><rect class="fs" x="266" y="50" width="9" height="62"/><rect class="fa" x="280" y="50" width="9" height="62"/>
+<rect class="fs" x="162" y="130" width="156" height="36"/>
 <circle class="l" cx="198" cy="148" r="12"/><circle class="l" cx="282" cy="148" r="12"/>
 <g class="fan" transform="translate(198 148)"><path class="l" d="M0-10v20M-10 0h20"/><animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="3s" repeatCount="indefinite" additive="sum"/></g>
 <g class="fan" transform="translate(282 148)"><path class="l" d="M0-10v20M-10 0h20"/><animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="3s" repeatCount="indefinite" additive="sum"/></g>
-<rect class="fs" x="162" y="196" width="156" height="30" rx="5"/><path class="l soft" d="M178 211h40"/>
+<rect class="fs" x="162" y="196" width="156" height="30"/><path class="l soft" d="M178 211h40"/>
 <path class="a-dash" d="M300 196c0-14 6-22 6-30"/><path class="a-dash" d="M186 196c0-16-14-22-14-60"/>
 <path class="a" d="M148 60v150"/><circle class="fa led" cx="148" cy="60" r="3.500"/>
 <path class="l" d="M92 60h26M92 80h18M362 190h26M362 210h18"/>
 </svg></div><div class="proj-body"><p class="proj-type" data-count>9 prestations</p><h3 data-i18n="cat.build.title">Montage sur mesure et mise à niveau</h3><p data-i18n="cat.build.intro">Un PC monté pour votre usage, ou un coup de jeune pour celui que vous avez déjà : bureautique, famille, gaming, création.</p><ul class="covers"><li><button class="svc" type="button" aria-pressed="false" data-kw="conseils d&#x27;achat et choix des composants selon votre budget et votre usage buying advice and component choice for your budget and use aankoopadvies en keuze van onderdelen volgens uw budget en gebruik conseil achat budget composants advice" data-i18n="svc.build.1">Conseils d’achat et choix des composants selon votre budget et votre usage</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="montage d&#x27;un pc sur mesure : bureautique, familial, gaming, creation custom pc build: office, family, gaming, creative work een pc op maat samenstellen: kantoor, gezin, gaming, creatief werk montage pc tour gaming gamer build assemblage" data-i18n="svc.build.2">Montage d’un PC sur mesure : bureautique, familial, gaming, création</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="assemblage a partir de composants que vous avez deja achetes assembly from parts you have already bought samenstellen met onderdelen die u al hebt gekocht assemblage composants assembly" data-i18n="svc.build.3">Assemblage à partir de composants que vous avez déjà achetés</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="mise a niveau : carte graphique, processeur, memoire, stockage, alimentation upgrades: graphics card, processor, memory, storage, power supply upgrades: videokaart, processor, geheugen, opslag, voeding upgrade carte graphique gpu processeur cpu alimentation voeding videokaart" data-i18n="svc.build.4">Mise à niveau : carte graphique, processeur, mémoire, stockage, alimentation</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="cablage propre, circulation d&#x27;air et refroidissement tidy cabling, airflow and cooling nette bekabeling, luchtstroom en koeling cable cablage airflow refroidissement koeling" data-i18n="svc.build.5">Câblage propre, circulation d’air et refroidissement</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="installation de windows, des pilotes et des logiciels sur le pc neuf windows, drivers and software installed on the new pc windows, stuurprogramma&#x27;s en software installeren op de nieuwe pc installation windows pilotes logiciels" data-i18n="svc.build.6">Installation de Windows, des pilotes et des logiciels sur le PC neuf</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="tests de stabilite et de temperature avant la remise stability and temperature tests before handover stabiliteits- en temperatuurtests voor de oplevering test stabilite temperature stress" data-i18n="svc.build.7">Tests de stabilité et de température avant la remise</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="remplacement de boitier, d&#x27;alimentation ou de ventilateurs case, power supply or fan replacement vervangen van behuizing, voeding of ventilatoren boitier alimentation ventilateur case" data-i18n="svc.build.8">Remplacement de boîtier, d’alimentation ou de ventilateurs</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="installation d&#x27;un ou plusieurs ecrans et reglage du multi-ecran installing one or more monitors and setting up multi-screen een of meer schermen installeren en multi-scherm instellen ecran moniteur multi ecran monitor" data-i18n="svc.build.9">Installation d’un ou plusieurs écrans et réglage du multi-écran</button></li></ul></div></article><article class="proj proj-lead svc-card" data-cat="print"><div class="cover cover-print" aria-hidden="true"><svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
-<rect class="fs" x="158" y="20" width="164" height="72" rx="4"/>
+<rect class="fs" x="158" y="20" width="164" height="72"/>
 <path class="l soft" d="M174 40h92M174 54h66"/>
-<rect class="fs" x="94" y="82" width="292" height="102" rx="14"/>
+<rect class="fs" x="94" y="82" width="292" height="102"/>
 <path class="l soft" d="M94 108h292"/>
-<rect class="l" x="116" y="122" width="70" height="36" rx="6"/><path class="l soft" d="M128 134h34M128 146h22"/>
+<rect class="l" x="116" y="122" width="70" height="36"/><path class="l soft" d="M128 134h34M128 146h22"/>
 <circle class="halo" cx="356" cy="124" r="6"/><circle class="fa led" cx="356" cy="124" r="5"/>
 <path class="a" d="M316 150a16 16 0 0 1 24 0M321 156a9 9 0 0 1 14 0"/><circle class="fa" cx="328" cy="162" r="2"/>
-<rect class="fi" x="132" y="170" width="216" height="6" rx="3"/>
+<rect class="fi" x="132" y="170" width="216" height="6"/>
 <g><animateTransform attributeName="transform" type="translate" values="0 -14;0 0;0 0;0 -14" keyTimes="0;.4;.8;1" dur="5s" repeatCount="indefinite"/>
-<rect class="fs" x="150" y="176" width="180" height="78" rx="3"/>
+<rect class="fs" x="150" y="176" width="180" height="78"/>
 <path class="l" d="M168 196h112M168 210h144M168 224h88"/><path class="a" d="M168 238h60"/></g>
 </svg></div><div class="proj-body"><p class="proj-type" data-count>10 prestations</p><h3 data-i18n="cat.print.title">Imprimantes et scanners</h3><p data-i18n="cat.print.intro">L’imprimante qui ne répond plus, qui bourre ou qui imprime mal : je m’en occupe, du modèle de salon au multifonction de bureau.</p><ul class="covers"><li><button class="svc" type="button" aria-pressed="false" data-kw="installation et configuration d&#x27;une imprimante ou d&#x27;un multifonction installing and setting up a printer or multifunction device een printer of multifunctional installeren en instellen installation configuration imprimante multifonction" data-i18n="svc.print.1">Installation et configuration d’une imprimante ou d’un multifonction</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="connexion en wi-fi ou en reseau, impression depuis pc, smartphone et tablette wi-fi or network connection, printing from pc, phone and tablet verbinding via wifi of netwerk, afdrukken vanaf pc, smartphone en tablet wifi reseau smartphone tablette airprint mobile" data-i18n="svc.print.2">Connexion en Wi-Fi ou en réseau, impression depuis PC, smartphone et tablette</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="imprimante hors ligne, qui n&#x27;imprime plus ou qui ne se connecte plus printer offline, not printing or not connecting any more printer offline, die niet meer afdrukt of verbindt hors ligne offline imprime plus connecte" data-i18n="svc.print.3">Imprimante hors ligne, qui n’imprime plus ou qui ne se connecte plus</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="pilotes, files d&#x27;attente bloquees et erreurs d&#x27;impression drivers, stuck print queues and printing errors stuurprogramma&#x27;s, vastgelopen afdrukwachtrijen en afdrukfouten pilote driver file attente erreur spooler" data-i18n="svc.print.4">Pilotes, files d’attente bloquées et erreurs d’impression</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="bourrages papier et rouleaux qui n&#x27;entrainent plus le papier paper jams and rollers that no longer feed paper papierstoringen en rollen die geen papier meer inpakken bourrage papier rouleau jam" data-i18n="svc.print.5">Bourrages papier et rouleaux qui n’entraînent plus le papier</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="qualite d&#x27;impression : traces, bandes, couleurs fausses, nettoyage des tetes print quality: streaks, banding, wrong colours, printhead cleaning afdrukkwaliteit: strepen, banden, foute kleuren, printkop reinigen qualite traces bandes couleurs tete nettoyage streaks" data-i18n="svc.print.6">Qualité d’impression : traces, bandes, couleurs fausses, nettoyage des têtes</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="remplacement de cartouches, de toner ou de tambour replacing ink cartridges, toner or drum inktpatronen, toner of drum vervangen cartouche toner tambour encre ink" data-i18n="svc.print.7">Remplacement de cartouches, de toner ou de tambour</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="configuration du scanner : scan vers pc, e-mail ou dossier reseau scanner setup: scan to pc, e-mail or network folder scanner instellen: scannen naar pc, e-mail of netwerkmap scanner scan numeriser numerisation" data-i18n="svc.print.8">Configuration du scanner : scan vers PC, e-mail ou dossier réseau</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="imprimante partagee entre plusieurs ordinateurs de la maison one printer shared between several computers at home een printer delen tussen meerdere computers thuis partage partagee plusieurs ordinateurs shared" data-i18n="svc.print.9">Imprimante partagée entre plusieurs ordinateurs de la maison</button></li><li><button class="svc" type="button" aria-pressed="false" data-kw="conseils pour choisir une imprimante adaptee et maitriser le cout des cartouches advice on choosing the right printer and keeping ink costs down advies bij de keuze van een geschikte printer en de kosten van patronen conseil choisir achat cout prix advice" data-i18n="svc.print.10">Conseils pour choisir une imprimante adaptée et maîtriser le coût des cartouches</button></li></ul></div></article><article class="proj proj-lead svc-card proj-flip" data-cat="console"><div class="cover cover-console" aria-hidden="true"><svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet">
 <path class="l" d="M112 84c0-9 8-14 18-14h28M368 84c0-9-8-14-18-14h-28"/>
@@ -277,7 +515,7 @@
 <path class="fs" d="M139 120h14v13h13v14h-13v13h-14v-13h-13v-14h13z" transform="translate(0 4)"/>
 <circle class="fs" cx="334" cy="128" r="8"/><circle class="fs" cx="334" cy="160" r="8"/><circle class="fs" cx="318" cy="144" r="8"/>
 <circle class="halo" cx="350" cy="144" r="8"/><circle class="fa" cx="350" cy="144" r="8"/>
-<rect class="l" x="212" y="106" width="56" height="22" rx="5"/>
+<rect class="l" x="212" y="106" width="56" height="22"/>
 <circle class="fs" cx="205" cy="168" r="18"/>
 <circle class="fi" cx="205" cy="168" r="9"><animateTransform attributeName="transform" type="translate" values="0 0;4 -3;-3 3;0 0" keyTimes="0;.3;.7;1" dur="4s" repeatCount="indefinite"/></circle>
 <circle class="fs" cx="275" cy="168" r="18"/><circle class="fi" cx="275" cy="168" r="9"/>
@@ -321,7 +559,6 @@
   </div>
 </section>
 <section class="section contact" id="contact" aria-labelledby="contact-title">
-  <canvas class="dotgrid" id="dotgrid" aria-hidden="true"></canvas>
   <div class="wrap contact-in">
     <div class="contact-intro">
       <h2 data-i18n="contact.title" id="contact-title">Contact</h2>
