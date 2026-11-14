@@ -266,6 +266,155 @@ html .filter-pill button:hover { background: color-mix(in srgb, var(--bar-ink) 3
 html #pick-pill .pill-show { border-radius: 0; background: var(--accent); color: var(--accent-ink); }
 html .toast { border-radius: 0; border: 2px solid var(--edge); background: var(--bar); color: var(--bar-ink); box-shadow: 4px 4px 0 var(--accent); font-family: var(--mono); font-size: .84rem; font-weight: 600; }
 </style>
+<style id="zf-adv">
+/* ZiraFix: advanced layer. Scroll-driven CSS, View Transitions, dialog + popover, anchor positioning, corner-shape. Every piece is progressive. */
+html { interpolate-size: allow-keywords; }
+.zf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- Scroll-driven (no JS) ---------- */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes zf-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    html .progress i { animation: zf-prog linear both; animation-timeline: scroll(root block); }
+    @keyframes zf-nav { from { box-shadow: 0 0 0 var(--accent); } to { box-shadow: 0 4px 0 var(--accent); } }
+    html .nav { animation: zf-nav linear both; animation-timeline: scroll(root block); animation-range: 0 160px; }
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes zf-rise { from { opacity: 0; translate: 0 40px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes zf-stamp { from { opacity: 0; translate: 9px 9px; box-shadow: 0 0 0 var(--shade); } to { opacity: 1; translate: 0 0; } }
+    html .proj-head, html .split-head, html .about-text, html .focus > div, html .roles, html .faq, html .contact-intro, html .form {
+      animation: zf-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%;
+    }
+    html .proj:not(.is-out), html.fx .proj:not(.is-out) { animation: zf-stamp linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  }
+}
+
+/* Process: the rail from fx.js becomes a progress strip along the top of the panel */
+html .roles .rail { display: block; position: absolute; left: 0; top: 0; z-index: 2; width: 6px; height: calc(100% * var(--p, 0)); border-radius: 0; background: var(--accent); box-shadow: none; }
+html .roles .rail::after { display: none; }
+@media (min-width: 1040px) { html .roles .rail { width: calc(100% * var(--p, 0)); height: 6px; } }
+
+/* ---------- Hero: an inspection lens on the grid mat ---------- */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html .hero { --lens: color-mix(in srgb, var(--navy) 50%, transparent); }
+  html .hero::before, html .hero::after { content: ""; position: absolute; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .35s; }
+  html .hero::before {
+    inset: 0; background-image: linear-gradient(var(--lens) 1px, transparent 1px), linear-gradient(90deg, var(--lens) 1px, transparent 1px); background-size: 40px 40px; background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(260px circle at var(--lx, 50%) var(--ly, 50%), #000, transparent 72%); mask-image: radial-gradient(260px circle at var(--lx, 50%) var(--ly, 50%), #000, transparent 72%);
+  }
+  html .hero::after { left: -1px; top: -1px; width: 41px; height: 41px; border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); translate: var(--cx, 0px) var(--cy, 0px); transition: opacity .35s, translate .09s linear; }
+  html .hero.has-ptr::before, html .hero.has-ptr::after { opacity: 1; }
+}
+
+/* ---------- Cut corners (corner-shape) ---------- */
+@supports (corner-shape: bevel) {
+  html .proj, html .board, html .facts, html .focus, html .roles, html .faq { border-top-right-radius: 26px; corner-shape: bevel; overflow: clip; }
+  html .board { border-top-right-radius: 32px; }
+  html .btn, html .finder-field, html .status, html .filter-pill, html .toast, html .pal, html .wo { border-top-right-radius: 14px; corner-shape: bevel; }
+  html .status, html .btn-sm { border-top-right-radius: 10px; }
+  html .proj { overflow: hidden; }
+}
+
+/* ---------- Form and FAQ ---------- */
+@supports (field-sizing: content) { html .form textarea { field-sizing: content; min-height: 9lh; max-height: 22lh; resize: none; } }
+@supports selector(::details-content) {
+  html .faq details::details-content { block-size: 0; overflow-y: clip; transition: block-size .38s var(--ease), content-visibility .38s allow-discrete; }
+  html .faq details[open]::details-content { block-size: auto; }
+}
+
+/* ---------- View Transitions: cards move between filters ---------- */
+html.zf-vt .svc-card:nth-child(1) { view-transition-name: zf-c1; } html.zf-vt .svc-card:nth-child(2) { view-transition-name: zf-c2; }
+html.zf-vt .svc-card:nth-child(3) { view-transition-name: zf-c3; } html.zf-vt .svc-card:nth-child(4) { view-transition-name: zf-c4; }
+html.zf-vt .svc-card:nth-child(5) { view-transition-name: zf-c5; } html.zf-vt .svc-card:nth-child(6) { view-transition-name: zf-c6; }
+html.zf-vt .svc-card:nth-child(7) { view-transition-name: zf-c7; } html.zf-vt .svc-card:nth-child(8) { view-transition-name: zf-c8; }
+html.zf-vt .svc-card:nth-child(9) { view-transition-name: zf-c9; } html.zf-vt .svc-card:nth-child(10) { view-transition-name: zf-c10; }
+html.zf-vt .svc-card { view-transition-class: zf-card; animation: none; }
+::view-transition-group(*.zf-card) { animation-duration: .5s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
+html.zf-vt::view-transition-old(root), html.zf-vt::view-transition-new(root), html.zf-vt-lang::view-transition-old(root), html.zf-vt-lang::view-transition-new(root) { animation-duration: .2s; }
+
+/* Reveal flash after "see the card" */
+@keyframes zf-flash { 0%, 55% { background: var(--accent); } 100% { background: transparent; } }
+html .zf-flash .svc { animation: zf-flash 1.6s ease-out both; }
+
+/* ---------- Command palette (dialog) ---------- */
+html .pal { margin: 9vh auto auto; width: min(700px, calc(100vw - 24px)); max-height: min(72vh, 660px); padding: 0; overflow: hidden; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); box-shadow: 8px 8px 0 var(--shade); opacity: 1; translate: 0 0;
+  transition: opacity .18s, translate .24s var(--ease), overlay .24s allow-discrete, display .24s allow-discrete; }
+html .pal:not([open]) { opacity: 0; translate: 0 -16px; }
+@starting-style { html .pal[open] { opacity: 0; translate: 0 -16px; } }
+html .pal::backdrop { background: color-mix(in srgb, var(--bar) 58%, transparent); background-image: repeating-linear-gradient(135deg, transparent 0 9px, rgba(255, 255, 255, .05) 9px 10px); opacity: 1; transition: opacity .2s, overlay .2s allow-discrete, display .2s allow-discrete; }
+html .pal:not([open])::backdrop { opacity: 0; }
+@starting-style { html .pal[open]::backdrop { opacity: 0; } }
+html .pal[open] { display: block; }
+.pal-box { display: flex; flex-direction: column; max-height: min(72vh, 660px); }
+.pal-top { display: flex; align-items: center; gap: 12px; padding: 0 14px; border-bottom: 2px solid var(--edge); }
+.pal-top .i { width: 20px; height: 20px; color: var(--navy); }
+.pal-top input { flex: 1; min-width: 0; height: 60px; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 1.12rem; -webkit-appearance: none; appearance: none; }
+.pal-top input::placeholder { color: var(--ink-3); opacity: 1; }
+.pal-top input::-webkit-search-cancel-button { display: none; }
+.pal-list { overflow: auto; overscroll-behavior: contain; padding: 8px; display: grid; gap: 2px; align-content: start; scroll-padding-block: 40px; }
+.pal-list .o-g { padding: 12px 10px 4px; font-family: var(--mono); font-size: .72rem; font-weight: 700; color: var(--ink-3); }
+.pal-list .o-h, .pal-list .o-none { padding: 14px 10px; color: var(--ink-2); }
+.pal-list .o { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 9px 10px; border: 2px solid transparent; cursor: pointer; line-height: 1.35; }
+.o-box { width: 14px; height: 14px; border: 2px solid var(--edge); background: var(--surface); }
+.o-dot { width: 8px; height: 8px; margin-inline: 3px; background: var(--navy); }
+.o-m { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); text-align: right; max-width: 22ch; }
+.pal-list .o.is-picked .o-box { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.6 7.2l3 3 5.6-6' fill='none' stroke='%2314102A' stroke-width='2.2'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.pal-list .o[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--edge); }
+.pal-list .o[aria-selected="true"] .o-m { color: var(--accent-ink); }
+.pal-list .o[aria-selected="true"] .o-dot { background: var(--accent-ink); }
+.pal-list .o[aria-selected="true"] .o-box { background-color: #fff; }
+.pal-list .o[aria-selected="true"].is-picked .o-box { background-color: var(--accent); }
+.pal-foot { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 10px 14px; border-top: 2px solid var(--edge); background: var(--bg-2); font-family: var(--mono); font-size: .72rem; color: var(--ink-2); }
+.pal-foot span { display: inline-flex; align-items: center; gap: 5px; }
+.pal-foot kbd { padding: 2px 5px; background: var(--surface); color: var(--ink); border-color: var(--edge); }
+@media (pointer: coarse) { .pal-foot { display: none; } }
+@media (max-width: 560px) { html .pal { margin-top: 6vh; } .o-m { display: none; } }
+
+/* ---------- "My request" panel (popover, anchored to the pill) ---------- */
+html .wo { position: fixed; inset: auto; margin: 0; left: 50%; bottom: 86px; translate: -50% 0; width: min(460px, calc(100vw - 24px)); max-height: min(64vh, 560px);
+  padding: 0; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); box-shadow: 8px 8px 0 var(--shade); overflow: hidden; display: none; flex-direction: column;
+  opacity: 0; transform: translateY(12px); transition: opacity .2s, transform .26s var(--ease), overlay .26s allow-discrete, display .26s allow-discrete; }
+html .wo:popover-open { display: flex; opacity: 1; transform: none; }
+@starting-style { html .wo:popover-open { opacity: 0; transform: translateY(12px); } }
+html .wo::backdrop { background: transparent; }
+@supports (position-anchor: --a) {
+  html #pick-pill { anchor-name: --zf-pill; }
+  html .wo { position-anchor: --zf-pill; left: anchor(center); bottom: calc(anchor(top) + 16px); }
+}
+.wo-h { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 16px; background: var(--bar); color: var(--bar-ink); }
+.wo-h::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--accent); }
+.wo-t { font-family: var(--font-display); font-weight: 750; font-size: 1.08rem; letter-spacing: -.01em; }
+.wo-n { margin-right: auto; font-family: var(--mono); font-size: .76rem; opacity: .85; }
+.wo-x { width: 32px; height: 32px; display: grid; place-items: center; background: color-mix(in srgb, var(--bar-ink) 16%, transparent); color: inherit; }
+.wo-x:hover { background: color-mix(in srgb, var(--bar-ink) 30%, transparent); }
+.wo-x .i { width: 14px; height: 14px; }
+.wo-b { overflow: auto; overscroll-behavior: contain; padding: 6px 16px 10px; }
+.wo-g { margin: 14px 0 4px; font-family: var(--mono); font-size: .72rem; font-weight: 700; color: var(--ink-3); }
+.wo-b ul { display: grid; }
+.wo-b li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-top: 2px solid var(--edge); line-height: 1.4; font-size: .96rem; }
+.wo-b li:first-child { border-top: 0; }
+.wo-b li > span { flex: 1; min-width: 0; }
+.wo-r { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border: 2px solid var(--edge); background: var(--surface); color: var(--ink); }
+.wo-r:hover { background: var(--accent); color: var(--accent-ink); }
+.wo-r .i { width: 12px; height: 12px; }
+.wo-f { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 16px 16px; border-top: 2px solid var(--edge); background: var(--bg-2); }
+.wo-f .btn { flex: 1 1 auto; }
+html #pick-list { background: color-mix(in srgb, var(--bar-ink) 16%, transparent); }
+
+/* Pill on small screens: the count moves onto the list button */
+html #pick-list { position: relative; }
+html #pick-list::after { content: attr(data-n); display: none; position: absolute; top: -9px; right: -9px; min-width: 20px; height: 20px; padding: 0 4px; border: 2px solid var(--edge); background: var(--accent); color: var(--accent-ink); font: 700 .68rem/16px var(--mono); text-align: center; }
+html #pick-send { white-space: nowrap; }
+.wo-t, .wo-n { white-space: nowrap; }
+@media (max-width: 480px) {
+  html #pick-list::after { display: block; }
+  html #pick-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  html .filter-pill { gap: 8px; padding-left: 10px; }
+  .wo-n { font-size: .7rem; }
+}
+</style>
 <script>
 /* Set the theme before first paint (shared with the portfolio). */
 (function () {
@@ -395,7 +544,7 @@ html .toast { border-radius: 0; border: 2px solid var(--edge); background: var(-
 </script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.500-5.600 6.500-11a6.500 6.500 0 0 0-13 0C5.500 15.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="12" cy="10" r="2.300" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M15.500 8.500V6.700a2.200 2.200 0 0 0-2.200-2.200H6.700a2.200 2.200 0 0 0-2.200 2.200v6.600a2.200 2.200 0 0 0 2.200 2.200h1.800" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5.500" width="14" height="9.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M3 18.500h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M10 3.500V7M14 3.500V7M10 17v3.500M14 17v3.500M3.500 10H7M3.500 14H7M17 10h3.500M17 14h3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4.500h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="9" width="16" height="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M7 14.500h10V20H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.500 7.500h9a4.500 4.500 0 0 1 4.400 3.600l.9 4.300a2.400 2.400 0 0 1-4.200 2l-1.600-2.400H8L6.400 17.400a2.400 2.400 0 0 1-4.200-2l.9-4.300a4.500 4.500 0 0 1 4.400-3.600Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M8 10.500v3M6.500 12h3M15.500 11h.01M17.500 13h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3.500 9.500a12 12 0 0 1 17 0M6.500 12.800a7.700 7.700 0 0 1 11 0M9.500 16a3.500 3.500 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 19h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.500 5 6v5.500c0 4.200 2.900 7.400 7 9 4.100-1.600 7-4.800 7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m9 12 2.200 2.200L15.500 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="15" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="9" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-tv" viewBox="0 0 24 24"><rect x="3.500" y="6" width="17" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 20.500h6M12 17v3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5.500h14a1.500 1.500 0 0 1 1.500 1.500v8a1.500 1.500 0 0 1-1.500 1.500h-7l-4.500 3.500v-3.500H5A1.500 1.500 0 0 1 3.500 15V7A1.500 1.500 0 0 1 5 5.500Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-brief" viewBox="0 0 24 24"><rect x="3.500" y="7.500" width="17" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 7.500V6a1.500 1.500 0 0 1 1.500-1.500h3A1.500 1.500 0 0 1 15 6v1.500M3.500 13h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m4.5 7.5 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.500-5.600 6.500-11a6.500 6.500 0 0 0-13 0C5.500 15.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="12" cy="10" r="2.300" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M15.500 8.500V6.700a2.200 2.200 0 0 0-2.200-2.200H6.700a2.200 2.200 0 0 0-2.200 2.200v6.600a2.200 2.200 0 0 0 2.200 2.200h1.800" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5.500" width="14" height="9.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M3 18.500h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M10 3.500V7M14 3.500V7M10 17v3.500M14 17v3.500M3.500 10H7M3.500 14H7M17 10h3.500M17 14h3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4.500h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="9" width="16" height="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M7 14.500h10V20H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.500 7.500h9a4.500 4.500 0 0 1 4.400 3.600l.9 4.300a2.400 2.400 0 0 1-4.200 2l-1.600-2.400H8L6.400 17.400a2.400 2.400 0 0 1-4.200-2l.9-4.300a4.500 4.500 0 0 1 4.400-3.600Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M8 10.500v3M6.500 12h3M15.500 11h.01M17.500 13h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3.500 9.500a12 12 0 0 1 17 0M6.500 12.800a7.700 7.700 0 0 1 11 0M9.500 16a3.500 3.500 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M12 19h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="4" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="4" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><rect x="13.500" y="13.500" width="6.500" height="6.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.500 5 6v5.500c0 4.200 2.900 7.400 7 9 4.100-1.600 7-4.800 7-9V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="m9 12 2.200 2.200L15.500 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="15" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="9" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-tv" viewBox="0 0 24 24"><rect x="3.500" y="6" width="17" height="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 20.500h6M12 17v3.500" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5.500h14a1.500 1.500 0 0 1 1.500 1.500v8a1.500 1.500 0 0 1-1.500 1.500h-7l-4.500 3.500v-3.500H5A1.500 1.500 0 0 1 3.500 15V7A1.500 1.500 0 0 1 5 5.500Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-brief" viewBox="0 0 24 24"><rect x="3.500" y="7.500" width="17" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M9 7.500V6a1.500 1.500 0 0 1 1.500-1.500h3A1.500 1.500 0 0 1 15 6v1.500M3.500 13h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M9.500 6.500H20M9.500 12H20M9.500 17.500H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/><path d="M4 6.500h1.500M4 12h1.500M4 17.500h1.500" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol></svg>
 <a class="skip" href="#main" data-i18n="ui.skip">Aller au contenu</a>
 <div class="progress" aria-hidden="true"><i></i></div>
 
@@ -555,7 +704,7 @@ html .toast { border-radius: 0; border: 2px solid var(--edge); background: var(-
 <section class="section split alt" id="faq" aria-labelledby="faq-title">
   <div class="wrap split-in">
     <div class="split-head"><h2 data-i18n="faq.title" id="faq-title">Questions fréquentes</h2></div>
-    <div class="faq"><details><summary data-i18n="faq.1.q">Dans quelle zone intervenez-vous ?</summary><p class="a" data-i18n="faq.1.a">À Bruxelles. Je suis basé à Jette. Si votre adresse est en dehors de Bruxelles, écrivez-moi pour voir ce qui est possible.</p></details><details><summary data-i18n="faq.2.q">Combien coûte une intervention ?</summary><p class="a" data-i18n="faq.2.a">Cela dépend du problème et des pièces éventuelles. Décrivez votre situation dans le formulaire ou appelez-moi : nous en parlons avant toute intervention.</p></details><details><summary data-i18n="faq.3.q">Comment prendre rendez-vous ?</summary><p class="a" data-i18n="faq.3.a">Par le formulaire de cette page, par e-mail ou par téléphone. Indiquez l’appareil, le problème et votre commune.</p></details><details><summary data-i18n="faq.4.q">Mes fichiers sont-ils en sécurité ?</summary><p class="a" data-i18n="faq.4.a">Quand c’est possible, je propose une sauvegarde avant d’intervenir sur un disque ou de réinstaller Windows. Je ne consulte pas vos données personnelles en dehors de ce que le dépannage exige.</p></details><details><summary data-i18n="faq.5.q">Quelles imprimantes et quelles consoles prenez-vous en charge ?</summary><p class="a" data-i18n="faq.5.a">Imprimantes jet d’encre, laser et multifonctions, et consoles PlayStation, Xbox et Nintendo Switch. Si votre modèle est plus rare, indiquez-le dans votre message.</p></details><details><summary data-i18n="faq.6.q">Mon problème n’est pas dans la liste. Que faire ?</summary><p class="a" data-i18n="faq.6.a">Décrivez-le. La liste ne couvre pas tout : je vous dirai si je peux m’en occuper.</p></details><details><summary data-i18n="faq.7.q">Dans quelles langues travaillez-vous ?</summary><p class="a" data-i18n="faq.7.a">En français et en anglais.</p></details></div>
+    <div class="faq"><details name="faq"><summary data-i18n="faq.1.q">Dans quelle zone intervenez-vous ?</summary><p class="a" data-i18n="faq.1.a">À Bruxelles. Je suis basé à Jette. Si votre adresse est en dehors de Bruxelles, écrivez-moi pour voir ce qui est possible.</p></details><details name="faq"><summary data-i18n="faq.2.q">Combien coûte une intervention ?</summary><p class="a" data-i18n="faq.2.a">Cela dépend du problème et des pièces éventuelles. Décrivez votre situation dans le formulaire ou appelez-moi : nous en parlons avant toute intervention.</p></details><details name="faq"><summary data-i18n="faq.3.q">Comment prendre rendez-vous ?</summary><p class="a" data-i18n="faq.3.a">Par le formulaire de cette page, par e-mail ou par téléphone. Indiquez l’appareil, le problème et votre commune.</p></details><details name="faq"><summary data-i18n="faq.4.q">Mes fichiers sont-ils en sécurité ?</summary><p class="a" data-i18n="faq.4.a">Quand c’est possible, je propose une sauvegarde avant d’intervenir sur un disque ou de réinstaller Windows. Je ne consulte pas vos données personnelles en dehors de ce que le dépannage exige.</p></details><details name="faq"><summary data-i18n="faq.5.q">Quelles imprimantes et quelles consoles prenez-vous en charge ?</summary><p class="a" data-i18n="faq.5.a">Imprimantes jet d’encre, laser et multifonctions, et consoles PlayStation, Xbox et Nintendo Switch. Si votre modèle est plus rare, indiquez-le dans votre message.</p></details><details name="faq"><summary data-i18n="faq.6.q">Mon problème n’est pas dans la liste. Que faire ?</summary><p class="a" data-i18n="faq.6.a">Décrivez-le. La liste ne couvre pas tout : je vous dirai si je peux m’en occuper.</p></details><details name="faq"><summary data-i18n="faq.7.q">Dans quelles langues travaillez-vous ?</summary><p class="a" data-i18n="faq.7.a">En français et en anglais.</p></details></div>
   </div>
 </section>
 <section class="section contact" id="contact" aria-labelledby="contact-title">
@@ -599,13 +748,299 @@ html .toast { border-radius: 0; border: 2px solid var(--edge); background: var(-
 </footer>
 <div class="filter-pill" id="pick-pill" hidden>
   <span id="pick-text"></span>
+  <button type="button" id="pick-list" popovertarget="zf-wo" aria-label="Voir ma sélection" data-zf-attr="aria-label:wo.open"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></button>
   <button type="button" id="pick-send" class="pill-show" data-i18n="pick.send">Envoyer ma demande</button>
   <button type="button" id="pick-clear" aria-label="Vider la sélection" data-i18n-attr="aria-label:pick.clear"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<dialog class="pal" id="zf-pal" closedby="any" aria-label="Rechercher et agir" data-zf-attr="aria-label:pal.title">
+  <div class="pal-box">
+    <div class="pal-top">
+      <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="zf-pal-q" type="text" inputmode="search" enterkeyhint="search" role="combobox" aria-expanded="true" aria-controls="zf-pal-list" aria-autocomplete="list" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Rechercher une prestation, une catégorie, une action…" aria-label="Rechercher et agir" data-zf-attr="placeholder:pal.ph;aria-label:pal.title">
+    </div>
+    <ul class="pal-list" id="zf-pal-list" role="listbox" aria-multiselectable="true" aria-label="Résultats" data-zf-attr="aria-label:pal.title"></ul>
+    <p class="zf-sr" id="zf-pal-s" role="status" aria-live="polite"></p>
+    <div class="pal-foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> <span data-zf="k.nav">naviguer</span></span>
+      <span><kbd>↵</kbd> <span data-zf="k.pick">choisir</span></span>
+      <span><kbd>⇧</kbd><kbd>↵</kbd> <span data-zf="k.see">voir la carte</span></span>
+      <span><kbd>esc</kbd> <span data-zf="k.close">fermer</span></span>
+    </div>
+  </div>
+</dialog>
+<aside class="wo" id="zf-wo" popover="auto" aria-labelledby="zf-wo-t">
+  <div class="wo-h">
+    <p class="wo-t" id="zf-wo-t" data-zf="wo.title">Ma demande</p>
+    <p class="wo-n" id="zf-wo-n"></p>
+    <button class="wo-x" type="button" popovertarget="zf-wo" popovertargetaction="hide" aria-label="Fermer" data-zf-attr="aria-label:wo.close"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="wo-b" id="zf-wo-list"></div>
+  <div class="wo-f">
+    <button class="btn btn-primary btn-sm" type="button" id="zf-wo-send">Envoyer ma demande</button>
+    <button class="btn btn-sm" type="button" id="zf-wo-clear" data-zf="wo.clear">Tout vider</button>
+  </div>
+</aside>
+
 <script src="zy/js/zirafix-i18n.js" defer></script>
 <script src="zy/js/zirafix.js" defer></script>
 <script src="zy/js/fx.js" defer></script>
+<script type="module" id="zf-adv-js">
+/* ZiraFix, advanced layer: command palette, request panel, view transitions, hero lens, ticker speed.
+   Runs after zirafix.js and fx.js, talks to them only through the DOM. */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const fine = matchMedia("(hover: hover) and (pointer: fine)");
+  const norm = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[’‘`]/g, "'").replace(/\s+/g, " ").trim();
+  const lang = () => (root.lang || "fr").slice(0, 2);
+
+  const D = {
+    fr: { "pal.title": "Rechercher et agir", "pal.ph": "Rechercher une prestation, une catégorie, une action…", "pal.svc": "Prestations", "pal.cat": "Catégories", "pal.act": "Actions",
+      "pal.none": "Aucun résultat. Essayez un autre mot.", "pal.hint": "Tapez pour chercher parmi les {n} prestations.", "pal.n1": "1 résultat", "pal.nn": "{n} résultats",
+      "k.nav": "naviguer", "k.pick": "choisir", "k.see": "voir la carte", "k.close": "fermer",
+      "m.section": "Section", "m.cat": "Catégorie", "m.theme": "Thème", "m.lang": "Langue", "m.req": "Demande",
+      "a.theme": "Basculer clair / sombre", "wo.title": "Ma demande", "wo.open": "Voir ma sélection", "wo.close": "Fermer", "wo.remove": "Retirer", "wo.clear": "Tout vider", "sep": " :" },
+    en: { "pal.title": "Search and act", "pal.ph": "Search a service, a category, an action…", "pal.svc": "Services", "pal.cat": "Categories", "pal.act": "Actions",
+      "pal.none": "No results. Try another word.", "pal.hint": "Type to search the {n} services.", "pal.n1": "1 result", "pal.nn": "{n} results",
+      "k.nav": "navigate", "k.pick": "select", "k.see": "show card", "k.close": "close",
+      "m.section": "Section", "m.cat": "Category", "m.theme": "Theme", "m.lang": "Language", "m.req": "Request",
+      "a.theme": "Switch light / dark", "wo.title": "My request", "wo.open": "View my selection", "wo.close": "Close", "wo.remove": "Remove", "wo.clear": "Clear all", "sep": ":" },
+    nl: { "pal.title": "Zoeken en handelen", "pal.ph": "Zoek een dienst, categorie of actie…", "pal.svc": "Diensten", "pal.cat": "Categorieën", "pal.act": "Acties",
+      "pal.none": "Geen resultaten. Probeer een ander woord.", "pal.hint": "Typ om te zoeken in de {n} diensten.", "pal.n1": "1 resultaat", "pal.nn": "{n} resultaten",
+      "k.nav": "navigeren", "k.pick": "kiezen", "k.see": "toon kaart", "k.close": "sluiten",
+      "m.section": "Sectie", "m.cat": "Categorie", "m.theme": "Thema", "m.lang": "Taal", "m.req": "Aanvraag",
+      "a.theme": "Licht / donker wisselen", "wo.title": "Mijn aanvraag", "wo.open": "Bekijk mijn selectie", "wo.close": "Sluiten", "wo.remove": "Verwijderen", "wo.clear": "Alles wissen", "sep": ":" }
+  };
+  const LANGS = { fr: "Français", en: "English", nl: "Nederlands" };
+  const tr = (k, v) => { let s = (D[lang()] || D.fr)[k] ?? D.fr[k] ?? k; if (v) for (const x in v) s = s.replace("{" + x + "}", v[x]); return s; };
+
+  function applyDict() {
+    $$("[data-zf]").forEach((el) => { el.textContent = tr(el.dataset.zf); });
+    $$("[data-zf-attr]").forEach((el) => el.dataset.zfAttr.split(";").forEach((p) => { const [a, k] = p.split(":"); el.setAttribute(a, tr(k)); }));
+  }
+
+  /* ---------- View Transitions around the filters and the language switch ---------- */
+  let reenter = false;
+  function vt(fn, cls = "zf-vt") {
+    if (!document.startViewTransition || reduce.matches || reenter) { fn(); return Promise.resolve(); }
+    root.classList.add(cls);
+    const t = document.startViewTransition(() => { reenter = true; try { fn(); } finally { reenter = false; } });
+    const done = t.finished.catch(() => {}).then(() => root.classList.remove(cls));
+    return done;
+  }
+  document.addEventListener("click", (e) => {
+    if (reenter || !document.startViewTransition || reduce.matches) return;
+    const b = e.target.closest("#cat-filters button, #sym-row .sym, #svc-clear, #svc-reset, [data-lang]");
+    if (!b) return;
+    e.stopImmediatePropagation();
+    vt(() => b.click(), b.matches("[data-lang]") ? "zf-vt-lang" : "zf-vt");
+  }, true);
+
+  /* ---------- Command palette ---------- */
+  const pal = $("#zf-pal"), palQ = $("#zf-pal-q"), palList = $("#zf-pal-list"), palS = $("#zf-pal-s");
+  let rows = [], active = 0;
+
+  const cardsOf = () => $$(".svc-card").map((el) => ({ el, id: el.dataset.cat, name: $("h3", el)?.textContent.trim() || "" }));
+  const sectionLink = (id) => $(`.nav-links a[href="#${id}"]`)?.textContent.trim() || id;
+  const scrollTo = (el) => el?.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
+
+  function showCategory(id, then) {
+    vt(() => {
+      const q = $("#svc-q"); if (q.value) { q.value = ""; q.dispatchEvent(new Event("input", { bubbles: true })); }
+      $('#sym-row .sym[aria-pressed="true"]')?.click();
+      $(`#cat-filters [data-cat="${id}"]`)?.click();
+    }).then(() => { scrollTo($("#services")); then?.(); });
+  }
+  function reveal(btn) {
+    const id = btn.closest(".svc-card").dataset.cat;
+    showCategory(id, () => setTimeout(() => {
+      const li = btn.parentNode;
+      li.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "center" });
+      li.classList.add("zf-flash"); setTimeout(() => li.classList.remove("zf-flash"), 1700);
+    }, reduce.matches ? 0 : 450));
+  }
+
+  function actions() {
+    const A = [];
+    ["services", "process", "faq", "contact"].forEach((id) => A.push({ kind: "act", label: sectionLink(id), meta: tr("m.section"), run: () => scrollTo($("#" + id)) }));
+    A.push({ kind: "act", label: tr("a.theme"), meta: tr("m.theme"), run: () => $("#theme-toggle").click() });
+    Object.entries(LANGS).forEach(([k, name]) => { if (k !== lang()) A.push({ kind: "act", label: name, meta: tr("m.lang"), run: () => $(`[data-lang="${k}"]`)?.click() }); });
+    if ($$(".covers li.is-picked").length) {
+      A.push({ kind: "act", label: $("#pick-send").textContent.trim(), meta: tr("m.req"), run: () => $("#pick-send").click() });
+      A.push({ kind: "act", label: $("#pick-clear").getAttribute("aria-label"), meta: tr("m.req"), run: () => $("#pick-clear").click() });
+    }
+    return A.map((a) => ({ ...a, n: norm(a.label + " " + a.meta) }));
+  }
+
+  function build(q) {
+    const need = norm(q).split(" ").filter(Boolean);
+    const svcs = $$(".svc-card").flatMap((card) => {
+      const m = $("h3", card)?.textContent.trim() || "";
+      return $$(".svc", card).map((btn) => ({ kind: "svc", btn, label: btn.textContent.trim(), meta: m, kw: btn.dataset.kw || "" }));
+    });
+    const out = [];
+    const cats = cardsOf().map((c) => ({ kind: "cat", id: c.id, label: c.name, meta: tr("m.cat"), n: norm(c.name) })).filter((c) => need.every((w) => c.n.includes(w)));
+    const acts = actions().filter((a) => need.every((w) => a.n.includes(w)));
+    if (need.length) {
+      const hit = svcs.filter((s) => need.every((w) => s.kw.includes(w) || norm(s.label).includes(w))).slice(0, 40);
+      if (hit.length) out.push({ g: tr("pal.svc") }, ...hit);
+    }
+    if (cats.length) out.push({ g: tr("pal.cat") }, ...cats);
+    if (acts.length) out.push({ g: tr("pal.act") }, ...acts);
+    if (!need.length) out.push({ hint: tr("pal.hint", { n: svcs.length }) });
+    return out;
+  }
+
+  function renderRows(keep) {
+    const list = build(palQ.value);
+    const prev = keep ? rows[active] : null;
+    rows = list.filter((x) => !x.g && !x.hint);
+    palList.replaceChildren();
+    let i = 0;
+    list.forEach((x) => {
+      const li = document.createElement("li");
+      if (x.g) { li.className = "o-g"; li.setAttribute("role", "presentation"); li.textContent = x.g; }
+      else if (x.hint) { li.className = "o-h"; li.setAttribute("role", "presentation"); li.textContent = x.hint; }
+      else {
+        li.className = "o"; li.id = "zf-o" + i; li.dataset.i = i; li.setAttribute("role", "option"); li.setAttribute("aria-selected", "false");
+        const mark = document.createElement("span"); mark.className = x.kind === "svc" ? "o-box" : "o-dot"; mark.setAttribute("aria-hidden", "true");
+        const t = document.createElement("span"); t.textContent = x.label;
+        const m = document.createElement("span"); m.className = "o-m"; m.textContent = x.meta; m.setAttribute("aria-hidden", "true");
+        if (x.kind === "svc") { const on = x.btn.parentNode.classList.contains("is-picked"); li.classList.toggle("is-picked", on); li.setAttribute("aria-checked", String(on)); }
+        li.append(mark, t, m); i++;
+      }
+      palList.append(li);
+    });
+    if (!rows.length && palQ.value.trim()) { const li = document.createElement("li"); li.className = "o-none"; li.setAttribute("role", "presentation"); li.textContent = tr("pal.none"); palList.append(li); }
+    active = prev ? Math.max(0, rows.findIndex((r) => r.btn && r.btn === prev.btn)) : 0;
+    setActive(active, false);
+    palS.textContent = rows.length === 1 ? tr("pal.n1") : tr("pal.nn", { n: rows.length });
+  }
+  function setActive(i, scroll = true) {
+    if (!rows.length) { palQ.removeAttribute("aria-activedescendant"); return; }
+    active = (i + rows.length) % rows.length;
+    $$(".o", palList).forEach((li) => li.setAttribute("aria-selected", String(+li.dataset.i === active)));
+    const li = $("#zf-o" + active, palList);
+    palQ.setAttribute("aria-activedescendant", "zf-o" + active);
+    if (scroll) li?.scrollIntoView({ block: "nearest" });
+  }
+  function closePal(after) { pal.close(); if (after) setTimeout(after, reduce.matches ? 0 : 230); }
+  function activate(it, see) {
+    if (!it) return;
+    if (it.kind === "svc") {
+      if (see) return closePal(() => reveal(it.btn));
+      it.btn.click(); navigator.vibrate?.(8); renderRows(true);
+    } else if (it.kind === "cat") closePal(() => showCategory(it.id));
+    else closePal(it.run);
+  }
+  function openPal() {
+    if (!pal || pal.open) return;
+    palQ.value = ""; renderRows(); pal.showModal(); palQ.focus();
+  }
+
+  if (pal) {
+    palQ.addEventListener("input", () => renderRows());
+    palQ.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+      else if (e.key === "Home") { e.preventDefault(); setActive(0); }
+      else if (e.key === "End") { e.preventDefault(); setActive(rows.length - 1); }
+      else if (e.key === "Enter") { e.preventDefault(); activate(rows[active], e.shiftKey); }
+    });
+    palList.addEventListener("pointermove", (e) => { const li = e.target.closest(".o"); if (li && +li.dataset.i !== active) setActive(+li.dataset.i, false); });
+    palList.addEventListener("click", (e) => { const li = e.target.closest(".o"); if (li) { setActive(+li.dataset.i, false); activate(rows[+li.dataset.i], e.shiftKey); palQ.focus(); } });
+    pal.addEventListener("click", (e) => { if (e.target === pal) pal.close(); });
+
+    window.addEventListener("keydown", (e) => {
+      const k = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && k === "k") { e.preventDefault(); e.stopImmediatePropagation(); pal.open ? pal.close() : openPal(); return; }
+      if (k === "/" && !e.ctrlKey && !e.metaKey && !e.altKey && !pal.open && !e.target.closest("input, textarea, select, [contenteditable]")) { e.preventDefault(); openPal(); }
+    }, true);
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("[data-find]")) return;
+      e.stopImmediatePropagation(); openPal();
+    }, true);
+    document.addEventListener("langchange", () => { applyDict(); if (pal.open) renderRows(true); });
+  }
+
+  /* ---------- "My request" panel ---------- */
+  const wo = $("#zf-wo"), woList = $("#zf-wo-list"), woN = $("#zf-wo-n"), pickText = $("#pick-text");
+  function buildWo() {
+    const groups = new Map();
+    $$(".covers li.is-picked .svc").forEach((b) => { const c = b.closest(".svc-card"); if (!groups.has(c)) groups.set(c, []); groups.get(c).push(b); });
+    woList.replaceChildren(...[...groups].map(([card, btns]) => {
+      const sec = document.createElement("section");
+      const g = document.createElement("p"); g.className = "wo-g"; g.textContent = $("h3", card)?.textContent.trim() || "";
+      const ul = document.createElement("ul");
+      btns.forEach((b) => {
+        const li = document.createElement("li"), s = document.createElement("span"), x = document.createElement("button");
+        s.textContent = b.textContent.trim();
+        x.type = "button"; x.className = "wo-r"; x.setAttribute("aria-label", tr("wo.remove") + tr("sep") + " " + s.textContent);
+        x.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-close"/></svg>';
+        x.addEventListener("click", () => b.click());
+        li.append(s, x); ul.append(li);
+      });
+      sec.append(g, ul); return sec;
+    }));
+    woN.textContent = pickText.textContent.trim();
+    const pl = $("#pick-list"); if (pl) pl.dataset.n = String($$(".covers li.is-picked").length);
+    if (!groups.size && wo.matches(":popover-open")) wo.hidePopover();
+  }
+  if (wo) {
+    let queued = false;
+    const later = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; buildWo(); }); };
+    new MutationObserver(later).observe($("#svc-grid"), { subtree: true, attributes: true, attributeFilter: ["class"] });
+    new MutationObserver(later).observe(pickText, { childList: true, characterData: true, subtree: true });
+    document.addEventListener("langchange", later);
+    $("#zf-wo-send").addEventListener("click", () => { $("#pick-send").click(); wo.hidePopover(); });
+    $("#zf-wo-clear").addEventListener("click", () => { $("#pick-clear").click(); });
+    $("#svc-grid").addEventListener("click", (e) => { if (e.target.closest(".svc")) navigator.vibrate?.(8); });
+    $("#zf-wo-send").textContent = $("#pick-send").textContent.trim();
+    document.addEventListener("langchange", () => { $("#zf-wo-send").textContent = $("#pick-send").textContent.trim(); });
+    buildWo();
+  }
+
+  /* ---------- Hero: the grid mat reacts to the pointer ---------- */
+  const hero = $(".hero");
+  if (hero && fine.matches && !reduce.matches) {
+    let px = 0, py = 0, pending = false;
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top;
+      if (pending) return; pending = true;
+      requestAnimationFrame(() => {
+        pending = false;
+        hero.style.setProperty("--lx", px + "px"); hero.style.setProperty("--ly", py + "px");
+        hero.style.setProperty("--cx", Math.floor(px / 40) * 40 + "px"); hero.style.setProperty("--cy", Math.floor(py / 40) * 40 + "px");
+        hero.classList.add("has-ptr");
+      });
+    });
+    hero.addEventListener("pointerleave", () => hero.classList.remove("has-ptr"));
+  }
+
+  /* ---------- Ticker: scroll speed drives the marquee ---------- */
+  if (!reduce.matches) {
+    let last = scrollY, lastT = performance.now(), v = 0, rate = 1, raf = 0, anims = [];
+    const tick = () => {
+      v *= 0.9; const target = 1 + Math.min(v * 3, 7); rate += (target - rate) * 0.18;
+      anims.forEach((a) => { a.playbackRate = rate; });
+      if (v > 0.015 || rate > 1.02) raf = requestAnimationFrame(tick);
+      else { anims.forEach((a) => { a.playbackRate = 1; }); raf = 0; }
+    };
+    addEventListener("scroll", () => {
+      const now = performance.now(), dy = Math.abs(scrollY - last), dt = Math.max(now - lastT, 1);
+      v = Math.max(v * 0.6, (dy / dt)); last = scrollY; lastT = now;
+      if (!anims.length || !anims[0].effect) anims = document.getAnimations().filter((a) => a.animationName === "mq");
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: true });
+  }
+
+  applyDict();
+})();
+</script>
 </body>
 </html>
