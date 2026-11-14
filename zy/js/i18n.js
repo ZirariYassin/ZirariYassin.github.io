@@ -1,6 +1,6 @@
-/* i18n: English lives in the HTML. This file holds the French strings and
-   the English strings that are not in the markup (aria labels, palette, toasts).
-   To change wording, edit the HTML (English) or the `fr` object below (French). */
+/* i18n: English lives in the HTML. This file holds the French (`fr`) and Dutch (`nl`) strings
+   and the English strings that are not in the markup (aria labels, palette, toasts).
+   To change wording, edit the HTML (English) or the `fr` / `nl` objects below. */
 (function () {
   "use strict";
 
@@ -33,6 +33,7 @@
     "hero.role": "Technicien informatique & développeur logiciel",
     "hero.lede": "Je monte, répare et exploite des systèmes informatiques, et j'écris le code qui tourne dessus. Formé comme analyste-programmeur à l'EPFC (ULB), je travaille en français et en anglais.",
     "hero.cv": "Télécharger le CV",
+    "hero.cvHref": "zy/CV_Zirari_Yassin_FR.pdf",
     "hero.contact": "Me contacter",
     "hero.hint": "Survolez ou touchez les nœuds pour explorer. Sélectionnez-en un pour voir où je l'ai utilisé.",
 
@@ -220,12 +221,255 @@
     "act.theme": "Changer de thème",
     "act.toFr": "Passer en français",
     "act.toEn": "Passer en anglais",
+    "act.toNl": "Passer en néerlandais",
     "act.term": "Ouvrir le terminal",
+    "act.zirafix": "Ouvrir ZiraFix, dépannage à domicile",
+    "zf.kicker": "Dépannage à domicile à Bruxelles",
+    "zf.desc": "PC, imprimantes, consoles de jeu, Wi-Fi : je me déplace chez vous à Bruxelles pour dépanner, réparer et monter votre matériel.",
+    "zf.cta": "Découvrir les prestations",
+    "zf.t1": "PC et portables",
+    "zf.t2": "Imprimantes",
+    "zf.t3": "Consoles de jeu",
+    "zf.t4": "Wi-Fi et réseau",
     "act.play": "Jouer",
     "act.read": "Lire l'étude",
     "act.section": "Section",
     "sec.top": "Accueil",
     "sec.education": "Formation et langues"
+  };
+
+  /* Dutch (Belgium). Same keys as `fr`. */
+  var nl = {
+    "meta.title": "Zirari Yassîn | IT-technieker & softwareontwikkelaar in Brussel",
+    "meta.desc": "Zirari Yassîn is IT-technieker en junior softwareontwikkelaar in Brussel. Hardware, netwerken en IT-support, plus Java, Python, C# en webontwikkeling. Frans en Engels.",
+
+    "ui.skip": "Naar de inhoud",
+    "ui.openMenu": "Opdrachtenmenu openen",
+    "ui.theme": "Wisselen tussen licht en donker thema",
+    "ui.menu": "Menu openen",
+    "ui.close": "Sluiten",
+    "ui.clear": "Selectie wissen",
+    "ui.highlighting": "Gemarkeerd:",
+    "ui.show": "Tonen",
+    "ui.palettePlaceholder": "Zoek een sectie, project of actie",
+    "ui.noResults": "Geen resultaten. Probeer een ander woord.",
+
+    "nav.about": "Over mij",
+    "nav.experience": "Ervaring",
+    "nav.projects": "Projecten",
+    "nav.skills": "Vaardigheden",
+    "nav.contact": "Contact",
+    "nav.search": "Zoeken",
+
+    "hero.legendInfra": "Infrastructuur",
+    "hero.legendCode": "Code",
+    "hero.online": "online",
+    "hero.status": "Beschikbaar, gevestigd in Brussel",
+    "hero.role": "IT-technieker & softwareontwikkelaar",
+    "hero.lede": "Ik bouw, herstel en beheer IT-systemen en schrijf de code die erop draait. Opgeleid als analist-programmeur aan de EPFC (ULB), werkzaam in het Frans en het Engels.",
+    "hero.cv": "CV downloaden",
+    "hero.contact": "Contact opnemen",
+    "hero.hint": "Beweeg over de knooppunten of tik erop om te verkennen. Selecteer er één om te zien waar ik het heb gebruikt.",
+
+    "facts.basedLabel": "Gevestigd in",
+    "facts.basedValue": "Brussel, België",
+    "facts.fluentLabel": "Vloeiend in",
+    "facts.fluentValue": "Frans, Engels",
+    "facts.freelanceLabel": "Freelance",
+    "facts.freelanceValue": "4 jaar, IT en web",
+    "facts.builtLabel": "Gebouwd of hersteld",
+    "facts.builtValue": "100+ systemen",
+
+    "about.title": "Over mij",
+    "about.lead": "Junior analist-programmeur met sterke praktijkervaring in IT-support, hardwareherstel en softwareontwikkeling.",
+    "about.body": "Ik ben vertrouwd met het oplossen van hardwareproblemen, netwerkbasis en webontwikkeling, ondersteund door mijn studies aan de ULB/EPFC. Ik voel me thuis in het Frans en het Engels en werk even graag zelfstandig als in een technisch team.",
+
+    "focus.supportTitle": "Support en hardware",
+    "focus.supportBody": "Ik assembleer, upgrade en herstel pc's (al meer dan 100), diagnosticeer hardwareproblemen en lan- of wifistoringen en optimaliseer systemen en basisbeveiliging. Daarnaast automatiseer ik Windows-beheer met PowerShell.",
+    "focus.softwareTitle": "Software",
+    "focus.softwareBody": "Java, Python en C#, met OOP, Agile en Git. Ik bouwde HelpDesk, een IT-ticketapplicatie op ASP.NET Core, en AssetTrack, een apparatuurinventaris in Django. Bij SPEOS werkte ik aan een programma voor printspoolbeheer dat via Jenkins werd gebouwd.",
+    "focus.webTitle": "Web",
+    "focus.webBody": "Klantwebsites in HTML, CSS en JavaScript, plus React en Angular. Ik ontwikkelde Chrome-extensies voor een mediabedrijf en browsergames met Three.js.",
+
+    "exp.title": "Ervaring",
+    "exp.kindInterim": "Interim",
+    "exp.kindStudent": "Studentenjob",
+    "exp.novarys.role": "IT-technieker cluster",
+    "exp.novarys.b1": "Verleende IT-support ter plaatse aan gebruikers en apparatuur in de hele cluster.",
+    "exp.novarys.b2": "Installeerde, configureerde en verving werkstations en randapparatuur.",
+    "exp.novarys.b3": "Diagnosticeerde hardware-, software-, lan- en wifiproblemen en volgde elk geval op tot de oplossing.",
+    "exp.novarys.b4": "Werkte met collega's en eindgebruikers in het Frans en het Engels.",
+    "exp.bump.kind": "Mediabedrijf",
+    "exp.bump.role": "Ontwikkelaar van Chrome-extensies",
+    "exp.bump.b1": "Ontwikkelde Chrome-extensies voor een mediabedrijf.",
+    "exp.bump.b2": "Gebouwd met JavaScript, HTML en CSS.",
+    "exp.speosDev.role": "Junior ontwikkelaar / IT-assistent",
+    "exp.speosDev.b1": "Droeg bij aan de ontwikkeling van een programma voor printspoolbeheer voor interne automatisering.",
+    "exp.speosDev.b2": "Gebruikte Git en Jenkins voor versiebeheer en builds.",
+    "exp.speosDev.b3": "Werkte samen met QA en operations om afdrukfouten op te lossen en de prestaties te verbeteren.",
+    "exp.speosDev.b4": "Hielp testbuilds uit te rollen en op te volgen in verschillende omgevingen.",
+    "exp.freelance.org": "Freelance",
+    "exp.freelance.kind": "4 jaar, naast mijn studies",
+    "exp.freelance.role": "Zelfstandig computertechnieker & webontwikkelaar",
+    "exp.freelance.b1": "Bouwde, upgradede, herstelde en optimaliseerde desktopsystemen voor particulieren en kleine bedrijven.",
+    "exp.freelance.b2": "Diagnosticeerde hardware-, software- en netwerkproblemen, waaronder lan/wifi, connectiviteit en basisbeveiliging.",
+    "exp.freelance.b3": "Ontwierp en bouwde websites voor klanten: structuur, opmaak en functionaliteit.",
+    "exp.freelance.b4": "Beheerde klanten zelfstandig: communicatie, planning en technische opvolging.",
+    "exp.speosPrint.role": "Polyvalent drukker",
+    "exp.speosPrint.b1": "Bediende en onderhield drukmachines met hoog volume: Riso T2100, Xerox Nuvera en Canon ColorStream 6000 (doorlopend papier).",
+    "exp.speosPrint.b2": "Werkte met het team om strakke deadlines te halen in een snelle productieomgeving.",
+    "exp.speosPrint.b3": "Controleerde de afdrukkwaliteit en loste storingen op om stilstand te beperken.",
+    "exp.okay.role": "Winkelmedewerker",
+    "exp.okay.b1": "Bakte brood en zorgde dat er de hele dag vers aanbod beschikbaar was.",
+    "exp.okay.b2": "Bediende de kassa en hielp klanten met vragen, advies en problemen.",
+    "exp.okay.b3": "Werkte in team om de winkel draaiende te houden en de dagelijkse doelen te halen.",
+
+    "work.title": "Projecten",
+    "work.sub": "Drie topprojecten, twee browsergames die u kunt spelen en vier IT- en ontwikkelingsprojecten.",
+    "work.filterLabel": "Projecten filteren",
+    "work.fAll": "Alles",
+    "work.fGames": "Games",
+    "work.fInfra": "Infrastructuur",
+    "work.fSoftware": "Software",
+    "work.read": "Bekijk de case",
+    "work.covers": "Wat het omvat",
+    "work.inconito.type": "Browsergame",
+    "work.inconito.desc": "Een sociaal deductiespel dat in de browser draait, speelbaar op mobiel en desktop.",
+    "work.inconito.cta": "Speel Inconito",
+    "work.sandwake.type": "3D-browsergame",
+    "work.sandwake.desc": "Een 3D-game die in de browser wordt gerenderd met Three.js en WebGL.",
+    "work.sandwake.cta": "Speel SandWake",
+    "work.login.type": "Troubleshootingcase",
+    "work.login.title": "Windows-aanmeldingsprobleem",
+    "work.login.desc": "Een Windows-account diagnosticeren en herstellen dat niet meer kan aanmelden.",
+    "work.login.c1": "Windows in veilige modus starten om weer toegang te krijgen.",
+    "work.login.c2": "Het betrokken account resetten.",
+    "work.login.c3": "De gebeurtenislogboeken nalopen om de oorzaak te vinden.",
+    "work.login.c4": "Een preventief beleid om herhaling te voorkomen.",
+    "work.login.t1": "Veilige modus",
+    "work.login.t2": "Logboekanalyse",
+    "work.lab.type": "Thuislab",
+    "work.lab.title": "Virtueel IT-supportlab",
+    "work.lab.desc": "Een virtueel lab om IT-support te oefenen op een Windows Server-domein.",
+    "work.lab.c1": "Windows Server met Active Directory in VirtualBox.",
+    "work.lab.c2": "Groepsbeleid om de instellingen van clientpc's te beheren.",
+    "work.lab.c3": "Een veilige plek om veelvoorkomende helpdeskproblemen na te bootsen.",
+    "work.net.type": "Netwerkdemo",
+    "work.net.title": "Netwerkconfiguratie en troubleshooting",
+    "work.net.desc": "Een klein netwerk configureren en problemen opsporen tot op pakketniveau.",
+    "work.net.t1": "Statisch IP",
+    "work.net.c1": "Statische IP-adressering en DNS-configuratie.",
+    "work.net.t3": "Pakketcapture",
+    "work.net.c2": "Connectiviteit diagnosticeren met ping en pakketcaptures.",
+    "work.net.c3": "Een netwerkschema dat de opstelling documenteert.",
+    "work.spool.type": "Interne tool, SPEOS",
+    "work.spool.title": "Programma voor printspoolbeheer",
+    "work.spool.desc": "Een tool die het beheer van printwachtrijen automatiseert, gebouwd tijdens mijn interim bij SPEOS.",
+    "work.spool.c1": "Automatiseert intern het beheer van printwachtrijen.",
+    "work.spool.c2": "Beheerd met Git en gebouwd via Jenkins.",
+    "work.spool.c3": "Getest met QA en operations, met testbuilds die in verschillende omgevingen werden uitgerold.",
+    "work.help.type": "Bedrijfsapplicatie",
+    "work.help.title": "HelpDesk: IT-supportbeheersysteem",
+    "work.help.desc": "Een webapplicatie voor het beheer van IT-supportaanvragen. Gebruikers dienen tickets in; technici wijzen prioriteiten toe, volgen incidenten op en werken de oplossingsstatus bij.",
+    "work.help.c1": "Tickets aanmaken, toewijzen en de status opvolgen.",
+    "work.help.c2": "Gebruikers- en technicusaccounts met rolgebaseerde rechten.",
+    "work.help.c3": "Prioriteitsniveaus, categorieën en deadlines.",
+    "work.help.c4": "Dashboard met statistieken en reactietijden.",
+    "work.help.c5": "Tickethistoriek en opmerkingen.",
+    "work.help.t6": "Authenticatie",
+    "skills.auth": "Authenticatie",
+    "skills.automation": "Automatisering",
+    "work.sys.type": "Infrastructuurautomatisering",
+    "work.sys.title": "SysAdmin Toolkit: automatisering van Windows-beheer",
+    "work.sys.desc": "Een verzameling PowerShell-scripts om veelvoorkomende systeembeheertaken in een Windows-omgeving te automatiseren.",
+    "work.sys.c1": "Geautomatiseerde aanmaak van Active Directory-gebruikers.",
+    "work.sys.c2": "Beheer van groepen en rechten.",
+    "work.sys.c3": "Bulkimport van gebruikers via CSV.",
+    "work.sys.c4": "Wachtwoordverloop en accountaudits.",
+    "work.sys.c5": "Pc-informatie en systeemdiagnostiek.",
+    "work.sys.c6": "Geautomatiseerde rapporten en foutenlogging.",
+    "work.sys.t5": "Automatisering",
+    "work.asset.type": "IT-beheertool",
+    "work.asset.title": "AssetTrack: inventaris van IT-apparatuur",
+    "work.asset.desc": "Een inventarissysteem waarmee bedrijven computers, monitoren, randapparatuur en andere IT-apparatuur kunnen opvolgen.",
+    "work.asset.c1": "Hardware-inventaris met serienummers.",
+    "work.asset.c2": "QR-codes genereren om apparatuur te identificeren.",
+    "work.asset.c3": "Toewijzing van apparaten aan medewerkers.",
+    "work.asset.c4": "Onderhouds- en herstelhistoriek.",
+    "work.asset.c5": "Opvolging van garantie en levenscyclus.",
+    "work.asset.c6": "Doorzoekbare inventaris met export naar CSV.",
+
+    "skills.title": "Vaardigheden",
+    "skills.sub": "Selecteer een vaardigheid om te zien waar ik die heb gebruikt.",
+    "skills.prog": "Programmeren en software",
+    "skills.web": "Web",
+    "skills.chromeext": "Chrome-extensies",
+    "skills.db": "Databases",
+    "skills.it": "IT-support en hardware",
+    "skills.tools": "Tools en platformen",
+    "skills.oop": "OOP",
+    "skills.dbdesign": "Databaseontwerp",
+    "skills.datamodel": "Datamodellering",
+    "skills.hardware": "Pc's assembleren, upgraden en herstellen",
+    "skills.diagnostics": "Hardwarediagnose",
+    "skills.network": "LAN / wifi",
+    "skills.optimization": "Systeemoptimalisatie",
+    "skills.security": "Basisbeveiliging",
+    "skills.capture": "Pakketcapture",
+
+    "edu.title": "Opleiding en talen",
+    "edu.focus": "Software engineering, systemen en webontwikkeling.",
+    "lang.fr": "Frans",
+    "lang.en": "Engels",
+    "lang.nl": "Nederlands",
+    "lang.ar": "Arabisch",
+    "lang.fluent": "Vloeiend",
+    "lang.basics": "Basiskennis",
+
+    "contact.title": "Contact",
+    "contact.lead": "Open voor functies in IT-support, webontwikkeling en als junior developer: voltijds, deeltijds of freelance, op afstand of ter plaatse.",
+    "contact.place": "Jette, Brussel, België",
+    "contact.copyEmail": "E-mailadres kopiëren",
+    "contact.copyPhone": "Telefoonnummer kopiëren",
+    "form.name": "Naam",
+    "form.email": "E-mail",
+    "form.message": "Bericht",
+    "form.send": "Verzenden per e-mail",
+    "form.note": "Opent uw e-mailapp met het bericht klaar om te verzenden.",
+    "form.errRequired": "Vul uw naam, e-mailadres en bericht in.",
+    "form.errEmail": "Geef een geldig e-mailadres op.",
+    "foot.term": "Terminal openen",
+    "foot.top": "Naar boven",
+
+    "toast.email": "E-mailadres gekopieerd",
+    "toast.phone": "Nummer gekopieerd",
+    "toast.mail": "Uw e-mailapp wordt geopend",
+    "toast.cv": "CV wordt gedownload",
+
+    "js.subject": "Bericht van {name}",
+    "pal.navigate": "Navigeren",
+    "pal.projects": "Projecten",
+    "pal.actions": "Acties",
+    "act.cv": "CV downloaden",
+    "act.copyEmail": "E-mailadres kopiëren",
+    "act.theme": "Thema wisselen",
+    "act.toFr": "Overschakelen naar het Frans",
+    "act.toEn": "Overschakelen naar het Engels",
+    "act.toNl": "Overschakelen naar het Nederlands",
+    "act.term": "Terminal openen",
+    "act.zirafix": "ZiraFix openen, computerhulp aan huis",
+    "zf.kicker": "Computerhulp aan huis in Brussel",
+    "zf.desc": "Pc’s, printers, spelconsoles, wifi: ik kom bij u thuis in Brussel om uw materiaal te depanneren, te herstellen en samen te stellen.",
+    "zf.cta": "Bekijk de diensten",
+    "zf.t1": "Pc’s en laptops",
+    "zf.t2": "Printers",
+    "zf.t3": "Spelconsoles",
+    "zf.t4": "Wifi en netwerk",
+    "act.play": "Spelen",
+    "act.read": "Bekijk de case",
+    "act.section": "Sectie",
+    "sec.top": "Bovenaan",
+    "sec.education": "Opleiding en talen"
   };
 
   /* English strings that are not in the markup. */
@@ -255,7 +499,9 @@
     "act.theme": "Switch theme",
     "act.toFr": "Switch to French",
     "act.toEn": "Switch to English",
+    "act.toNl": "Switch to Dutch",
     "act.term": "Open terminal",
+    "act.zirafix": "Open ZiraFix, home IT repair",
     "act.play": "Play",
     "act.read": "Read the case",
     "act.section": "Section",
@@ -263,6 +509,7 @@
     "sec.education": "Education and languages"
   };
 
+  var LANGS = { fr: fr, nl: nl };
   var enDom = {};
   var lang = "en";
   var KEY = "zy-lang";
@@ -283,7 +530,7 @@
   }
 
   function t(key, vars) {
-    var s = lang === "fr" && key in fr ? fr[key] : (key in en ? en[key] : (key in enDom ? enDom[key] : key));
+    var dict = LANGS[lang], s = dict && key in dict ? dict[key] : (key in en ? en[key] : (key in enDom ? enDom[key] : key));
     if (vars) Object.keys(vars).forEach(function (v) { s = s.replace("{" + v + "}", vars[v]); });
     return s;
   }
@@ -302,7 +549,7 @@
   }
 
   function setLang(next, opts) {
-    lang = next === "fr" ? "fr" : "en";
+    lang = next === "fr" || next === "nl" ? next : "en";
     document.documentElement.lang = lang;
     apply();
     document.title = t("meta.title");
@@ -319,10 +566,11 @@
     capture();
     var saved = null;
     try { saved = localStorage.getItem(KEY); } catch (e) {}
-    var guess = (navigator.language || "en").toLowerCase().indexOf("fr") === 0 ? "fr" : "en";
+    var nav = (navigator.language || "en").toLowerCase();
+    var guess = nav.indexOf("fr") === 0 ? "fr" : nav.indexOf("nl") === 0 ? "nl" : "en";
     var start = saved || guess;
-    // Always sync the toggle state; only touch the DOM if French is needed.
-    if (start === "fr") setLang("fr", { persist: !!saved });
+    // Always sync the toggle state; only touch the DOM if a translation is needed.
+    if (start === "fr" || start === "nl") setLang(start, { persist: !!saved });
     else document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === "en")); });
   }
 

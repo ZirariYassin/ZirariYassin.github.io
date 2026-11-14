@@ -73,6 +73,10 @@
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6m0 0-5 5m5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.500v13l11-6.500-11-6.500Z" fill="currentColor"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.500h7l4 4v13H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3.500v4h4M9.500 12h5M9.500 15.500h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5.500" width="14" height="9.500" rx="1.800" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 18.500h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4.500h10V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="9" width="16" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 14.500h10V20H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7.500 7.500h9a4.500 4.500 0 0 1 4.400 3.600l.9 4.300a2.400 2.400 0 0 1-4.200 2l-1.600-2.400H8L6.400 17.400a2.400 2.400 0 0 1-4.200-2l.9-4.300a4.500 4.500 0 0 1 4.400-3.600Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10.500v3M6.500 12h3M15.500 11h.01M17.500 13h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3.500 9.500a12 12 0 0 1 17 0M6.500 12.800a7.700 7.700 0 0 1 11 0M9.500 16a3.500 3.500 0 0 1 5 0M12 19h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <a class="skip" href="#main" data-i18n="ui.skip">Skip to content</a>
@@ -103,6 +107,7 @@
       <div class="seg" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <button type="button" data-lang="nl" aria-pressed="false">NL</button>
       </div>
       <button class="icon-btn" id="theme-toggle" type="button" data-i18n-attr="aria-label:ui.theme">
         <svg class="i i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
@@ -143,7 +148,7 @@
     <p class="hero-role" data-i18n="hero.role">IT technician &amp; software developer</p>
     <p class="lede" data-i18n="hero.lede">I build, repair and run IT systems, and write the code that sits on top of them. Trained as an analyst programmer at EPFC (ULB), working in French and English.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="zy/CV_Zirari_Yassin.pdf" download>
+      <a class="btn btn-primary" href="zy/CV_Zirari_Yassin_EN.pdf" data-i18n-attr="href:hero.cvHref" download>
         <svg class="i" aria-hidden="true"><use href="#i-download"/></svg>
         <span data-i18n="hero.cv">Download CV</span>
       </a>
@@ -188,6 +193,24 @@
       <h3 data-i18n="focus.webTitle">Web</h3>
       <p data-i18n="focus.webBody">Client websites in HTML, CSS and JavaScript, plus React and Angular. I've built Chrome extensions for a media company and browser games with Three.js.</p>
     </div>
+  </div>
+</section>
+
+<!-- ============ ZIRAFIX ============ -->
+<section class="zf" id="zirafix" aria-labelledby="zf-title">
+  <div class="wrap zf-in">
+    <div class="zf-copy">
+      <p class="zf-kicker"><span class="zf-mark" aria-hidden="true">ZF</span><span data-i18n="zf.kicker">Home IT repair in Brussels</span></p>
+      <h2 id="zf-title">ZiraFix</h2>
+      <p class="zf-lede" data-i18n="zf.desc">PCs, printers, game consoles and Wi-Fi: I come to your home in Brussels to troubleshoot, repair and build your equipment.</p>
+      <a class="btn zf-btn" href="zirafix.html"><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg><span data-i18n="zf.cta">See the services</span></a>
+    </div>
+    <ul class="zf-tiles">
+      <li><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg><span data-i18n="zf.t1">PCs and laptops</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-printer"/></svg><span data-i18n="zf.t2">Printers</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-gamepad"/></svg><span data-i18n="zf.t3">Game consoles</span></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-wifi"/></svg><span data-i18n="zf.t4">Wi-Fi and network</span></li>
+    </ul>
   </div>
 </section>
 
@@ -805,6 +828,7 @@
     <p>© <span id="year">2026</span> Zirari Yassîn</p>
     <p class="foot-tools">
       <button type="button" class="link-btn" data-open-term><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg><span data-i18n="foot.term">Open terminal</span></button>
+      <a class="link-btn" href="zirafix.html"><svg class="i" aria-hidden="true"><use href="#i-laptop"/></svg><span>ZiraFix</span></a>
       <a class="link-btn" href="#top"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg><span data-i18n="foot.top">Back to top</span></a>
     </p>
   </div>

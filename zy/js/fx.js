@@ -257,7 +257,9 @@
     if (hero && hero.contains(h)) return;
     h.setAttribute("data-wipe", "");
     var done = false;
-    watch(h, function (on) { if (on && !done) { done = true; h.classList.add("in-view"); } }, "0px 0px -12% 0px");
+    /* Observe the heading's container, not the heading: while it is clipped, a browser can report
+       the heading itself as not visible and the wipe would never run (instant jumps to an anchor). */
+    watch(h.parentElement || h, function (on) { if (on && !done) { done = true; h.classList.add("in-view"); } }, "0px 0px -12% 0px");
   });
 
   /* ====================================================================

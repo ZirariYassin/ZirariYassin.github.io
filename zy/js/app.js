@@ -11,7 +11,7 @@
   var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   var EMAIL = "yas.zirari@gmail.com";
   var PHONE = "+32 475 612 116";
-  var CV = "zy/CV_Zirari_Yassin.pdf";
+  function cvHref() { return ZY.i18n.t("hero.cvHref"); }
 
   /* ---------- toast ---------- */
   var toastEl = $("#toast"), toastTimer;
@@ -245,10 +245,14 @@
       });
     });
     var other = t("pal.actions");
-    items.push({ group: other, label: t("act.cv"), icon: "i-download", kw: "resume curriculum", run: function () { var a = document.createElement("a"); a.href = CV; a.download = ""; document.body.appendChild(a); a.click(); a.remove(); toast(t("toast.cv")); } });
+    items.push({ group: other, label: t("act.cv"), icon: "i-download", kw: "resume curriculum", run: function () { var a = document.createElement("a"); a.href = cvHref(); a.download = ""; document.body.appendChild(a); a.click(); a.remove(); toast(t("toast.cv")); } });
+    items.push({ group: other, label: t("act.zirafix"), icon: "i-laptop", kw: "zirafix repair depannage domicile home printer imprimante console wifi", run: function () { window.location.href = "zirafix.html"; } });
     items.push({ group: other, label: t("act.copyEmail"), icon: "i-copy", kw: "mail contact", run: function () { copyText(EMAIL, "toast.email"); } });
     items.push({ group: other, label: t("act.theme"), icon: root.dataset.theme === "dark" ? "i-sun" : "i-moon", kw: "dark light mode", run: function () { toggleTheme($("#theme-toggle")); } });
-    items.push({ group: other, label: ZY.i18n.lang === "fr" ? t("act.toEn") : t("act.toFr"), icon: "i-doc", kw: "language langue français english", run: function () { ZY.i18n.setLang(ZY.i18n.lang === "fr" ? "en" : "fr"); } });
+    [["en", "act.toEn"], ["fr", "act.toFr"], ["nl", "act.toNl"]].forEach(function (l) {
+      if (l[0] === ZY.i18n.lang) return;
+      items.push({ group: other, label: t(l[1]), icon: "i-doc", kw: "language langue taal français english nederlands dutch", run: function () { ZY.i18n.setLang(l[0]); } });
+    });
     items.push({ group: other, label: t("act.term"), icon: "i-terminal", kw: "shell console cli", hint: "`", run: function () { openTerm(); } });
     return items;
   }
@@ -325,6 +329,7 @@
         "<span class=\"cmd\">projects</span>     list projects, then <span class=\"cmd\">open &lt;n&gt;</span>",
         "<span class=\"cmd\">contact</span>      how to reach me",
         "<span class=\"cmd\">cv</span>           download my CV",
+        "<span class=\"cmd\">zirafix</span>       my home IT repair service",
         "<span class=\"cmd\">goto</span> &lt;section&gt;   about, experience, projects, skills, education, contact",
         "<span class=\"cmd\">theme</span> [light|dark]   <span class=\"cmd\">lang</span> [en|fr]   <span class=\"cmd\">clear</span>   <span class=\"cmd\">exit</span>"
       ].join("\n"));
@@ -366,8 +371,9 @@
     contact: function () {
       out('email  <a href="mailto:' + EMAIL + '">' + EMAIL + "</a>\nphone  " + PHONE + "\nplace  Jette, Brussels");
     },
+    zirafix: function () { out("opening ZiraFix…", "ok"); closeTerm(); setTimeout(function () { window.location.href = "zirafix.html"; }, 250); },
     cv: function () { out("downloading CV…", "ok"); CMDS._cv(); },
-    _cv: function () { var a = document.createElement("a"); a.href = CV; a.download = ""; document.body.appendChild(a); a.click(); a.remove(); },
+    _cv: function () { var a = document.createElement("a"); a.href = cvHref(); a.download = ""; document.body.appendChild(a); a.click(); a.remove(); },
     goto: function (a) {
       var k = (a[0] || "").toLowerCase();
       if (!SECTIONS[k]) return out("usage: goto &lt;" + Object.keys(SECTIONS).join("|") + "&gt;", "dim");
@@ -380,7 +386,7 @@
     },
     lang: function (a) {
       var m = (a[0] || "").toLowerCase();
-      if (m !== "en" && m !== "fr") return out("usage: lang &lt;en|fr&gt;", "dim");
+      if (m !== "en" && m !== "fr" && m !== "nl") return out("usage: lang &lt;en|fr|nl&gt;", "dim");
       ZY.i18n.setLang(m); out("language: " + m, "ok");
     },
     clear: function () { tout.innerHTML = ""; },

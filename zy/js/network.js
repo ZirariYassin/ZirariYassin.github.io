@@ -11,11 +11,11 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var HUBS = [
-    { key: "hardware", label: "Hardware", fr: "Matériel", g: "infra" },
-    { key: "network", label: "Networking", fr: "Réseau", g: "infra" },
+    { key: "hardware", label: "Hardware", fr: "Matériel", nl: "Hardware", g: "infra" },
+    { key: "network", label: "Networking", fr: "Réseau", nl: "Netwerk", g: "infra" },
     { key: "winserver", label: "Windows Server", fr: "Windows Server", g: "infra" },
     { key: "ad", label: "Active Directory", fr: "Active Directory", g: "infra" },
-    { key: "security", label: "Security", fr: "Sécurité", g: "infra" },
+    { key: "security", label: "Security", fr: "Sécurité", nl: "Beveiliging", g: "infra" },
     { key: "java", label: "Java", fr: "Java", g: "code" },
     { key: "python", label: "Python", fr: "Python", g: "code" },
     { key: "csharp", label: "C#", fr: "C#", g: "code" },
@@ -41,7 +41,7 @@
   function hex(h) { h = (h || "").trim().replace("#", ""); if (h.length === 3) h = h.replace(/(.)/g, "$1$1"); var n = parseInt(h, 16); return isNaN(n) || h.length !== 6 ? null : [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
   function rgba(c, a) { return "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")"; }
   function colorOf(n) { return n.g === "infra" ? col.infra : col.code; }
-  function label(n) { return window.ZY && ZY.i18n && ZY.i18n.lang === "fr" ? n.fr : n.label; }
+  function label(n) { var l = window.ZY && ZY.i18n ? ZY.i18n.lang : "en"; return (l !== "en" && n[l]) || n.label; }
 
   function readColors() {
     var s = getComputedStyle(document.documentElement);
