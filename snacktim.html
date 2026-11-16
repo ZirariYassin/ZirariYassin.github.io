@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F36B1C">
+<title>Snack TIM – Snack & friterie halal à Jette, Bruxelles</title>
+<meta name="description" content="Snack TIM, avenue de Laeken 8 à Jette : cheeseburgers, kapsalons, sandwichs, snacks et frites fraîches. Halal. Appelle le 0484 41 93 24.">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Snack TIM – Snack & friterie à Jette">
+<meta property="og:description" content="Cheeseburgers, kapsalons, sandwichs et frites fraîches. Avenue de Laeken 8, 1090 Jette. Halal.">
+<meta property="og:locale" content="fr_BE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F36B1C'/%3E%3Cg fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 29c0-9 8-15 19-15s19 6 19 15z'/%3E%3Cpath d='M12 37q5-5 10 0t10 0t10 0t10 0'/%3E%3Cpath d='M16 50h32'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Montserrat:wght@500;600;800;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FastFoodRestaurant",
+  "name": "Snack TIM",
+  "telephone": "+32484419324",
+  "servesCuisine": ["Snack", "Kebab", "Burgers", "Frites"],
+  "hasMap": "https://maps.app.goo.gl/YQPCHvHpxsn2qmx78?g_st=ic",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue de Laeken 8",
+    "postalCode": "1090",
+    "addressLocality": "Jette",
+    "addressRegion": "Bruxelles-Capitale",
+    "addressCountry": "BE"
+  }
+}
+</script>
+
+<style>
+/* ==========================================================================
+   SNACK TIM — direction artistique tirée de la devanture :
+   orange enseigne, noir des traits de la vitrine, blanc, crème,
+   slab « vitrophanie » pour FRITERIE / FRITES FRAÎCHES.
+   ========================================================================== */
+
+@layer reset, tokens, base, layout, components, motion;
+
+@property --angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+/* ---------- reset ---------- */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body, h1, h2, h3, p, ul, figure { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  svg { display: block; overflow: visible; }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  a { color: inherit; }
+  [hidden] { display: none !important; }
+}
+
+/* ---------- tokens ---------- */
+@layer tokens {
+  :root {
+    --orange: #F36B1C;
+    --orange-hi: #FF8A3D;
+    --orange-lo: #D4530C;
+    --cream: #FFF4E6;
+    --butter: #FBD98B;
+    --ink: #17100C;
+
+    --font-display: "Montserrat", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --font-slab: "Arvo", "Rockwell", "Roboto Slab", Georgia, serif;
+
+    --ease-out: cubic-bezier(.2, .8, .2, 1);
+    --spring: linear(0, .42 8%, .86 17%, 1.07 27%, 1.03 36%, .99 48%, 1 62%, 1);
+
+    --gutter: clamp(1rem, 4.5vw, 2.5rem);
+    --maxw: 1180px;
+    --header-h: 64px;
+  }
+}
+
+/* ---------- base ---------- */
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+  body {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1rem, .95rem + .25vw, 1.125rem);
+    line-height: 1.6;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { line-height: 1; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 3px solid var(--ring, var(--ink)); outline-offset: 3px; border-radius: 6px; }
+
+  .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .skip {
+    position: fixed; left: 1rem; top: -5rem; z-index: 100;
+    background: var(--ink); color: var(--cream);
+    padding: .6rem 1rem; border-radius: 999px; font-weight: 800; text-decoration: none;
+    transition: top .2s;
+    &:focus { top: 1rem; }
+  }
+}
+
+/* ---------- layout helpers ---------- */
+@layer layout {
+  .wrap { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
+  .section { position: relative; z-index: 2; padding-block: clamp(4rem, 9vw, 8rem); }
+  .section-title {
+    font-weight: 900;
+    font-size: clamp(3rem, 11vw, 7.5rem);
+    letter-spacing: -.045em;
+    line-height: .88;
+  }
+  .section-lede { max-width: 46ch; margin-top: 1.25rem; font-weight: 600; }
+}
+
+/* ---------- components ---------- */
+@layer components {
+
+  /* doodles (traits noirs façon vitrophanie) */
+  .doodle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--sw, 3);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* logo burger : mêmes tracés que le héros */
+  .logo-burger {
+    fill: none; stroke: currentColor; stroke-width: var(--sw, 8);
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- header ---------- */
+  .site-header {
+    --ring: var(--butter);
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: var(--header-h);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding-inline: var(--gutter);
+    color: #fff;
+    transition: background-color .35s, box-shadow .35s;
+
+    &.is-solid, &:has(:popover-open) {
+      background: var(--ink);
+      box-shadow: 0 4px 0 var(--orange);
+    }
+  }
+
+  .brand {
+    display: inline-flex; align-items: center; gap: .55rem;
+    font-weight: 900; font-size: 1.2rem; letter-spacing: -.01em; text-decoration: none;
+    .logo-burger { --sw: 11; width: 40px; height: 40px; }
+  }
+
+  .nav { display: none; gap: .25rem; align-items: center; }
+  .nav a {
+    text-decoration: none; font-weight: 800; padding: .5rem .9rem; border-radius: 999px;
+    transition: background-color .2s;
+    &:hover { background: rgb(255 255 255 / .16); }
+  }
+
+  .header-end { display: flex; align-items: center; gap: .5rem; }
+  @media (max-width: 819px) { .header-end > .btn { display: none; } }
+
+  .menu-btn {
+    width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%;
+    background: rgb(23 16 12 / .9); color: var(--cream);
+    svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+  }
+
+  .mnav {
+    --ring: var(--butter);
+    position: fixed; inset: var(--header-h) 0 auto 0; margin: 0; width: 100%; border: 0;
+    background: var(--ink); color: var(--cream);
+    padding: 1rem var(--gutter) 2rem;
+    display: grid; gap: .25rem;
+    opacity: 0; translate: 0 -12px;
+    transition: opacity .3s, translate .35s var(--ease-out), display .35s allow-discrete, overlay .35s allow-discrete;
+    a {
+      font-family: var(--font-slab); font-weight: 700; font-size: 1.75rem;
+      text-decoration: none; padding: .6rem 0; border-bottom: 2px solid rgb(255 255 255 / .12);
+    }
+    &:popover-open { opacity: 1; translate: 0 0; }
+    @starting-style { &:popover-open { opacity: 0; translate: 0 -12px; } }
+  }
+
+  @media (min-width: 820px) {
+    .nav { display: flex; }
+    .menu-btn, .mnav { display: none; }
+  }
+
+  /* ---------- boutons ---------- */
+  .btn {
+    --bg: var(--ink); --fg: var(--cream);
+    position: relative; isolation: isolate;
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    padding: .95rem 1.5rem; border-radius: 999px;
+    background: var(--bg); color: var(--fg);
+    font-weight: 800; font-size: 1rem; line-height: 1; text-decoration: none; white-space: nowrap;
+    translate: var(--mx, 0px) var(--my, 0px);
+    transition: translate .35s var(--ease-out), scale .3s var(--spring), background-color .2s, color .2s;
+
+    svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    &:hover { scale: 1.04; }
+    &:active { scale: .97; }
+  }
+  .btn--ring {
+    border: 3.5px solid transparent;
+    padding: calc(.95rem - 3.5px) calc(1.5rem - 3.5px);
+    background:
+      linear-gradient(var(--bg), var(--bg)) padding-box,
+      conic-gradient(from var(--angle), var(--butter), #fff, var(--orange-hi), var(--butter)) border-box;
+  }
+  .btn--ghost {
+    --bg: transparent; --fg: currentColor;
+    box-shadow: inset 0 0 0 2.5px currentColor;
+    &:hover { --bg: #fff; --fg: var(--orange-lo); box-shadow: inset 0 0 0 2.5px #fff; }
+  }
+  .btn--cream { --bg: var(--cream); --fg: var(--ink); padding: .7rem 1.2rem; }
+  .btn--ink-ghost {
+    --bg: transparent; --fg: var(--ink);
+    box-shadow: inset 0 0 0 2.5px var(--ink);
+    &:hover { --bg: var(--ink); --fg: var(--cream); }
+  }
+
+  /* ---------- hero ---------- */
+  .hero-wrap { position: relative; }
+
+  .hero {
+    position: relative; isolation: isolate; overflow: clip;
+    min-height: 100svh;
+    display: grid; place-items: center;
+    padding: calc(var(--header-h) + .75rem) var(--gutter) 1.5rem;
+    background: var(--orange); color: #fff;
+  }
+
+  .doodles {
+    position: absolute; inset: -4%; z-index: -1; pointer-events: none;
+    .doodle {
+      position: absolute; color: var(--ink); --sw: 2.6;
+      opacity: .9;
+      rotate: var(--r, 0deg);
+      translate: calc(var(--px, 0) * var(--z, 1) * 1px) calc(var(--py, 0) * var(--z, 1) * 1px);
+      transition: translate .7s var(--ease-out);
+    }
+  }
+  @media (max-width: 899px) { .doodles .doodle { opacity: .26; } }
+
+  .lockup {
+    display: grid; justify-items: center; text-align: center;
+    gap: clamp(.35rem, 1.2svh, .9rem);
+  }
+
+  .arch { width: min(78vw, 33svh); height: auto; aspect-ratio: 400 / 110; color: #fff; }
+  .arch text {
+    fill: currentColor; font-family: var(--font-slab); font-weight: 700;
+    font-size: 24px; letter-spacing: .12em;
+  }
+
+  .hero-burger {
+    width: min(30svh, 56vw); height: auto; aspect-ratio: 200 / 182;
+    fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round;
+    margin-top: -.25rem;
+    .layer { transform-box: fill-box; transform-origin: center; }
+  }
+
+  .wordmark {
+    display: grid; justify-items: center;
+    font-weight: 900; color: #fff; text-transform: uppercase;
+    font-size: min(17svh, 24vw); letter-spacing: -.03em; line-height: .82;
+  }
+  .wordmark .tim { font-size: .5em; letter-spacing: .07em; margin-top: .22em; line-height: 1; }
+
+  .slab {
+    font-family: var(--font-slab); font-weight: 700; color: var(--butter);
+    font-size: clamp(1.05rem, 3.6svh, 1.6rem); letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  .lede { max-width: 34ch; color: var(--ink); font-weight: 700; font-size: clamp(.95rem, .9rem + .3vw, 1.1rem); line-height: 1.45; }
+  @media (max-height: 760px) { .lede { display: none; } }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-top: .25rem; }
+
+  /* ---------- marquee (bandeau noir sous l'enseigne) ---------- */
+  .marquee {
+    --ring: var(--butter);
+    position: relative; z-index: 3; overflow: hidden;
+    background: var(--ink); color: var(--cream);
+    padding-block: .85rem;
+    box-shadow: 0 -4px 0 var(--orange);
+  }
+  .marquee__track { display: flex; width: max-content; }
+  .marquee__group {
+    display: flex; align-items: center; gap: 1.6rem; padding-right: 1.6rem; flex-shrink: 0;
+    font-family: var(--font-slab); font-weight: 700; text-transform: uppercase; white-space: nowrap;
+    font-size: clamp(1.15rem, 1rem + 1.3vw, 1.9rem); letter-spacing: .07em;
+    .logo-burger { width: 1.9em; height: 1.9em; color: var(--butter); --sw: 12; }
+  }
+
+  /* ---------- carte ---------- */
+  .menu { background: var(--cream); }
+  .menu__head { display: grid; gap: .5rem; }
+
+  .tabs {
+    position: relative; display: none;
+    width: fit-content; max-width: 100%;
+    margin-top: 2.5rem; padding: .4rem; gap: .25rem;
+    overflow-x: auto; scrollbar-width: none;
+    background: #fff; border: 3px solid var(--ink); border-radius: 999px;
+    &::-webkit-scrollbar { display: none; }
+  }
+  .js .tabs { display: flex; }
+
+  .tab {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .7rem 1.1rem; border-radius: 999px;
+    font-weight: 800; white-space: nowrap; font-size: .98rem;
+    transition: color .25s;
+    .doodle { --sw: 4.2; width: 1.5rem; height: 1.5rem; }
+    &[aria-selected="true"] { color: var(--ink); }
+  }
+  .tab-pill {
+    position: absolute; z-index: 0; top: .4rem; bottom: .4rem; left: 0;
+    width: var(--w, 0px); translate: var(--x, 0px) 0;
+    background: var(--orange); border-radius: 999px;
+    transition: translate .5s var(--spring), width .5s var(--spring);
+  }
+
+  .panels { margin-top: 1.75rem; view-transition-name: menu-panel; }
+
+  .panel {
+    container-type: inline-size;
+    background: var(--orange); color: var(--ink);
+    border: 3px solid var(--ink); border-radius: 28px;
+    box-shadow: 9px 9px 0 var(--ink);
+    padding: clamp(1.25rem, 4vw, 3rem);
+    + .panel { margin-top: 2rem; }
+  }
+  .panel__inner { display: grid; gap: 1.75rem; align-items: center; }
+  @container (min-width: 640px) {
+    .panel__inner { grid-template-columns: minmax(200px, .75fr) 1.25fr; gap: 3rem; }
+  }
+
+  .sticker {
+    --sw: 2.3;
+    justify-self: center; width: min(100%, 250px); aspect-ratio: 1;
+    display: grid; place-items: center;
+    background: var(--cream); border: 3px solid var(--ink);
+    border-radius: 52% 48% 46% 54% / 48% 54% 46% 52%;
+    box-shadow: 6px 6px 0 var(--ink);
+    rotate: -5deg;
+    .doodle { width: 66%; height: 66%; color: var(--ink); }
+  }
+
+  .panel__text { display: grid; gap: 1.1rem; justify-items: start; }
+  .panel__text h3 { font-weight: 900; font-size: clamp(2.2rem, 6vw, 4rem); letter-spacing: -.04em; }
+  .panel__text p { font-weight: 700; max-width: 40ch; font-size: clamp(1.02rem, .95rem + .4vw, 1.25rem); line-height: 1.5; }
+
+  .pair { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .5rem; font-weight: 800; font-size: .95rem; }
+  .chip {
+    background: var(--cream); border: 2.5px solid var(--ink); border-radius: 999px;
+    padding: .4rem .95rem; font-weight: 800; font-size: .95rem;
+    transition: background-color .2s, color .2s, translate .35s var(--spring);
+    &:hover { background: var(--ink); color: var(--cream); translate: 0 -2px; }
+  }
+
+  .menu__foot { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 2.5rem; }
+  .menu__foot p { font-weight: 600; max-width: 42ch; }
+
+  /* ---------- frites fraîches ---------- */
+  .fries {
+    --ring: var(--butter);
+    background: var(--ink); color: var(--cream); overflow: clip;
+  }
+  .fries__grid { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 860px) { .fries__grid { grid-template-columns: minmax(240px, .72fr) 1.28fr; gap: 5rem; } }
+
+  .cone { width: min(100%, 300px); height: auto; justify-self: center; overflow: visible; }
+  .cone .fry rect { fill: var(--butter); stroke: var(--ink); stroke-width: 4; }
+  .cone .pack { fill: var(--orange); stroke: var(--ink); stroke-width: 5; stroke-linejoin: round; }
+  .cone .logo-burger { color: #fff; --sw: 9; }
+
+  .fries__title {
+    font-family: var(--font-slab); font-weight: 700; color: var(--butter);
+    font-size: clamp(2.8rem, 9vw, 6.5rem); line-height: .95; letter-spacing: -.01em;
+  }
+  .fill-text {
+    margin-top: 1.75rem; max-width: 22ch;
+    font-weight: 800; font-size: clamp(1.55rem, 1rem + 2.5vw, 2.7rem); line-height: 1.22; letter-spacing: -.025em;
+    color: var(--cream);
+  }
+
+  /* ---------- venir ---------- */
+  .visit { background: var(--cream); }
+  .visit__grid { display: grid; gap: 3rem; }
+  @media (min-width: 900px) { .visit__grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
+
+  .addr { margin-top: 1.5rem; font-weight: 900; font-size: clamp(2.1rem, 5.5vw, 4rem); letter-spacing: -.04em; line-height: .96; font-style: normal; }
+  .addr span { display: block; color: var(--orange-lo); }
+
+  .phone {
+    display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.5rem;
+    font-weight: 900; font-size: clamp(1.7rem, 4.5vw, 2.6rem); letter-spacing: -.02em; text-decoration: none;
+    border-bottom: 5px solid var(--orange);
+    transition: border-color .2s, color .2s;
+    svg { width: .9em; height: .9em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    &:hover { color: var(--orange-lo); border-color: var(--ink); }
+  }
+  .visit .cta-row { justify-content: flex-start; margin-top: 1.75rem; }
+
+  .cards { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+  @media (min-width: 640px) and (max-width: 899px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: #fff; border: 3px solid var(--ink); border-radius: 22px;
+    box-shadow: 6px 6px 0 var(--orange); padding: 1.25rem 1.4rem;
+    display: grid; gap: .6rem; align-content: start;
+    h3 { font-weight: 900; font-size: 1.35rem; letter-spacing: -.02em; }
+    p { font-size: .98rem; font-weight: 600; }
+    a.link { font-weight: 800; text-underline-offset: 4px; text-decoration-thickness: 2.5px; text-decoration-color: var(--orange); &:hover { color: var(--orange-lo); } }
+  }
+  .hours-list { display: grid; gap: .25rem; font-weight: 600; font-size: .96rem; }
+  .hours-list li { display: flex; justify-content: space-between; gap: 1rem; }
+  .badge {
+    justify-self: start; padding: .25rem .75rem; border-radius: 999px; font-weight: 800; font-size: .85rem;
+    border: 2.5px solid var(--ink); background: var(--butter);
+    &[data-state="open"] { background: #B7F0C2; }
+    &[data-state="closed"] { background: #FFC9B8; }
+  }
+
+  .map-col { position: relative; }
+  .map {
+    position: relative; aspect-ratio: 4 / 3.4; overflow: hidden;
+    border: 3px solid var(--ink); border-radius: 26px; box-shadow: 11px 11px 0 var(--orange);
+    background:
+      radial-gradient(circle at 20% 25%, rgb(243 107 28 / .22) 0 9%, transparent 9.5%),
+      radial-gradient(circle at 78% 70%, rgb(243 107 28 / .22) 0 14%, transparent 14.5%),
+      var(--ink);
+    color: var(--cream);
+    display: grid; place-items: center; text-align: center; padding: 1.5rem;
+    iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  }
+  .map__facade { display: grid; justify-items: center; gap: .9rem; }
+  .map__pin { width: 56px; height: 56px; fill: var(--orange); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+  .map__facade strong { font-weight: 900; font-size: 1.3rem; letter-spacing: -.02em; }
+  .map__facade small { opacity: .8; font-weight: 600; font-size: .85rem; }
+
+  .stamp {
+    position: absolute; z-index: 2; right: -.5rem; top: -2.75rem;
+    width: clamp(92px, 16vw, 130px); height: auto; rotate: 10deg;
+    .ring { transform-box: fill-box; transform-origin: center; }
+    text { font-family: var(--font-slab); font-weight: 700; }
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer {
+    --ring: var(--butter);
+    position: relative; z-index: 2;
+    background: var(--ink); color: var(--cream);
+    padding: 3.5rem var(--gutter) calc(3rem + 4.5rem);
+  }
+  @media (min-width: 900px) { .site-footer { padding-bottom: 3rem; } }
+  .site-footer__inner { display: grid; gap: 2rem; }
+  @media (min-width: 760px) { .site-footer__inner { grid-template-columns: auto 1fr auto; align-items: center; gap: 3rem; } }
+  .foot-logo { display: grid; justify-items: center; gap: .15rem; font-weight: 900; line-height: .9; width: fit-content;
+    .logo-burger { width: 64px; height: 64px; --sw: 10; }
+    b { font-size: 1.6rem; letter-spacing: -.02em; }
+    i { font-style: normal; font-size: .95rem; letter-spacing: .08em; }
+  }
+  .site-footer a { text-underline-offset: 4px; }
+  .site-footer address { font-style: normal; font-weight: 600; line-height: 1.7; }
+  .site-footer small { opacity: .7; }
+
+  /* ---------- dock mobile ---------- */
+  .dock {
+    --ring: var(--butter);
+    position: fixed; inset: auto 0 0 0; z-index: 60;
+    display: flex; gap: .6rem;
+    padding: .65rem var(--gutter) calc(.65rem + env(safe-area-inset-bottom));
+    background: color-mix(in oklab, var(--ink) 94%, transparent);
+    backdrop-filter: blur(12px);
+    border-top: 3px solid var(--orange);
+    translate: 0 110%;
+    transition: translate .45s var(--ease-out);
+    &.is-on { translate: 0 0; }
+    .btn { flex: 1; padding-block: .9rem; }
+  }
+  @media (min-width: 900px) { .dock { display: none; } }
+}
+
+/* ---------- motion ---------- */
+@layer motion {
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* 1. Le moment orchestré : le burger du logo se construit, trait par trait */
+    .hero-burger .layer .drop {
+      animation: drop .95s var(--spring) both;
+      animation-delay: calc(.2s + var(--k) * .16s);
+    }
+    .hero-burger .draw {
+      stroke-dasharray: 1; stroke-dashoffset: 1;
+      animation: draw 1s ease-out forwards;
+      animation-delay: calc(.2s + var(--k) * .16s);
+    }
+    .hero-burger .draw.seeds { stroke-dasharray: none; stroke-dashoffset: 0; animation: fade-in .4s .9s both; }
+    @keyframes drop { from { transform: translateY(-150px) rotate(-8deg); opacity: 0; } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fade-in { from { opacity: 0; } }
+
+    .arch, .wordmark, .slab, .lede, .cta-row {
+      animation: rise .8s var(--ease-out) both;
+    }
+    .arch { animation-delay: .1s; }
+    .wordmark { animation-delay: .85s; }
+    .slab { animation-delay: 1s; }
+    .lede { animation-delay: 1.1s; }
+    .cta-row { animation-delay: 1.2s; }
+    @keyframes rise { from { opacity: 0; translate: 0 18px; } }
+
+    /* 2. bouton d'appel : anneau conique animé (@property) */
+    .btn--ring { animation: spin 3.2s linear infinite; }
+    @keyframes spin { to { --angle: 360deg; } }
+
+    /* 3. marquee */
+    .marquee__track { animation: marquee 40s linear infinite; }
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+    @keyframes marquee { to { translate: -50% 0; } }
+
+    /* 4. Panneaux de carte : le sticker « pop » à chaque changement */
+    .panel:not([hidden]) .sticker { animation: pop .7s var(--spring) both; }
+    @keyframes pop { from { scale: .6; rotate: -22deg; opacity: 0; } }
+
+    /* 5. Tampon halal qui tourne lentement */
+    .stamp .ring { animation: turn 30s linear infinite; }
+    @keyframes turn { to { rotate: 360deg; } }
+
+    /* 6. View Transitions : changement d'onglet de la carte */
+    ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+    ::view-transition-group(menu-panel) { animation-duration: .5s; animation-timing-function: var(--ease-out); }
+    ::view-transition-old(menu-panel) { animation: vt-out .22s ease-in both; }
+    ::view-transition-new(menu-panel) { animation: vt-in .5s var(--ease-out) both; }
+    @keyframes vt-out { to { opacity: 0; translate: -28px 0; } }
+    @keyframes vt-in { from { opacity: 0; translate: 36px 0; } }
+
+    /* 7. Animations pilotées par le scroll (Chrome, Edge, Safari récents) */
+    @supports (animation-timeline: scroll()) {
+
+      /* le héros reste épinglé, le burger se déconstruit pendant qu'on scrolle */
+      .hero-wrap { height: 175svh; }
+      .hero { position: sticky; top: 0; height: 100svh; min-height: 0; }
+
+      .hero-burger .layer {
+        animation: explode linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 70svh;
+      }
+      @keyframes explode {
+        to { translate: var(--tx, 0px) var(--dy, 0px); rotate: var(--rot, 0deg); }
+      }
+      .arch-wrap {
+        animation: fade-away linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 30svh;
+      }
+      .doodles { animation: drift linear both; animation-timeline: scroll(root); animation-range: 0 100svh; }
+      @keyframes fade-away { to { opacity: 0; } }
+      @keyframes drift { to { translate: 0 -8svh; } }
+    }
+
+    @supports (animation-timeline: view()) {
+      /* texte qui se remplit mot après mot */
+      .fill-text .w {
+        color: color-mix(in oklab, var(--cream) 26%, transparent);
+        animation: fill linear both;
+        animation-timeline: view();
+        animation-range: entry 100% cover 38%;
+      }
+      @keyframes fill { to { color: var(--cream); } }
+
+      /* les frites montent dans le cornet */
+      .cone .fry {
+        animation: fry-up linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 42%;
+      }
+      @keyframes fry-up { from { translate: 0 var(--d, 40px); } }
+    }
+  }
+}
+</style>
+</head>
+
+<body id="top">
+<a class="skip" href="#carte">Aller à la carte</a>
+
+<!-- ===================== SPRITE ===================== -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Logo burger (mêmes tracés que le héros) -->
+    <symbol id="logo-burger" viewBox="0 8 200 182">
+      <path d="M26 80C26 42 60 16 100 16s74 26 74 64c0 4-4 6-8 6H34c-4 0-8-2-8-6z"/>
+      <path d="M70 38l5 3M100 30l1 6M130 38l-5 3M85 56l5 2M118 56l-5 2"/>
+      <path d="M22 108q13-16 26 0t26 0t26 0t26 0t26 0t26 0"/>
+      <rect x="24" y="118" width="152" height="26" rx="13"/>
+      <path d="M30 156h140c0 16-10 26-24 26H54c-14 0-24-10-24-26z"/>
+    </symbol>
+
+    <!-- Doodles -->
+    <symbol id="d-burger" viewBox="0 0 64 64">
+      <path d="M10 28c0-11 9-18 22-18s22 7 22 18z"/>
+      <path d="M22 18l2 1M32 15l1 2M42 18l-2 1"/>
+      <path d="M8 36q4-4 8 0t8 0t8 0t8 0t8 0t8 0"/>
+      <rect x="9" y="42" width="46" height="7" rx="3.5"/>
+      <path d="M12 53h40c0 4-3 6-7 6H19c-4 0-7-2-7-6z"/>
+    </symbol>
+    <symbol id="d-fries" viewBox="0 0 64 64">
+      <path d="M17 28l4 30h22l4-30z"/>
+      <path d="M21 28L19 10M27 28l-2-20M33 28V6M39 28l2-18M45 28l3-14"/>
+      <path d="M20 40h24"/>
+    </symbol>
+    <symbol id="d-drum" viewBox="0 0 64 64">
+      <path d="M38 8c10 1 18 10 14 20-3 8-12 10-19 6-7-4-8-14-3-20 2-3 5-5 8-6z"/>
+      <path d="M31 35L17 49"/>
+      <circle cx="13" cy="48" r="3.6"/>
+      <circle cx="18" cy="54" r="3.6"/>
+    </symbol>
+    <symbol id="d-skewer" viewBox="0 0 64 64">
+      <g transform="rotate(-40 32 32)">
+        <path d="M32 6v56"/>
+        <circle cx="32" cy="4" r="2.5"/>
+        <rect x="25" y="12" width="14" height="10" rx="4"/>
+        <rect x="25" y="25" width="14" height="10" rx="4"/>
+        <rect x="25" y="38" width="14" height="10" rx="4"/>
+      </g>
+    </symbol>
+    <symbol id="d-hotdog" viewBox="0 0 64 64">
+      <g transform="rotate(-28 32 32)">
+        <rect x="6" y="22" width="52" height="22" rx="11"/>
+        <path d="M12 33q5-5 10 0t10 0t10 0t10 0"/>
+      </g>
+    </symbol>
+    <symbol id="d-bottle" viewBox="0 0 64 64">
+      <path d="M27 5h10v9l5 9v30a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V23l5-9z"/>
+      <path d="M22 30h20M22 44h20"/>
+    </symbol>
+    <symbol id="d-sauce" viewBox="0 0 64 64">
+      <path d="M29 4h6l-1 9h-4z"/>
+      <path d="M24 22c0-5 4-9 8-9s8 4 8 9v30a5 5 0 0 1-5 5H29a5 5 0 0 1-5-5z"/>
+      <rect x="27" y="30" width="10" height="14" rx="2"/>
+    </symbol>
+    <symbol id="d-wrap" viewBox="0 0 64 64">
+      <g transform="rotate(-38 32 32)">
+        <rect x="10" y="20" width="44" height="24" rx="12"/>
+        <circle cx="45" cy="32" r="6.5"/>
+        <circle cx="45" cy="32" r="2.2"/>
+        <path d="M15 27l5 5-5 5M24 27l5 5-5 5"/>
+      </g>
+    </symbol>
+    <symbol id="d-kapsalon" viewBox="0 0 64 64">
+      <path d="M16 28l-2-14M24 26l1-16M33 26V8M41 26l3-15M49 28l3-11"/>
+      <path d="M6 34h52l-6 20H12z"/>
+      <path d="M8 34q4-9 8 0t8 0t8 0t8 0t8 0t8 0"/>
+    </symbol>
+
+    <!-- Icônes d'interface -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" data-header>
+  <a class="brand" href="#top" aria-label="Snack TIM, retour en haut">
+    <span>SNACK</span>
+    <svg class="logo-burger" aria-hidden="true"><use href="#logo-burger"/></svg>
+    <span>TIM</span>
+  </a>
+
+  <div class="header-end">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#carte">La carte</a>
+      <a href="#frites">Frites fraîches</a>
+      <a href="#venir">Venir</a>
+    </nav>
+    <a class="btn btn--cream" href="tel:+32484419324" data-magnet>
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>
+      <span>0484 41 93 24</span>
+    </a>
+    <button class="menu-btn" type="button" popovertarget="mnav" aria-label="Ouvrir le menu">
+      <svg aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+
+  <nav id="mnav" class="mnav" popover aria-label="Navigation mobile">
+    <a href="#carte">La carte</a>
+    <a href="#frites">Frites fraîches</a>
+    <a href="#venir">Venir</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <div class="hero-wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="doodles" aria-hidden="true" data-doodles></div>
+
+      <div class="lockup">
+        <div class="arch-wrap">
+          <svg class="arch" viewBox="0 0 400 110" aria-hidden="true">
+            <path id="arc" d="M20 104Q200 -22 380 104" fill="none"/>
+            <text><textPath href="#arc" startOffset="50%" text-anchor="middle">SNACK · FRITERIE</textPath></text>
+          </svg>
+        </div>
+
+        <!-- Burger du logo : 4 couches, construites puis séparées au scroll -->
+        <svg class="hero-burger" viewBox="0 8 200 182" role="img" aria-label="Logo Snack TIM : un burger">
+          <g class="layer" style="--k:3; --dy:-84px; --tx:22px; --rot:-17deg">
+            <g class="drop">
+              <path class="draw" pathLength="1" d="M26 80C26 42 60 16 100 16s74 26 74 64c0 4-4 6-8 6H34c-4 0-8-2-8-6z"/>
+              <path class="draw seeds" d="M70 38l5 3M100 30l1 6M130 38l-5 3M85 56l5 2M118 56l-5 2"/>
+            </g>
+          </g>
+          <g class="layer" style="--k:2; --dy:-30px; --tx:-8px; --rot:5deg">
+            <g class="drop">
+              <path class="draw" pathLength="1" d="M22 108q13-16 26 0t26 0t26 0t26 0t26 0t26 0"/>
+            </g>
+          </g>
+          <g class="layer" style="--k:1; --dy:26px; --tx:10px; --rot:-4deg">
+            <g class="drop">
+              <rect class="draw" pathLength="1" x="24" y="118" width="152" height="26" rx="13"/>
+            </g>
+          </g>
+          <g class="layer" style="--k:0; --dy:82px; --tx:-18px; --rot:12deg">
+            <g class="drop">
+              <path class="draw" pathLength="1" d="M30 156h140c0 16-10 26-24 26H54c-14 0-24-10-24-26z"/>
+            </g>
+          </g>
+        </svg>
+
+        <h1 class="wordmark" id="hero-title">
+          <span>Snack</span>
+          <span class="tim">-TIM-</span>
+          <span class="sr">, snack et friterie halal à Jette</span>
+        </h1>
+
+        <p class="slab">Frites fraîches</p>
+        <p class="lede">Cheeseburgers, kapsalons, sandwichs et snacks. Halal. Avenue de Laeken, à Jette.</p>
+
+        <div class="cta-row">
+          <a class="btn btn--ring" href="tel:+32484419324" data-magnet>
+            <svg aria-hidden="true"><use href="#i-phone"/></svg>
+            Appeler
+          </a>
+          <a class="btn btn--ghost" href="https://maps.app.goo.gl/YQPCHvHpxsn2qmx78?g_st=ic" target="_blank" rel="noopener" data-magnet>
+            <svg aria-hidden="true"><use href="#i-pin"/></svg>
+            Itinéraire
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== AUVENT / MARQUEE ===================== -->
+  <div class="marquee" aria-hidden="true" data-marquee>
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>Snack</span><svg class="logo-burger"><use href="#logo-burger"/></svg>
+        <span>Friterie</span><svg class="logo-burger"><use href="#logo-burger"/></svg>
+        <span>Frites fraîches</span><svg class="logo-burger"><use href="#logo-burger"/></svg>
+        <span>Halal</span><svg class="logo-burger"><use href="#logo-burger"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CARTE ===================== -->
+  <section class="section menu" id="carte" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="menu__head">
+        <h2 class="section-title" id="menu-title">La carte</h2>
+        <p class="section-lede">Sept rayons, des cheeseburgers aux sauces. Les prix et la carte complète : au comptoir ou sur Uber Eats.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Catégories de la carte" data-tabs>
+        <span class="tab-pill" aria-hidden="true"></span>
+        <button class="tab" role="tab" id="t-sandwichs" aria-controls="p-sandwichs" aria-selected="true" data-id="sandwichs">
+          <svg class="doodle" aria-hidden="true"><use href="#d-wrap"/></svg>Sandwichs
+        </button>
+        <button class="tab" role="tab" id="t-cheeseburgers" aria-controls="p-cheeseburgers" aria-selected="false" tabindex="-1" data-id="cheeseburgers">
+          <svg class="doodle" aria-hidden="true"><use href="#d-burger"/></svg>Cheeseburgers
+        </button>
+        <button class="tab" role="tab" id="t-kapsalons" aria-controls="p-kapsalons" aria-selected="false" tabindex="-1" data-id="kapsalons">
+          <svg class="doodle" aria-hidden="true"><use href="#d-kapsalon"/></svg>Kapsalons
+        </button>
+        <button class="tab" role="tab" id="t-snacks" aria-controls="p-snacks" aria-selected="false" tabindex="-1" data-id="snacks">
+          <svg class="doodle" aria-hidden="true"><use href="#d-drum"/></svg>Snacks
+        </button>
+        <button class="tab" role="tab" id="t-frites" aria-controls="p-frites" aria-selected="false" tabindex="-1" data-id="frites">
+          <svg class="doodle" aria-hidden="true"><use href="#d-fries"/></svg>Frites
+        </button>
+        <button class="tab" role="tab" id="t-boissons" aria-controls="p-boissons" aria-selected="false" tabindex="-1" data-id="boissons">
+          <svg class="doodle" aria-hidden="true"><use href="#d-bottle"/></svg>Boissons
+        </button>
+        <button class="tab" role="tab" id="t-sauces" aria-controls="p-sauces" aria-selected="false" tabindex="-1" data-id="sauces">
+          <svg class="doodle" aria-hidden="true"><use href="#d-sauce"/></svg>Sauces
+        </button>
+      </div>
+
+      <div class="panels" data-panels>
+        <article class="panel" role="tabpanel" id="p-sandwichs" aria-labelledby="t-sandwichs" tabindex="0">
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-wrap"/></svg></div>
+            <div class="panel__text">
+              <h3>Sandwichs</h3>
+              <p>Le kebab et les sandwichs du snack : chauds et bien garnis.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="frites">Frites</button>
+                <button class="chip" type="button" data-goto="boissons">Boissons</button>
+                <button class="chip" type="button" data-goto="sauces">Sauces</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-cheeseburgers" aria-labelledby="t-cheeseburgers" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-burger"/></svg></div>
+            <div class="panel__text">
+              <h3>Cheeseburgers</h3>
+              <p>Pain, viande, fromage fondu. Le burger du logo, version à croquer.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="frites">Frites</button>
+                <button class="chip" type="button" data-goto="sauces">Sauces</button>
+                <button class="chip" type="button" data-goto="boissons">Boissons</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-kapsalons" aria-labelledby="t-kapsalons" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-kapsalon"/></svg></div>
+            <div class="panel__text">
+              <h3>Kapsalons</h3>
+              <p>Une barquette de frites, de viande, de crudités et de fromage gratiné. Un repas complet, à la fourchette.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="sauces">Sauces</button>
+                <button class="chip" type="button" data-goto="boissons">Boissons</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-snacks" aria-labelledby="t-snacks" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-drum"/></svg></div>
+            <div class="panel__text">
+              <h3>Snacks</h3>
+              <p>Les à-côtés qui se grignotent, pour compléter le plat ou pour partager.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="frites">Frites</button>
+                <button class="chip" type="button" data-goto="sauces">Sauces</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-frites" aria-labelledby="t-frites" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-fries"/></svg></div>
+            <div class="panel__text">
+              <h3>Frites</h3>
+              <p>Des frites fraîches, servies bien chaudes. C’est écrit sur la vitrine.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="sauces">Sauces</button>
+                <button class="chip" type="button" data-goto="snacks">Snacks</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-boissons" aria-labelledby="t-boissons" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-bottle"/></svg></div>
+            <div class="panel__text">
+              <h3>Boissons</h3>
+              <p>Sodas et boissons fraîches pour accompagner le tout.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="cheeseburgers">Cheeseburgers</button>
+                <button class="chip" type="button" data-goto="kapsalons">Kapsalons</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" role="tabpanel" id="p-sauces" aria-labelledby="t-sauces" tabindex="0" hidden>
+          <div class="panel__inner">
+            <div class="sticker" aria-hidden="true"><svg class="doodle"><use href="#d-sauce"/></svg></div>
+            <div class="panel__text">
+              <h3>Sauces</h3>
+              <p>Pour napper, tremper ou mélanger. Dis ce que tu veux au comptoir.</p>
+              <div class="pair"><span>Avec :</span>
+                <button class="chip" type="button" data-goto="frites">Frites</button>
+                <button class="chip" type="button" data-goto="snacks">Snacks</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="menu__foot">
+        <a class="btn btn--ink-ghost" href="https://www.ubereats.com/be-en/store/snack-tim/DY50O-wCQR-raBZxvU2ZBg" target="_blank" rel="noopener">Voir la carte et les prix</a>
+        <p>Les prix détaillés sont sur la page Uber Eats du snack.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FRITES FRAÎCHES ===================== -->
+  <section class="section fries" id="frites" aria-labelledby="fries-title">
+    <div class="wrap fries__grid">
+      <svg class="cone" viewBox="0 0 200 250" role="img" aria-label="Un cornet de frites orné du burger du logo">
+        <g class="fry" style="--d:70px"><rect x="48" y="40" width="17" height="100" rx="5" transform="rotate(-11 57 140)"/></g>
+        <g class="fry" style="--d:44px"><rect x="69" y="20" width="17" height="120" rx="5" transform="rotate(-5 78 140)"/></g>
+        <g class="fry" style="--d:90px"><rect x="91" y="8" width="17" height="132" rx="5" transform="rotate(1 100 140)"/></g>
+        <g class="fry" style="--d:56px"><rect x="113" y="22" width="17" height="118" rx="5" transform="rotate(7 122 140)"/></g>
+        <g class="fry" style="--d:76px"><rect x="134" y="42" width="17" height="98" rx="5" transform="rotate(13 143 140)"/></g>
+        <path class="pack" d="M36 100L56 238H144L164 100Z"/>
+        <use class="logo-burger" href="#logo-burger" x="66" y="128" width="68" height="62"/>
+      </svg>
+
+      <div>
+        <h2 class="fries__title" id="fries-title">Frites fraîches</h2>
+        <p class="fill-text" data-fill>C’est écrit sur la vitrine. Des frites chaudes, salées, avec la sauce que tu veux. Seules dans un cornet ou à côté du plat, elles sont de tous les repas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VENIR ===================== -->
+  <section class="section visit" id="venir" aria-labelledby="visit-title">
+    <div class="wrap visit__grid">
+      <div>
+        <h2 class="section-title" id="visit-title">Passe nous voir</h2>
+        <address class="addr">Avenue de Laeken&nbsp;8<span>1090 Jette</span></address>
+
+        <a class="phone" href="tel:+32484419324">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          0484 41 93 24
+        </a>
+
+        <div class="cta-row">
+          <a class="btn" href="https://maps.app.goo.gl/YQPCHvHpxsn2qmx78?g_st=ic" target="_blank" rel="noopener" data-magnet>
+            <svg aria-hidden="true"><use href="#i-pin"/></svg>
+            Itinéraire
+          </a>
+          <a class="btn btn--ink-ghost" href="tel:+32484419324" data-magnet>
+            <svg aria-hidden="true"><use href="#i-phone"/></svg>
+            Appeler
+          </a>
+        </div>
+
+        <div class="cards">
+          <div class="card" id="hours">
+            <h3>Horaires</h3>
+            <span class="badge" data-open-badge hidden></span>
+            <p data-hours-fallback>Les horaires varient selon les jours. Les plus à jour sont sur Google Maps, ou appelle-nous.</p>
+            <ul class="hours-list" data-hours-list hidden></ul>
+            <a class="link" href="https://maps.app.goo.gl/YQPCHvHpxsn2qmx78?g_st=ic" target="_blank" rel="noopener">Voir sur Google Maps</a>
+          </div>
+          <div class="card">
+            <h3>Carte et avis</h3>
+            <p>Noté 4,6 sur 5 par plus de 800 clients sur Uber Eats.</p>
+            <a class="link" href="https://www.ubereats.com/be-en/store/snack-tim/DY50O-wCQR-raBZxvU2ZBg" target="_blank" rel="noopener">Ouvrir la page Uber Eats</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-col">
+        <svg class="stamp" viewBox="0 0 120 120" role="img" aria-label="Halal">
+          <defs><path id="stamp-circle" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+          <circle cx="60" cy="60" r="57" fill="#F36B1C" stroke="#17100C" stroke-width="3"/>
+          <g class="ring">
+            <text font-size="11" fill="#17100C" letter-spacing=".6"><textPath href="#stamp-circle" textLength="262" lengthAdjust="spacing">HALAL · SNACK TIM · HALAL · SNACK TIM · </textPath></text>
+          </g>
+          <circle cx="60" cy="60" r="29" fill="#FFF4E6" stroke="#17100C" stroke-width="3"/>
+          <text x="60" y="66" text-anchor="middle" font-size="17" fill="#17100C">Halal</text>
+        </svg>
+
+        <div class="map" data-map>
+          <div class="map__facade">
+            <svg class="map__pin" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+            <strong>Avenue de Laeken 8, Jette</strong>
+            <button class="btn btn--cream" type="button" data-map-load>Afficher la carte</button>
+            <small>Google Maps ne se charge qu’au clic.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="foot-logo" aria-label="Snack TIM">
+      <svg class="logo-burger" aria-hidden="true"><use href="#logo-burger"/></svg>
+      <b>SNACK</b>
+      <i>-TIM-</i>
+    </div>
+    <address>
+      Avenue de Laeken 8, 1090 Jette<br>
+      <a href="tel:+32484419324">0484 41 93 24</a>
+    </address>
+    <div>
+      <a href="#top">Retour en haut</a><br>
+      <small>© <span data-year>2026</span> Snack TIM · Snack · Friterie · Halal</small>
+    </div>
+  </div>
+</footer>
+
+<!-- Barre d'actions mobile -->
+<div class="dock" data-dock>
+  <a class="btn btn--ring" href="tel:+32484419324"><svg aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+  <a class="btn btn--ghost" style="color:var(--cream)" href="https://maps.app.goo.gl/YQPCHvHpxsn2qmx78?g_st=ic" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Itinéraire</a>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const root = document.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ------------------------------------------------------------------
+     HORAIRES — à remplir par le commerçant (0 = dimanche … 6 = samedi).
+     Une plage qui passe minuit s'écrit ["18:00","01:00"].
+     Tant que HOURS vaut null, le site renvoie vers Google Maps.
+     Exemple :
+       const HOURS = {
+         0: [["12:00","23:00"]], 1: [["11:30","23:00"]], 2: [["11:30","23:00"]],
+         3: [["11:30","23:00"]], 4: [["11:30","23:00"]], 5: [["11:30","00:30"]],
+         6: [["11:30","00:30"]]
+       };
+     ------------------------------------------------------------------ */
+  const HOURS = null;
+
+  /* ---------- Doodles du héros (traits noirs façon vitrophanie) ---------- */
+  const kinds = ['burger', 'fries', 'drum', 'skewer', 'hotdog', 'bottle', 'sauce', 'wrap', 'kapsalon'];
+  const mulberry32 = a => () => {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+  const NS = 'http://www.w3.org/2000/svg';
+  const host = $('[data-doodles]');
+
+  function scatter() {
+    host.textContent = '';
+    const rnd = mulberry32(7);
+    const wide = innerWidth >= 900;
+    const cols = wide ? 10 : 4, rows = wide ? 6 : 9;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = (c + .1 + rnd() * .8) / cols;
+        const y = (r + .1 + rnd() * .8) / rows;
+        const size = 40 + rnd() * 38;
+        const kind = kinds[Math.floor(rnd() * kinds.length)];
+        const rot = (rnd() - .5) * 70;
+        const z = .4 + rnd() * 1.4;
+        if (wide && Math.abs(x - .5) < .21) continue;   // garde la zone du logo dégagée
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('class', 'doodle');
+        svg.setAttribute('width', size.toFixed(0));
+        svg.setAttribute('height', size.toFixed(0));
+        svg.style.cssText = `left:${(x * 100).toFixed(1)}%;top:${(y * 100).toFixed(1)}%;margin:${-size / 2}px 0 0 ${-size / 2}px;--r:${rot.toFixed(0)}deg;--z:${z.toFixed(2)}`;
+        const use = document.createElementNS(NS, 'use');
+        use.setAttribute('href', '#d-' + kind);
+        svg.appendChild(use);
+        host.appendChild(svg);
+      }
+    }
+  }
+  scatter();
+  matchMedia('(min-width: 900px)').addEventListener('change', scatter);
+
+  /* parallaxe au pointeur */
+  const hero = $('.hero');
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    let raf = 0;
+    hero.addEventListener('pointermove', e => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = hero.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        host.style.setProperty('--px', (x * -46).toFixed(1));
+        host.style.setProperty('--py', (y * -46).toFixed(1));
+      });
+    });
+  }
+
+  /* ---------- Marquee : on duplique le groupe pour boucler sans couture ---------- */
+  const track = $('.marquee__track');
+  const group = $('.marquee__group', track);
+  // 2n groupes identiques : la piste défile de -50 % (n groupes, plus larges que l'écran) puis reboucle
+  const n = Math.ceil(innerWidth / group.offsetWidth) + 1;
+  group.after(...Array.from({ length: 2 * n - 1 }, () => group.cloneNode(true)));
+
+  /* ---------- Texte qui se remplit mot à mot ---------- */
+  const fill = $('[data-fill]');
+  if (fill) {
+    const words = fill.textContent.trim().split(/\s+/);
+    fill.setAttribute('aria-label', words.join(' '));
+    fill.textContent = '';
+    words.forEach((w, i) => {
+      const s = document.createElement('span');
+      s.className = 'w';
+      s.setAttribute('aria-hidden', 'true');
+      s.textContent = w;
+      fill.append(s, i < words.length - 1 ? ' ' : '');
+    });
+  }
+
+  /* ---------- Onglets de la carte (View Transitions) ---------- */
+  const tablist = $('[data-tabs]');
+  const tabs = $$('[role="tab"]', tablist);
+  const panels = $$('[role="tabpanel"]');
+  const pill = $('.tab-pill', tablist);
+
+  function movePill() {
+    const t = tabs.find(t => t.getAttribute('aria-selected') === 'true');
+    if (!t) return;
+    pill.style.setProperty('--x', t.offsetLeft + 'px');
+    pill.style.setProperty('--w', t.offsetWidth + 'px');
+  }
+
+  function select(id, { focus = false, scroll = true } = {}) {
+    const apply = () => {
+      tabs.forEach(t => {
+        const on = t.dataset.id === id;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus({ preventScroll: true });
+      });
+      panels.forEach(p => { p.hidden = p.id !== 'p-' + id; });
+      movePill();
+    };
+    if (document.startViewTransition && !reduce) document.startViewTransition(apply);
+    else apply();
+    if (scroll) {
+      const t = tabs.find(t => t.dataset.id === id);
+      t.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+    }
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => select(t.dataset.id)));
+  tablist.addEventListener('keydown', e => {
+    const i = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+    let n = null;
+    if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+    if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home') n = 0;
+    if (e.key === 'End') n = tabs.length - 1;
+    if (n !== null) { e.preventDefault(); select(tabs[n].dataset.id, { focus: true }); }
+  });
+  $$('[data-goto]').forEach(b => b.addEventListener('click', () => {
+    select(b.dataset.goto);
+    tablist.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
+  // état initial : un seul panneau visible
+  panels.forEach((p, i) => { p.hidden = i !== 0; });
+  movePill();
+  document.fonts?.ready.then(movePill);
+  new ResizeObserver(movePill).observe(tablist);
+
+  /* ---------- Header, dock mobile ---------- */
+  const header = $('[data-header]');
+  const dock = $('[data-dock]');
+  const onScroll = () => {
+    const y = scrollY;
+    header.classList.toggle('is-solid', y > 40);
+    dock.classList.toggle('is-on', y > innerHeight * .6);
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ferme le menu mobile après un clic sur un lien
+  const mnav = $('#mnav');
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) mnav.hidePopover?.(); });
+
+  /* ---------- Boutons magnétiques ---------- */
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    $$('[data-magnet]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .18).toFixed(1) + 'px');
+        el.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .28).toFixed(1) + 'px');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.setProperty('--mx', '0px');
+        el.style.setProperty('--my', '0px');
+      });
+    });
+  }
+
+  /* ---------- Carte Google Maps au clic (pas de tracking avant) ---------- */
+  const map = $('[data-map]');
+  $('[data-map-load]').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.google.com/maps?q=Avenue+de+Laeken+8,+1090+Jette,+Belgique&z=17&hl=fr&output=embed';
+    f.title = 'Carte : Snack TIM, avenue de Laeken 8, Jette';
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    map.textContent = '';
+    map.append(f);
+  });
+
+  /* ---------- Horaires (si renseignés) ---------- */
+  (function renderHours() {
+    if (!HOURS) return;
+    const list = $('[data-hours-list]'), fb = $('[data-hours-fallback]'), badge = $('[data-open-badge]');
+    const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    list.innerHTML = [1, 2, 3, 4, 5, 6, 0].map(d =>
+      `<li><span>${days[d]}</span><span>${(HOURS[d] || []).map(([a, b]) => `${a} – ${b}`).join(', ') || 'Fermé'}</span></li>`
+    ).join('');
+    list.hidden = false; fb.hidden = true;
+
+    const mins = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+    const now = new Date(), d = now.getDay(), m = now.getHours() * 60 + now.getMinutes();
+    const today = (HOURS[d] || []).some(([a, b]) => { const s = mins(a), e = mins(b); return e > s ? m >= s && m < e : m >= s; });
+    const late = (HOURS[(d + 6) % 7] || []).some(([a, b]) => { const s = mins(a), e = mins(b); return e <= s && m < e; });
+    const open = today || late;
+    badge.textContent = open ? 'Ouvert maintenant' : 'Fermé pour le moment';
+    badge.dataset.state = open ? 'open' : 'closed';
+    badge.hidden = false;
+  })();
+
+  $('[data-year]').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
