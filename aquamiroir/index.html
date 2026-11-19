@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aquamiroir — spécialiste en aquariophilie d'eau douce à Jette (Bruxelles)</title>
+<meta name="description" content="Aquamiroir, votre spécialiste en aquariophilie d'eau douce à Jette : conseils, poissons de qualité, espèces inédites. Avenue de Jette 312, quartier du Miroir.">
+<meta name="theme-color" content="#f5f8fb">
+<meta property="og:title" content="Aquamiroir — spécialiste en aquariophilie d'eau douce à Jette (Bruxelles)"><meta property="og:description" content="Aquamiroir, votre spécialiste en aquariophilie d'eau douce à Jette : conseils, poissons de qualité, espèces inédites. Avenue de Jette 312, quartier du Miroir."><meta property="og:type" content="website"><meta property="og:locale" content="fr_BE">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+(function(d){d.className=d.className.replace('no-js','js');try{if(sessionStorage.getItem('aqNav')==='1')d.classList.add('is-entering')}catch(e){}
+setTimeout(function(){if(!window.AQ)d.classList.remove('js')},4000);
+window.AQfb=function(i){if(i.dataset.fb&&!i.dataset.t){i.dataset.t=1;i.src=i.dataset.fb;return}i.hidden=true;i.dispatchEvent(new Event('aq-broken'));var f=i.closest&&i.closest('.fig');if(f)f.hidden=true}})(document.documentElement);
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"PetStore","name":"Aquamiroir","url":"https://www.aquamiroir.com/","description":"Spécialiste en aquariophilie d'eau douce à Jette (Bruxelles).","telephone":"+3224285514","email":"ggermeau@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Avenue de Jette 312","postalCode":"1090","addressLocality":"Jette","addressCountry":"BE"},"geo":{"@type":"GeoCoordinates","latitude":50.873091,"longitude":4.323206},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"13:30","closes":"18:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"13:00"}],"sameAs":["http://www.facebook.com/pages/Aquamiroir/296035512216"]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ripple" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="1" seed="3" result="n"><animate attributeName="baseFrequency" dur="11s" values="0.004 0.022;0.007 0.036;0.004 0.022" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<canvas id="water" aria-hidden="true"></canvas>
+<canvas id="fish" aria-hidden="true"></canvas>
+<div class="curtain" aria-hidden="true"><b>aqua<i>miroir</i></b></div>
+<div class="cursor" aria-hidden="true"><b><span></span></b><i></i></div>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Aquamiroir — accueil"><svg class="mark" viewBox="0 0 76 64" aria-hidden="true" fill="currentColor">
+<path d="M37 7.6C36.8 5.2 33 4.6 30.6 5.4L24.8 1.2 26.4 5.6C18 6 9 9.6 4.8 17.2 3 20.5 2.4 24.5 2.2 27.6L3.4 27.8C4.2 24 5.4 21.2 7.2 18.6 10 14.6 16 12 21 12.4L26.6 11 28 16.6 31.5 11.4C35 11 37.4 10.4 37 7.6Z"/>
+<g fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="round"><path d="M3 28C8 38 26 46 42 52 50 55 58 58 62 61"/><path d="M3.4 28C12 40 30 53 44 55 58 57.5 70 52 72 43"/></g></svg><span class="brand__word">AQUA<b>MIROIR</b></span></a>
+  <nav class="nav" aria-label="Navigation principale"><a href="index.html" aria-current="page">Accueil</a><a href="tech_MP.html">Techniques</a><a href="liens.html">Liens utiles</a><a href="marques.html">Nos marques</a><a href="galerie.html">Galerie photos</a><a href="contact.html">Contact</a></nav>
+  <div class="hdr-right"><span class="status js-status" role="status"><i></i><em>Horaires…</em></span>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button></div>
+</header>
+<div class="menu" id="menu"><nav aria-label="Menu"><a href="index.html" style="--i:0" aria-current="page"><small>01</small>Accueil</a><a href="tech_MP.html" style="--i:1"><small>02</small>Techniques</a><a href="liens.html" style="--i:2"><small>03</small>Liens utiles</a><a href="marques.html" style="--i:3"><small>04</small>Nos marques</a><a href="galerie.html" style="--i:4"><small>05</small>Galerie photos</a><a href="contact.html" style="--i:5"><small>06</small>Contact</a></nav>
+<div class="menu__foot">Avenue de Jette 312 · 1090 Jette<br><a href="tel:+3224285514">+32 (0)2 428 55 14</a><br><a href="mailto:ggermeau@gmail.com">ggermeau@gmail.com</a></div></div>
+<div class="depth" aria-hidden="true"><i></i><span>−0,0 m</span><em>profondeur</em></div>
+<main id="main">
+
+<section class="hero" data-tone="light">
+  <div class="hero__kick"><span>Aquariophilie d'eau douce</span><span>Jette · Bruxelles</span><span>Quartier du Miroir</span></div>
+  <h1 class="hero__title" aria-label="Aquamiroir"><span class="vt vt--a" data-vt="420,800">AQUA</span><span class="vt vt--m" data-vt="200,620">MIROIR</span></h1>
+  <div class="hero__reflect" aria-hidden="true"></div>
+  <div class="hero__sub">
+    <p class="lead" data-reveal>Bienvenue chez Aquamiroir, votre spécialiste en aquariophilie d'eau douce.</p>
+    <div class="row" data-reveal style="--d:120ms"><a class="btn" href="contact.html" data-magnetic>Pousser la porte <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--ghost" href="tech_MP.html" data-magnetic>Les techniques</a></div>
+  </div>
+  <div class="hero__scroll"><i></i>Bougez · cliquez dans l'eau · défilez</div>
+</section>
+
+<div class="marquee" data-dir="l"><div class="marquee__track"><span>Poissons d'eau douce</span><span>Crustacés & invertébrés</span><span>Amphibiens</span><span>Insectes</span><span>Reptiles</span><span>Plantes</span><span>Eau osmosée</span><span>Conseils pas à pas</span><span>Espèces inédites</span></div></div>
+
+<section class="sec" data-tone="light"><div class="wrap">
+  <p class="kicker">Bienvenue</p>
+  <p class="scrub" data-scrub>Situé en périphérie de Bruxelles, dans le très vivant quartier du Miroir, et facile d'accès, notre magasin vous procure les meilleurs conseils pour votre aquarium, ainsi qu'une qualité et un choix de poissons incomparables.</p>
+  <p class="lead mt" data-reveal>Nous nous ferons toujours un plaisir de vous accueillir, que ce soit pour finaliser votre projet ou simplement pour discuter de votre hobby et vous faire part de notre expérience.</p>
+  <p class="kicker mt" style="margin-top:clamp(3rem,7vw,6rem)">Les repères d'un bac réussi</p>
+  <div class="intro__facts" data-stagger>
+    <div class="fact" data-reveal><b>120–180 L</b><span>Volume idéal pour débuter</span></div>
+    <div class="fact" data-reveal><b>24–25 °C</b><span>Réglage du chauffage</span></div>
+    <div class="fact" data-reveal><b>2–4 sem.</b><span>Avant les premiers poissons</span></div>
+    <div class="fact" data-reveal><b>10–12 h</b><span>D'éclairage par jour</span></div>
+  </div>
+</div></section>
+
+<section class="hs" data-tone="dark" aria-label="Notre philosophie"><div class="hs__sticky"><div class="hs__track">
+  <div class="hs__intro"><p class="kicker">Philosophie</p><h2 class="display" data-split>L'aquariophilie est notre <em>passion</em>.</h2><p class="lead">Et nous désirons avant tout la partager.</p></div>
+  <article class="hs__panel"><span class="rip" aria-hidden="true"></span><span class="num" aria-hidden="true">01</span><div><h3>Des poissons en pleine santé</h3><p>Nous mettons tout en œuvre pour vous fournir la meilleure qualité de poissons possible. Nous tenons à proposer des animaux en pleine santé, mais aussi à ce qu'ils le restent chez vous.</p></div></article>
+  <article class="hs__panel"><span class="rip" aria-hidden="true"></span><span class="num" aria-hidden="true">02</span><div><h3>Pas à pas</h3><p>Nous vous accompagnons pour le lancement de votre aquarium, le traitement de votre eau et la prévention ou la résolution de tout problème que vous pourriez rencontrer.</p></div></article>
+  <article class="hs__panel"><span class="rip" aria-hidden="true"></span><span class="num" aria-hidden="true">03</span><div><h3>Sur mesure</h3><p>Nous vous guidons dans le choix de vos espèces, en fonction de vos envies, de la taille de votre aquarium et de votre population, pour qu'il reste toujours une source de plaisir.</p></div></article>
+  <article class="hs__panel"><span class="rip" aria-hidden="true"></span><span class="num" aria-hidden="true">04</span><div><h3>Écologie & bien-être</h3><p>Nous accordons toujours une grande importance à l'écologie et au bien-être des animaux.</p></div></article>
+  <article class="hs__panel"><span class="rip" aria-hidden="true"></span><span class="num" aria-hidden="true">05</span><div><h3>Introuvable ailleurs</h3><p>Nous utilisons toute notre énergie et nos connaissances pour trouver des espèces ou des variétés de poissons absolument inédites, toujours accompagnées des conseils relatifs à leur maintenance.</p></div></article>
+</div><div class="hs__bar" aria-hidden="true"><i></i></div></div></section>
+
+<section class="sec" data-tone="light"><div class="wrap">
+  <p class="kicker">Techniques</p>
+  <h2 class="display" data-split>Réussir son <em>aquarium</em>, étape par étape.</h2>
+  <ul class="idx mt" data-stagger>
+    <li data-reveal><a href="tech_MP.html"><span class="n">01</span><div><h3>Mise en place </h3><p>Emplacement, volume, substrat, mise en eau, patience… tout pour bien démarrer.</p></div><span class="go"><span>Lire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    <li data-reveal><a href="tech_DEM.html"><span class="n">02</span><div><h3>Déménagement </h3><p>Garder les bactéries en vie, limiter le stress des poissons.</p></div><span class="go"><span>Lire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    <li data-reveal><a href="tech_ENT.html"><span class="n">03</span><div><h3>La filtration </h3><p>Mécanique, chimique, biologique : le cœur de la vie dans l'aquarium.</p></div><span class="go"><span>Lire</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    <li data-reveal><a href="tech_MT.html"><span class="n">04</span><div><h3>Maladies & traitements <span class="tag">Bientôt</span></h3><p>Prévenir, repérer, soigner.</p></div><span class="go"><span>Aperçu</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    <li data-reveal><a href="tech_DEC.html"><span class="n">05</span><div><h3>Décorations <span class="tag">Bientôt</span></h3><p>Naturelles ou artificielles : bien les choisir.</p></div><span class="go"><span>Aperçu</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    <li data-reveal><a href="tech_CON.html"><span class="n">06</span><div><h3>Conseils <span class="tag">Bientôt</span></h3><p>Quelques conseils de la maison.</p></div><span class="go"><span>Aperçu</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+  </ul>
+</div></section>
+
+<section class="sec" data-tone="dark"><div class="wrap">
+  <div class="row" style="justify-content:space-between;align-items:flex-end;gap:2rem"><div><p class="kicker">Galerie photos</p><h2 class="display" data-split>Nos plus belles <em>images</em>.</h2></div>
+  <a class="btn" href="galerie.html" data-magnetic>Visiter la galerie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  <div class="tiles mt" data-stagger><a class="tile tile--poi" href="galerie.html?cat=poi" data-reveal data-cursor="Voir"><img src="img/galerie/poi/01.jpg" data-fb="https://www.aquamiroir.com/img/galerie/poi/01.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="AQfb(this)" ><div class="tile__t"><h3>Poissons d'eau douce</h3><small>25 photos</small></div></a><a class="tile tile--cru" href="galerie.html?cat=cru" data-reveal data-cursor="Voir"><img src="img/galerie/cru/01.jpg" data-fb="https://www.aquamiroir.com/img/galerie/cru/01.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="AQfb(this)" ><div class="tile__t"><h3>Crustacés & invertébrés</h3><small>13 photos</small></div></a><a class="tile tile--bat" href="galerie.html?cat=bat" data-reveal data-cursor="Voir"><img src="img/galerie/bat/01.jpg" data-fb="https://www.aquamiroir.com/img/galerie/bat/01.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="AQfb(this)" ><div class="tile__t"><h3>Amphibiens</h3><small>23 photos</small></div></a><a class="tile tile--ins" href="galerie.html?cat=ins" data-reveal data-cursor="Voir"><img src="img/galerie/ins/01.jpg" data-fb="https://www.aquamiroir.com/img/galerie/ins/01.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="AQfb(this)" ><div class="tile__t"><h3>Insectes</h3><small>6 photos</small></div></a><a class="tile tile--rep" href="galerie.html?cat=rep" data-reveal data-cursor="Voir"><img src="img/galerie/rep/01.jpg" data-fb="https://www.aquamiroir.com/img/galerie/rep/01.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="AQfb(this)" ><div class="tile__t"><h3>Reptiles</h3><small>5 photos</small></div></a></div>
+</div></section>
+
+<section class="sec" data-tone="light" id="visite"><div class="wrap visit">
+  <div><p class="kicker">Nous trouver</p><h2 class="display" data-split>Venez <em>nous voir</em>.</h2>
+    <p class="addr mt" data-reveal><a href="https://www.google.com/maps/search/?api=1&query=Avenue+de+Jette+312+1090+Jette" target="_blank" rel="noopener">Avenue de Jette, 312<br>1090 Jette ↗</a></p>
+    <div class="lines" data-reveal><span class="line line--tram">Tram 19</span><span class="line">Bus 13</span><span class="line">Bus 14</span><span class="line">Bus 49</span></div>
+    <p class="stop" data-reveal>Arrêt Miroir / Spiegel</p>
+    <div class="row mt" data-reveal><a class="btn" href="tel:+3224285514" data-magnetic>+32 (0)2.428.55.14</a><a class="btn btn--ghost" href="contact.html" data-magnetic>Plan d'accès</a></div></div>
+  <div data-reveal><p class="kicker">Heures d'ouverture</p><table class="hours" aria-label="Heures d'ouverture">
+<tr data-dow="2 3 4 5"><td>Mardi – vendredi</td><td>10h00 – 12h00 · 13h30 – 18h30</td></tr>
+<tr data-dow="6"><td>Samedi</td><td>10h00 – 18h00</td></tr>
+<tr data-dow="0"><td>Dimanche</td><td>10h00 – 13h00</td></tr>
+<tr class="off" data-dow="1"><td>Lundi</td><td>Fermé</td></tr></table><p class="ph-note">Le jour en cours est surligné · statut en direct (heure de Bruxelles).</p></div>
+</div></section>
+</main>
+<footer class="foot" data-tone="dark">
+<div class="wrap">
+  <div class="foot__top"><p class="foot__cta" data-split>Un projet d'aquarium ? Venez en parler au magasin.</p>
+  <a class="btn" href="contact.html" data-magnetic>Nous trouver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  <div class="foot__grid">
+    <div><h4>Coordonnées</h4><p>Avenue de Jette, 312<br>1090 Jette<br><a href="tel:+3224285514">+32 (0)2.428.55.14</a><br><a href="mailto:ggermeau@gmail.com">ggermeau@gmail.com</a></p></div>
+    <div><h4>Heures d'ouverture</h4><p>Mardi – vendredi<br>10h00 – 12h00 · 13h30 – 18h30<br>Samedi 10h00 – 18h00<br>Dimanche 10h00 – 13h00</p></div>
+    <div><h4>Plan du site</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="tech_MP.html">Techniques</a></li><li><a href="liens.html">Liens utiles</a></li><li><a href="marques.html">Nos marques</a></li><li><a href="galerie.html">Galerie photos</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Suivez-nous</h4><p><a href="http://www.facebook.com/pages/Aquamiroir/296035512216" target="_blank" rel="noopener">Facebook ↗</a></p></div>
+  </div>
+  <div class="foot__word" aria-hidden="true">AQUAMIROIR</div>
+  <div class="foot__bar"><span>© 2012–2026 AQUAMIROIR.COM · Tous droits réservés</span><button class="to-top" type="button">Retour en haut ↑</button></div>
+</div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+
+</body>
+</html>
